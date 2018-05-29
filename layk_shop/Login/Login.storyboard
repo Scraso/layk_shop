@@ -51,7 +51,7 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="More/login_profile_2" translatesAutoresizingMaskIntoConstraints="NO" id="Gvg-V0-pd6">
                                                                         <rect key="frame" x="20" y="14" width="32" height="32"/>
                                                                     </imageView>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email or create a new one" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42l-9u-zIH">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Новый/существующий адрес" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42l-9u-zIH">
                                                                         <rect key="frame" x="64" y="0.0" width="260" height="60"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -75,7 +75,7 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="More/password_key_2" translatesAutoresizingMaskIntoConstraints="NO" id="dUn-7r-H66">
                                                                         <rect key="frame" x="20" y="14" width="32" height="32"/>
                                                                     </imageView>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P5U-G3-40Z">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P5U-G3-40Z">
                                                                         <rect key="frame" x="64" y="0.0" width="260" height="60"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -96,11 +96,14 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gg-mD-toe">
-                                                        <rect key="frame" x="64" y="216" width="175" height="33"/>
+                                                        <rect key="frame" x="64" y="216" width="172" height="33"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <state key="normal" title="Forgot your password?">
+                                                        <state key="normal" title="Забыли свой пароль?">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="forgotBtnTapped:" destination="rqv-M2-xiG" eventType="touchUpInside" id="A1K-tL-EgJ"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0W-tR-dzf">
                                                         <rect key="frame" x="20" y="270" width="294" height="50"/>
@@ -109,7 +112,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="7fX-oJ-ga4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="Login">
+                                                        <state key="normal" title="Вход">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -126,6 +129,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="loginBtnTapped:" destination="rqv-M2-xiG" eventType="touchUpInside" id="0nz-wP-Z4e"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -189,7 +195,10 @@
                         <viewLayoutGuide key="safeArea" id="93o-id-QOZ"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="42l-9u-zIH" id="sWa-Yh-RTD"/>
+                        <outlet property="loginView" destination="Xjz-Y1-UE1" id="BO2-cr-Kl1"/>
                         <outlet property="panToClose" destination="gJn-AU-CwP" id="W7e-gD-1B0"/>
+                        <outlet property="passwordTextField" destination="P5U-G3-40Z" id="8hi-2R-H70"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a2-2u-3DJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
