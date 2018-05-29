@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var loginBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +29,42 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         scrollView.delegate = self
+        
+        checkIfUserIsSignedIn()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    
+    // Check if user is logged in and if yes then change loggin button to logout
+    
+    private func checkIfUserIsSignedIn() {
+        
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                self.loginBtn.title = "Logout"
+            } else {
+                self.loginBtn.title = "Login"
+            }
+        }
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func loginBtnTapped(_ sender: UIBarButtonItem) {
+        if loginBtn.title == "Logout" {
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                loginBtn.title = "Login"
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        } else {
+            performSegue(withIdentifier: "toLogin", sender: nil)
+        }
     }
     
 }

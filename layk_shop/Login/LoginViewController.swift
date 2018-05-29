@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
     
     // Animate view shake when client uses wrong credentials
     func shakeView() {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.loginView.transform = CGAffineTransform(translationX: 50, y: 0)
         }, completion: { _ in
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 6.0, options: .allowUserInteraction, animations: { [weak self] in
@@ -52,9 +52,11 @@ class LoginViewController: UIViewController {
                         self.shakeView()
                     } else {
                         print("User successfully created.")
+                        self.dismiss(animated: true, completion: nil)
                     }
                 })
             } else {
+                self.dismiss(animated: true, completion: nil)
                 print("User logged in")
             }
         }

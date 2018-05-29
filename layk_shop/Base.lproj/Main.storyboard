@@ -157,7 +157,6 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="loginBtnTapped:" destination="BYZ-38-t0r" id="chG-JT-yhj"/>
-                                <segue destination="KgY-R0-eYa" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="cwc-Oi-UzS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -165,8 +164,10 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="eVe-X1-j7c" id="ALF-pP-w3V"/>
                         <outlet property="headerView" destination="aEM-85-xVr" id="3fL-z3-kUi"/>
+                        <outlet property="loginBtn" destination="sYb-Cc-QWc" id="6Nd-2P-l4l"/>
                         <outlet property="logoImageView" destination="oFW-90-mVO" id="0SF-eu-a2d"/>
                         <outlet property="scrollView" destination="w33-CT-heb" id="jry-MQ-l35"/>
+                        <segue destination="KgY-R0-eYa" kind="presentation" identifier="toLogin" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Gxp-NK-Var"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
