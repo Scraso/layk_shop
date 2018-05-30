@@ -22,6 +22,7 @@
 		984058B020B9F83000C7A168 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984058AF20B9F83000C7A168 /* CellConfigurator.swift */; };
 		984058B220BAAB0400C7A168 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984058B120BAAB0400C7A168 /* CartTableViewCell.swift */; };
 		984058B420BBE41800C7A168 /* InteractionPanToClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984058B320BBE41800C7A168 /* InteractionPanToClose.swift */; };
+		984058B620BC774200C7A168 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 984058B520BC774200C7A168 /* GoogleService-Info.plist */; };
 		984621C720B181A900EB37C0 /* Embed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984621C620B181A900EB37C0 /* Embed.storyboard */; };
 		984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984621C820B187AB00EB37C0 /* TestimonitalViewController.swift */; };
 		984621CF20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984621CE20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift */; };
@@ -33,9 +34,11 @@
 		988265C420AD1A310015C526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988265C220AD1A310015C526 /* LaunchScreen.storyboard */; };
 		9888403920AF7929002CCF29 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403820AF7929002CCF29 /* PromotionViewController.swift */; };
 		9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */; };
+		A741A79C9AECA4DFF5101F5D /* Pods_layk_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.release.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.release.xcconfig"; sourceTree = "<group>"; };
 		9839BE7520B1F6AC001C6297 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		9839BE7720B1F8BE001C6297 /* ItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewCell.swift; sourceTree = "<group>"; };
 		9839BE7A20B31375001C6297 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		984058AF20B9F83000C7A168 /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
 		984058B120BAAB0400C7A168 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		984058B320BBE41800C7A168 /* InteractionPanToClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionPanToClose.swift; sourceTree = "<group>"; };
+		984058B520BC774200C7A168 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		984621C620B181A900EB37C0 /* Embed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Embed.storyboard; sourceTree = "<group>"; };
 		984621C820B187AB00EB37C0 /* TestimonitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonitalViewController.swift; sourceTree = "<group>"; };
 		984621CE20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		988265C520AD1A310015C526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9888403820AF7929002CCF29 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A02DBF9EB5931BB5F47DECC /* Pods-layk_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.debug.xcconfig"; sourceTree = "<group>"; };
+		A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_layk_shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +77,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A741A79C9AECA4DFF5101F5D /* Pods_layk_shop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0134CE4558EFD1E6271A99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9839BE6E20B1F513001C6297 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +168,8 @@
 			children = (
 				988265B820AD1A2E0015C526 /* layk_shop */,
 				988265B720AD1A2E0015C526 /* Products */,
+				9EBA1B57E0CD46FC1938021D /* Pods */,
+				0C0134CE4558EFD1E6271A99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				988265C520AD1A310015C526 /* Info.plist */,
+				984058B520BC774200C7A168 /* GoogleService-Info.plist */,
 				9839BE6E20B1F513001C6297 /* Model */,
 				984058AA20B9F1AA00C7A168 /* View */,
 				984058AB20B9F1B500C7A168 /* Controller */,
@@ -191,6 +209,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9EBA1B57E0CD46FC1938021D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A02DBF9EB5931BB5F47DECC /* Pods-layk_shop.debug.xcconfig */,
+				3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -198,9 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 988265C820AD1A310015C526 /* Build configuration list for PBXNativeTarget "layk_shop" */;
 			buildPhases = (
+				E7F221A691A335CE1BF2921A /* [CP] Check Pods Manifest.lock */,
 				988265B220AD1A2E0015C526 /* Sources */,
 				988265B320AD1A2E0015C526 /* Frameworks */,
 				988265B420AD1A2E0015C526 /* Resources */,
+				2DEF4DCA31C112FC17F07852 /* [CP] Embed Pods Frameworks */,
+				64D23D0456AE3791CC6E3AFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,10 +284,83 @@
 				988265C120AD1A310015C526 /* Assets.xcassets in Resources */,
 				9839BE7B20B31375001C6297 /* Login.storyboard in Resources */,
 				988265BF20AD1A2E0015C526 /* Main.storyboard in Resources */,
+				984058B620BC774200C7A168 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DEF4DCA31C112FC17F07852 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64D23D0456AE3791CC6E3AFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7F221A691A335CE1BF2921A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-layk_shop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		988265B220AD1A2E0015C526 /* Sources */ = {
@@ -426,15 +529,13 @@
 		};
 		988265C920AD1A310015C526 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A02DBF9EB5931BB5F47DECC /* Pods-layk_shop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4UYWHYRPE;
 				INFOPLIST_FILE = layk_shop/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "tambarcumyan.layk-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -444,15 +545,13 @@
 		};
 		988265CA20AD1A310015C526 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4UYWHYRPE;
 				INFOPLIST_FILE = layk_shop/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "tambarcumyan.layk-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
