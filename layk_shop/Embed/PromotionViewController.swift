@@ -7,73 +7,85 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseStorageUI
+import SDWebImage
 
 class PromotionViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let images = [#imageLiteral(resourceName: "item_1"), #imageLiteral(resourceName: "item_2"), #imageLiteral(resourceName: "item_3")]
+    var listener: ListenerRegistration!
+    var imageNames = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        fetchImages()
+
+    }
+    
+    deinit {
+        listener.remove()
+        print("PromotionViewController has been deinitialized")
+    }
+    
+    // MARK: - API CALL
+    
+    func fetchImages() {
+        listener = DataService.instance.REF_PROMOTION_SECTION.whereField("isPublished", isEqualTo: true).addSnapshotListener({ [weak self] (documentSnapshot, error) in
+            
+            guard let documents = documentSnapshot?.documents else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            let imageURLs = documents.map { $0["imageURL"]! }
+            for imageURL in imageURLs {
+                if let editedURL = (imageURL as! String).slice(from: "promotion-images/", to: ".jpg") {
+                    self?.imageNames.append(editedURL)
+                }
+            }
+
+            self?.collectionView.reloadData()
+        
+        })
     }
     
 }
 
 extension PromotionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return imageNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCell", for: indexPath) as! PromotionCollectionViewCell
-        let image = images[indexPath.row]
-        cell.backgroundImageView.image = image
-//        cell.layer.transform = animateCell(cellFrame: cell.frame)
+
+        let imageName = imageNames[indexPath.row]
+        let ref = DataService.instance.REF_PROMOTION_IMAGES.child("\(imageName).jpg")
+        let imageView = cell.backgroundImageView
+        let placeholderImage = #imageLiteral(resourceName: "promotion_placeholder")
+        imageView?.sd_setShowActivityIndicatorView(true)
+        imageView?.sd_setIndicatorStyle(.gray)
+        imageView?.sd_setImage(with: ref, placeholderImage: placeholderImage)
         return cell
     }
     
 }
 
-//extension PromotionViewController: UIScrollViewDelegate {
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        if let collectionView = scrollView as? UICollectionView {
-//            for cell in collectionView.visibleCells as! [PromotionCollectionViewCell] {
-//                let indexPath = collectionView.indexPath(for: cell)!
-//                let attributes = collectionView.layoutAttributesForItem(at: indexPath)!
-//                let cellFrame = collectionView.convert(attributes.frame, to: view)
-//
-//                let translationX = cellFrame.origin.x / 5
-//                cell.backgroundImageView.transform = CGAffineTransform(translationX: translationX, y: 0)
-//
-//                cell.layer.transform = animateCell(cellFrame: cellFrame)
-//            }
-//        }
-//    }
-//
-//    func animateCell(cellFrame: CGRect) -> CATransform3D {
-//        let angleFromX = Double((-cellFrame.origin.x) / 10)
-//        let angle = CGFloat((angleFromX * Double.pi) / 180.0)
-//        var transform = CATransform3DIdentity
-//        transform.m34 = -1.0/1000
-//        let rotation = CATransform3DRotate(transform, angle, 0, 1, 0)
-//
-//        var scaleFromX = (1000 - (cellFrame.origin.x - 200)) / 1000
-//        let scaleMax: CGFloat = 1.0
-//        let scaleMin: CGFloat = 0.6
-//        if scaleFromX > scaleMax {
-//            scaleFromX = scaleMax
-//        }
-//        if scaleFromX < scaleMin {
-//            scaleFromX = scaleMin
-//        }
-//        let scale = CATransform3DScale(CATransform3DIdentity, scaleFromX, scaleFromX, 1)
-//
-//        return CATransform3DConcat(rotation, scale)
-//    }
-//}
+extension String {
+    
+    func slice(from: String, to: String) -> String? {
+        
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
+    }
+}

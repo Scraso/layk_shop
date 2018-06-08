@@ -34,6 +34,9 @@
 		988265C420AD1A310015C526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988265C220AD1A310015C526 /* LaunchScreen.storyboard */; };
 		9888403920AF7929002CCF29 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403820AF7929002CCF29 /* PromotionViewController.swift */; };
 		9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */; };
+		98F0FBF020BE792500F9A1F8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0FBEF20BE792500F9A1F8 /* DataService.swift */; };
+		98F0FBF220C1526E00F9A1F8 /* ShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0FBF120C1526D00F9A1F8 /* ShopData.swift */; };
+		98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0FBF320C4487500F9A1F8 /* ItemListData.swift */; };
 		A741A79C9AECA4DFF5101F5D /* Pods_layk_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,9 @@
 		988265C520AD1A310015C526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9888403820AF7929002CCF29 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
+		98F0FBEF20BE792500F9A1F8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		98F0FBF120C1526D00F9A1F8 /* ShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopData.swift; sourceTree = "<group>"; };
+		98F0FBF320C4487500F9A1F8 /* ItemListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListData.swift; sourceTree = "<group>"; };
 		9A02DBF9EB5931BB5F47DECC /* Pods-layk_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_layk_shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				98609E5B20B1D98300643203 /* Data.swift */,
+				98F0FBF120C1526D00F9A1F8 /* ShopData.swift */,
+				98F0FBF320C4487500F9A1F8 /* ItemListData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 				9839BE7920B31358001C6297 /* Login */,
 				988265BD20AD1A2E0015C526 /* Main.storyboard */,
 				9839BE8120B5C33D001C6297 /* Extensions */,
+				98F0FBEE20BE77BA00F9A1F8 /* Services */,
 				988265CB20AD20280015C526 /* Supporting Files */,
 			);
 			path = layk_shop;
@@ -207,6 +216,14 @@
 				988265C020AD1A310015C526 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98F0FBEE20BE77BA00F9A1F8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				98F0FBEF20BE792500F9A1F8 /* DataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		9EBA1B57E0CD46FC1938021D /* Pods */ = {
@@ -302,6 +319,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -315,6 +333,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -372,6 +391,7 @@
 				9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */,
 				9839BE8520B5C3DC001C6297 /* UIButton+Designable.swift in Sources */,
 				984058B420BBE41800C7A168 /* InteractionPanToClose.swift in Sources */,
+				98F0FBF020BE792500F9A1F8 /* DataService.swift in Sources */,
 				988265BA20AD1A2E0015C526 /* AppDelegate.swift in Sources */,
 				984058AD20B9F20600C7A168 /* DeliveryTableViewCell.swift in Sources */,
 				984058A520B6C24000C7A168 /* OneLinePixel.swift in Sources */,
@@ -382,7 +402,9 @@
 				984058A920B89A7F00C7A168 /* DeliveryViewController.swift in Sources */,
 				9839BE8720B5CCC9001C6297 /* UIView+Designable.swift in Sources */,
 				9839BE7620B1F6AC001C6297 /* ItemsTableViewController.swift in Sources */,
+				98F0FBF220C1526E00F9A1F8 /* ShopData.swift in Sources */,
 				9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */,
+				98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */,
 				984058A720B8772500C7A168 /* CartViewController.swift in Sources */,
 				983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */,
 				984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */,
@@ -535,7 +557,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4UYWHYRPE;
 				INFOPLIST_FILE = layk_shop/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "tambarcumyan.layk-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -551,7 +576,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4UYWHYRPE;
 				INFOPLIST_FILE = layk_shop/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "tambarcumyan.layk-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

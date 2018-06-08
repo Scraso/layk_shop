@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class ShopViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    let categories = ["Женские лосины"]
+
+    var categories = [ShopData]()
+    var listener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        fetchShopCategory()
 
     }
     
@@ -30,7 +34,30 @@ class ShopViewController: UIViewController {
             tableView.deselectRow(at: selectionIndexPath, animated: animated)
         }
     }
-
+    
+    deinit {
+        listener.remove()
+        print("ShopViewController has been deinitialized")
+    }
+    
+    // MARK: - API CALL
+    
+    func fetchShopCategory() {
+        listener = DataService.instance.REF_SHOP_CATEGORY.whereField("isEnabled", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
+            guard let snapshot = documentSnapshot else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            snapshot.documentChanges.forEach({ (diff) in
+                if (diff.type == .added) {
+                    let data = ShopData(data: diff.document.data())
+                    self?.categories.append(data)
+                }
+            })
+            self?.tableView.reloadData()
+        }
+    }
+    
 }
 
 extension ShopViewController: UITableViewDataSource {
@@ -42,7 +69,7 @@ extension ShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShopCell", for: indexPath)
         let category = categories[indexPath.row]
-        cell.textLabel?.text = category
+        cell.textLabel?.text = category.productName
         return cell
     }
 }

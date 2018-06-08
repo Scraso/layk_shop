@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
+
 
 class ItemsTableViewController: UITableViewController {
     
     var categoryTitle: String?
+    
+    var itemList = [ItemListData]()
+    var listener: ListenerRegistration!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,30 +27,68 @@ class ItemsTableViewController: UITableViewController {
         } else {
             // Fallback on earlier versions
         }
+        
+        fetchItemList()
     }
+    
+    deinit {
+        listener.remove()
+        print("ItemTableViewController has been deinitialized")
+    }
+    
+    // MARK: - API CALL
+    
+    func fetchItemList() {
+        listener = DataService.instance.REF_ITEMS.whereField("category", isEqualTo: categoryTitle ?? "").addSnapshotListener({ [weak self] (documentSnapshot, error) in
+            guard let snapshot = documentSnapshot else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            snapshot.documentChanges.forEach({ (diff) in
+                if (diff.type == .added) {
+                    let data = ItemListData(data: diff.document.data())
+                    self?.itemList.append(data)
+                }
+            })
+            self?.tableView.reloadData()
+        })
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetails" {
+            if let destination = segue.destination as? ItemDetailsViewController {
+                if let itemData = sender as? ItemListData {
+                    destination.itemDetails = itemData
+                }
+            }
+        }
+    }
+    
+
+    // MARK: - TableView DataSource
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return itemList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemsCell", for: indexPath) as! ItemsTableViewCell
         cell.selectionStyle = .none
-        let item = items[indexPath.row]
-        cell.itemImageView.image = UIImage(named: item["image"]!)
-        cell.descriptionFirstLbl.text = item["composition_1"]
-        cell.descriptionSecondLbl.text = item["composition_2"]
-        cell.itemNameLbl.text = item["name"]
-        cell.availabilityLbl.text = item["status"]
-        cell.priceLbl.text = item["price"]
+        let item = itemList[indexPath.row]
+        cell.configureCell(data: item)
         return cell
     }
+
+    // MARK: - TableView Delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ItemDetails", sender: self)
+        
+        let item = itemList[indexPath.row]
+        performSegue(withIdentifier: "ItemDetails", sender: item)
     }
-    
-    // MARK: - TableView Delegate
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.Magnitude.leastNonzeroMagnitude

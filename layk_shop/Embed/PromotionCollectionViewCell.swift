@@ -13,3 +13,4 @@ class PromotionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
 }
+
