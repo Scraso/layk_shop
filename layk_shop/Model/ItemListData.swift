@@ -12,7 +12,7 @@ import Foundation
 struct ItemListData {
     
     var name: String?
-    var price: String?
+    var price: Int?
     var isAvailable: Bool? = false
     var imageName: String?
     var itemDetails = [String]()
@@ -27,7 +27,7 @@ struct ItemListData {
         if let name = data["name"] as? String {
             self.name = name
         }
-        if let price = data["price"] as? String {
+        if let price = data["price"] as? Int {
             self.price = price
         }
         if let isAvailable = data["isAvailable"] as? Bool {

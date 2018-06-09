@@ -576,9 +576,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="0uG-dw-hOr"/>
                                                             <constraint firstAttribute="width" constant="44" id="cMW-Ym-QsG"/>
                                                         </constraints>
-                                                        <state key="normal" title="S">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
+                                                        <state key="normal" title="S"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                 <real key="value" value="1"/>

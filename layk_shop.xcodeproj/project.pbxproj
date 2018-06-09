@@ -37,6 +37,7 @@
 		98F0FBF020BE792500F9A1F8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0FBEF20BE792500F9A1F8 /* DataService.swift */; };
 		98F0FBF220C1526E00F9A1F8 /* ShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0FBF120C1526D00F9A1F8 /* ShopData.swift */; };
 		98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0FBF320C4487500F9A1F8 /* ItemListData.swift */; };
+		98F60D5720CA10E80074728C /* CartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F60D5620CA10E80074728C /* CartData.swift */; };
 		A741A79C9AECA4DFF5101F5D /* Pods_layk_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		98F0FBEF20BE792500F9A1F8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		98F0FBF120C1526D00F9A1F8 /* ShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopData.swift; sourceTree = "<group>"; };
 		98F0FBF320C4487500F9A1F8 /* ItemListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListData.swift; sourceTree = "<group>"; };
+		98F60D5620CA10E80074728C /* CartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartData.swift; sourceTree = "<group>"; };
 		9A02DBF9EB5931BB5F47DECC /* Pods-layk_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		A289581D7F4F1246EB16923E /* Pods_layk_shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_layk_shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				98609E5B20B1D98300643203 /* Data.swift */,
 				98F0FBF120C1526D00F9A1F8 /* ShopData.swift */,
 				98F0FBF320C4487500F9A1F8 /* ItemListData.swift */,
+				98F60D5620CA10E80074728C /* CartData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */,
 				984058A720B8772500C7A168 /* CartViewController.swift in Sources */,
 				983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */,
+				98F60D5720CA10E80074728C /* CartData.swift in Sources */,
 				984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */,
 				984058B020B9F83000C7A168 /* CellConfigurator.swift in Sources */,
 				9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */,

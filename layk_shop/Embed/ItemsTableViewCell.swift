@@ -23,7 +23,7 @@ class ItemsTableViewCell: UITableViewCell {
     // Items will be loaded based on the category selected (see DB category key)
     func configureCell(data: ItemListData) {
         itemNameLbl.text = data.name
-        priceLbl.text = data.price
+        priceLbl.text = "\(data.price ?? 0) грн"
         if data.isAvailable == true {
             availabilityLbl.text = "Есть в наличии"
             availabilityLbl.textColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)

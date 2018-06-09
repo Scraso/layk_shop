@@ -30,8 +30,10 @@ class ItemDetailsViewController: UIViewController {
     
     var contentWidth: CGFloat = 0.0
     var count = -1
-    var images = [UIImageView]()
     var itemDetails: ItemListData!
+    var avatarImage: UIImage?
+    
+    var cartData = [CartData]()
     
     fileprivate var imageView = UIImageView()
     
@@ -53,28 +55,17 @@ class ItemDetailsViewController: UIViewController {
             imageView.frame = CGRect(x: contentWidth - 150, y: (pageScrollView.frame.size.height / 2) - 150, width: 300, height: 300)
         }
         
-//        for x in 0...2 {
-//            let image = UIImage(named: "leggins_detail_\(x)")
-//            let imageView = UIImageView(image: image)
-//            images.append(imageView)
-//
-//            contentWidth = pageScrollView.frame.midX + view.frame.size.width * CGFloat(x)
-//
-//            pageScrollView.addSubview(imageView)
-//
-//            imageView.frame = CGRect(x: contentWidth - 150, y: (pageScrollView.frame.size.height / 2) - 150, width: 300, height: 300)
-//
-//        }
-        
         pageScrollView.contentSize = CGSize(width: contentWidth + pageScrollView.frame.midX, height: pageScrollView.frame.size.height)
         
         
         //Set UI
         nameLbl.text = itemDetails.name
-        priceLbl.text = itemDetails.price
-        
-
-        
+        priceLbl.text = "\(itemDetails.price ?? 0) грн"
+        // Possible crash
+        firstDetailLbl.text = itemDetails.itemDetails[0]
+        secondDetailLbl.text = itemDetails.itemDetails[1]
+        thirdDetailLbl.text = itemDetails.itemDetails[2]
+          
         if let xsSize = itemDetails.xsSize {
             if xsSize > 0 {
                 buttonStatus(button: xsBtn, isEnabled: true)
@@ -142,19 +133,26 @@ class ItemDetailsViewController: UIViewController {
             }
         }
         
-        
-        //        if sender.backgroundColor == UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100) {
-        //            print("true")
-        //            sender.backgroundColor = UIColor.white
-        //            sender.setTitleColor(UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 100), for: .normal)
-        //            sender.borderColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
-        //        }
-        //        sender.backgroundColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
-        //        sender.setTitleColor(UIColor.white, for: .normal)
-        //        sender.borderColor = UIColor.clear
     }
     
     @IBAction func cartBtnTapped(_ sender: UIButton) {
+        // Index of Cart Controller in Tab Bar
+        let navController = self.tabBarController?.viewControllers![3] as! UINavigationController
+        // Index of View Controller in Cart Tab
+        let cartViewController = navController.viewControllers[0] as! CartViewController
+        
+        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: "ref.\(Int(arc4random_uniform(999999)))", size: "")
+        
+        cartViewController.items.append(item)
+        
+        // Set badgeValue to the cart depends on the item in the array
+        if let tabItems = self.tabBarController?.tabBar.items as NSArray?
+        {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[3] as! UITabBarItem
+            tabItem.badgeValue = String(cartViewController.items.count)
+        }
+
     }
     
 }
