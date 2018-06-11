@@ -22,8 +22,12 @@ struct ItemListData {
     var mSize: Int?
     var lSize: Int?
     var imageURLs = [String]()
+    var documentId: String?
     
-    init(data: Dictionary<String, Any>) {
+    init(data: Dictionary<String, Any>, documentId: String?) {
+        
+        self.documentId = documentId
+        
         if let name = data["name"] as? String {
             self.name = name
         }

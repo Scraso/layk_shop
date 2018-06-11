@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct CartData {
     
@@ -14,5 +15,7 @@ struct CartData {
     var name: String?
     var ref: String?
     var size: String?
+    var documentId: String?
+    var itemImageView: UIImage?
     
 }

@@ -53,7 +53,8 @@ extension CartViewController: UITableViewDataSource {
             itemCell.nameLbl.text = item.name
             itemCell.priceLbl.text = "\(item.price ?? 0) грн"
             itemCell.refLbl.text = item.ref
-            itemCell.sizeLbl.text = "M"
+            itemCell.sizeLbl.text = item.size
+            itemCell.itemImageView.image = item.itemImageView
             //            let item = cart[indexPath.row]
             //            itemCell.nameLbl.text = item["name"]
             //            itemCell.itemImageView.image = UIImage(named: item["itemImageView"]!)

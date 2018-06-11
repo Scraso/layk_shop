@@ -30,18 +30,25 @@ class ItemDetailsViewController: UIViewController {
     
     var contentWidth: CGFloat = 0.0
     var count = -1
+    var selectedBtnSize: String?
     var itemDetails: ItemListData!
-    var avatarImage: UIImage?
-    
     var cartData = [CartData]()
     
-    fileprivate var imageView = UIImageView()
+    var itemImageView: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pageScrollView.delegate = self
+        pageController()
+        setupUserInterface()
         
+
+    }
+    
+    // MARK: UI Setup
+    
+    func pageController() {
         for url in itemDetails.imageURLs {
             let editedURL = url.slice(from: "pageControl-images/", to: ".jpg")
             let ref = DataService.instance.REF_PAGECONTROL_IMAGES.child("\(editedURL ?? "").jpg")
@@ -56,8 +63,9 @@ class ItemDetailsViewController: UIViewController {
         }
         
         pageScrollView.contentSize = CGSize(width: contentWidth + pageScrollView.frame.midX, height: pageScrollView.frame.size.height)
-        
-        
+    }
+    
+    func setupUserInterface() {
         //Set UI
         nameLbl.text = itemDetails.name
         priceLbl.text = "\(itemDetails.price ?? 0) грн"
@@ -65,7 +73,24 @@ class ItemDetailsViewController: UIViewController {
         firstDetailLbl.text = itemDetails.itemDetails[0]
         secondDetailLbl.text = itemDetails.itemDetails[1]
         thirdDetailLbl.text = itemDetails.itemDetails[2]
-          
+        
+        
+        let sizeArray = ["XS" : itemDetails.xsSize ?? 0, "S" : itemDetails.sSize ?? 0, "M" : itemDetails.mSize ?? 0, "L" : itemDetails.lSize ?? 0, "XL" : itemDetails.xlSize ?? 0]
+        
+        // Get the size which has the most value and make it checked by default
+        let maxValue = sizeArray.max(by: { (a, b) -> Bool in
+            return a.value < b.value
+        })
+        for button in buttons {
+            if button.currentTitle == maxValue?.key {
+                if button.isEnabled == true && (maxValue?.value)! > 0 {
+                    button.backgroundColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
+                    button.setTitleColor(UIColor.white, for: .normal)
+                    button.borderColor = UIColor.clear
+                }
+            }
+        }
+    
         if let xsSize = itemDetails.xsSize {
             if xsSize > 0 {
                 buttonStatus(button: xsBtn, isEnabled: true)
@@ -101,7 +126,6 @@ class ItemDetailsViewController: UIViewController {
                 buttonStatus(button: xlBtn, isEnabled: false)
             }
         }
-
     }
     
     // MARK: - Helper
@@ -117,6 +141,8 @@ class ItemDetailsViewController: UIViewController {
         button.borderColor = buttonColor
     }
     
+    
+    // MARK: - Actions
     
     @IBAction func sizeBtnTapped(_ sender: UIButton) {
         buttons.forEach { (element) in
@@ -134,14 +160,22 @@ class ItemDetailsViewController: UIViewController {
         }
         
     }
-    
+
     @IBAction func cartBtnTapped(_ sender: UIButton) {
         // Index of Cart Controller in Tab Bar
         let navController = self.tabBarController?.viewControllers![3] as! UINavigationController
         // Index of View Controller in Cart Tab
         let cartViewController = navController.viewControllers[0] as! CartViewController
         
-        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: "ref.\(Int(arc4random_uniform(999999)))", size: "")
+        // get the current title of the selected button size based on the background color
+        for button in buttons {
+            if button.backgroundColor == UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100) {
+                selectedBtnSize = button.currentTitle ?? ""
+            }
+        }
+        
+        // Pass document ID in order to update the amount of items left. Move size after item name and add Delete item button.
+        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: "ref.\(Int(arc4random_uniform(999999)))", size: selectedBtnSize, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView)
         
         cartViewController.items.append(item)
         
