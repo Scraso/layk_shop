@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 
 struct CartData {
-    
-    var price: Int?
-    var name: String?
-    var ref: String?
-    var size: String?
-    var documentId: String?
-    var itemImageView: UIImage?
+
+    let price: Int?
+    let name: String?
+    let ref: Int
+    let size: String?
+    var count: Int
+    let documentId: String?
+    let itemImageView: UIImage?
     
 }
+
+//func ==(lhs: CartData, rhs: CartData) -> Bool {
+//    return lhs.name == rhs.name && lhs.size == rhs.size
+//}
+

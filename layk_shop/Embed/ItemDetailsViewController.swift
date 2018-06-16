@@ -175,9 +175,16 @@ class ItemDetailsViewController: UIViewController {
         }
         
         // Pass document ID in order to update the amount of items left. Move size after item name and add Delete item button.
-        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: "ref.\(Int(arc4random_uniform(999999)))", size: selectedBtnSize, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView)
-        
+        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: Int(arc4random_uniform(999999)), size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView)
+    
         cartViewController.items.append(item)
+        
+        // Reload tableView only in case CartViewController is loaded, otherwise the app crash.
+        // Set TableView reload in ViewDidLoad of Cart View Controller to reload tableView for the first time so then this method will trigger
+        // once the new item will be added
+        if cartViewController.isViewLoaded == true {
+            cartViewController.tableView.reloadData()
+        }
         
         // Set badgeValue to the cart depends on the item in the array
         if let tabItems = self.tabBarController?.tabBar.items as NSArray?

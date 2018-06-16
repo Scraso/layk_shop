@@ -14,22 +14,20 @@ class CartViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     
     var items = [CartData]()
-    
+    var itemsCount = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.dataSource = self
+        tableView.reloadData()
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
+    @IBAction func nextBtnTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toDelivery", sender: self)
     }
 
-    @IBAction func nextBtnTapped(_ sender: UIButton) {
-    }
 }
 
 extension CartViewController: UITableViewDataSource {
@@ -50,31 +48,62 @@ extension CartViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemsCell
             let item = items[indexPath.row]
-            itemCell.nameLbl.text = item.name
+            itemCell.nameLbl.text = "\(item.name ?? "") (\(item.size ?? ""))"
             itemCell.priceLbl.text = "\(item.price ?? 0) грн"
-            itemCell.refLbl.text = item.ref
-            itemCell.sizeLbl.text = item.size
+            itemCell.refLbl.text = "ref.\(item.ref)"
             itemCell.itemImageView.image = item.itemImageView
-            //            let item = cart[indexPath.row]
-            //            itemCell.nameLbl.text = item["name"]
-            //            itemCell.itemImageView.image = UIImage(named: item["itemImageView"]!)
-            //            itemCell.countLbl.text = item["count"]
-            //            itemCell.refLbl.text = item["ref"]
-            //            itemCell.priceLbl.text = item["price"]
+            itemCell.countLbl.text = String(item.count)
+            itemCell.onButtonTapped = { [weak self] (button: UIButton) in
+                if let indexPath = self?.tableView.indexPathForView(button) {
+                    self?.items.remove(at: indexPath.row)
+                    self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    // Set badgeValue to the cart depends on the item in the array
+                    if let tabItems = self?.tabBarController?.tabBar.items as NSArray?
+                    {
+                        // In this case we want to modify the badge number of the third tab:
+                        let tabItem = tabItems[3] as! UITabBarItem
+                        // if array is empty, set badge to nil
+                        tabItem.badgeValue = (self?.items.count)! > 0 ? String((self?.items.count)!) : nil
+                    }
+                    self?.tableView.reloadData()
+                }
+            }
+            
+            itemCell.countButtonTapped = { [weak self] (index: Int) in
+                if index == 1 {
+                    if self?.itemsCount == 1 {
+                        self?.itemsCount = 1
+                    } else {
+                        self?.itemsCount -= 1
+//                        self?.priceValue -= item.price ?? 0
+                    }
+                } else if index == 2 {
+                    self?.itemsCount += 1
+//                    self?.priceValue += item.price ?? 0
+                }
+                itemCell.countLbl.text = String((self?.itemsCount)!)
+              
+                
+            }
             return itemCell
         }
         
         if tableView.numberOfRows(inSection: 0) == 0 {
             // Add label wich says there is no items in the cart
-            print("No items in the cart")
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text = "No items in the cart"
+            noDataLabel.textColor = UIColor.gray
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView = noDataLabel
+            tableView.separatorStyle = .none
             nextBtn.isHidden = true
         } else {
             let totalCell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as! TotalCell
             
             let cost = items.reduce(0, { (result, cartData) -> Int in
-                var value = 0
-                value += cartData.price ?? 0
-                return result + value
+                var priceValue = 0
+                priceValue += cartData.price ?? 0
+                return result + priceValue
                 
             })
             totalCell.amountLbl.text = String("\(cost) грн")
@@ -85,3 +114,4 @@ extension CartViewController: UITableViewDataSource {
     }
     
 }
+

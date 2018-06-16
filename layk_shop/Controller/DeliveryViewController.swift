@@ -25,6 +25,18 @@ class DeliveryViewController: UIViewController {
             // Fallback on earlier versions
         }
     }
+    
+    func addTextViewPlaceholder(textView: UITextView, placeholderLbl: UILabel) {
+        placeholderLbl.text = "Комментарий к заказу"
+        placeholderLbl.font = UIFont.italicSystemFont(ofSize: 17)
+        placeholderLbl.sizeToFit()
+        textView.addSubview(placeholderLbl)
+        placeholderLbl.frame.origin = CGPoint(x: 5, y: 10)
+        placeholderLbl.textColor = UIColor.init(red: 202/255, green: 202/255, blue: 207/255, alpha: 100)
+        textView.isHidden = !textView.text.isEmpty
+
+    }
+    
 }
 
 extension DeliveryViewController: UITableViewDataSource {
@@ -35,9 +47,11 @@ extension DeliveryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+            addTextViewPlaceholder(textView: cell.commentTextView, placeholderLbl: cell.placeholderLbl)
             return cell
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath) as! AddressCell
         switch indexPath.row {
         case 0:

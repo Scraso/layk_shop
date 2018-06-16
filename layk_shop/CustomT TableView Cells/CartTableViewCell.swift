@@ -14,22 +14,28 @@ class ItemsCell: UITableViewCell {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var countLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
-    @IBOutlet weak var sizeLbl: UILabel!
-    
-    var count = 1
+    @IBOutlet weak var deleteItemBtn: UIButton!
     
     @IBAction func minutBtnTapped(_ sender: UIButton) {
-        if count == 1 {
-            count = 1
-        } else {
-            count -= 1
+        if let countButtonTapped = countButtonTapped {
+            countButtonTapped(1)
         }
-        countLbl.text = String(count)
     }
+    
+    var onButtonTapped: ((UIButton) -> Void)? = nil
+    var countButtonTapped: ((Int) -> Void)? = nil
+    
     @IBAction func plusBtnTapped(_ sender: UIButton) {
-        count += 1
-        countLbl.text = String(count)
+        if let countButtonTapped = countButtonTapped {
+            countButtonTapped(2)
+        }
     }
+    @IBAction func deleteBtnTapped(_ sender: UIButton) {
+        if let onButtonTapped = self.onButtonTapped {
+           onButtonTapped(sender)
+        }
+    }
+    
 }
 
 class TotalCell: UITableViewCell {

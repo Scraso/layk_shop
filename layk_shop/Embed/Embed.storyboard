@@ -185,7 +185,7 @@
                                             <outlet property="detailsTextField" destination="v7W-GP-rx7" id="uwl-AF-uAp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="q4O-r3-STy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="q4O-r3-STy" customClass="CommentCell" customModule="layk_shop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q4O-r3-STy" id="04y-LL-KZl">
@@ -193,19 +193,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DTX-hP-LTp">
-                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
+                                                    <rect key="frame" x="10" y="3" width="350" height="37.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="DTX-hP-LTp" secondAttribute="bottom" constant="8" id="8QX-C6-Hf3"/>
-                                                <constraint firstItem="DTX-hP-LTp" firstAttribute="leading" secondItem="04y-LL-KZl" secondAttribute="leading" constant="8" id="KdT-hy-Tcd"/>
-                                                <constraint firstItem="DTX-hP-LTp" firstAttribute="top" secondItem="04y-LL-KZl" secondAttribute="top" constant="8" id="QJl-i2-ehF"/>
-                                                <constraint firstAttribute="trailing" secondItem="DTX-hP-LTp" secondAttribute="trailing" constant="8" id="zlW-Vu-fBi"/>
+                                                <constraint firstAttribute="bottom" secondItem="DTX-hP-LTp" secondAttribute="bottom" constant="3" id="8QX-C6-Hf3"/>
+                                                <constraint firstItem="DTX-hP-LTp" firstAttribute="leading" secondItem="04y-LL-KZl" secondAttribute="leading" constant="10" id="KdT-hy-Tcd"/>
+                                                <constraint firstItem="DTX-hP-LTp" firstAttribute="top" secondItem="04y-LL-KZl" secondAttribute="top" constant="3" id="QJl-i2-ehF"/>
+                                                <constraint firstAttribute="trailing" secondItem="DTX-hP-LTp" secondAttribute="trailing" constant="15" id="zlW-Vu-fBi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentTextView" destination="DTX-hP-LTp" id="ULi-tv-Stv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
