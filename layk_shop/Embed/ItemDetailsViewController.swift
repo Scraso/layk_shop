@@ -33,7 +33,6 @@ class ItemDetailsViewController: UIViewController {
     var selectedBtnSize: String?
     var itemDetails: ItemListData!
     var cartData = [CartData]()
-    
     var itemImageView: UIImage?
     
     override func viewDidLoad() {
@@ -69,7 +68,7 @@ class ItemDetailsViewController: UIViewController {
         //Set UI
         nameLbl.text = itemDetails.name
         priceLbl.text = "\(itemDetails.price ?? 0) грн"
-        // Possible crash
+        // Possible crash !!!!!
         firstDetailLbl.text = itemDetails.itemDetails[0]
         secondDetailLbl.text = itemDetails.itemDetails[1]
         thirdDetailLbl.text = itemDetails.itemDetails[2]
@@ -175,7 +174,7 @@ class ItemDetailsViewController: UIViewController {
         }
         
         // Pass document ID in order to update the amount of items left. Move size after item name and add Delete item button.
-        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: Int(arc4random_uniform(999999)), size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView)
+        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: Int(arc4random_uniform(999999)), size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView, avatarImageUrl: itemDetails.imageName)
     
         cartViewController.items.append(item)
         

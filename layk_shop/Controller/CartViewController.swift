@@ -24,6 +24,15 @@ class CartViewController: UIViewController {
         
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDelivery" {
+            let destination = segue.destination as? DeliveryViewController
+            destination?.orderItems = items
+        }
+    }
+    
     @IBAction func nextBtnTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "toDelivery", sender: self)
     }

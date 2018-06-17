@@ -71,7 +71,6 @@ class ItemsTableViewController: UITableViewController {
 
     // MARK: - TableView DataSource
     
-
     var itemImageView: UIImage?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

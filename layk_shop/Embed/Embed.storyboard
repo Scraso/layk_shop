@@ -151,6 +151,9 @@
                                 <state key="normal" title="ОТПРАВИТЬ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendBtnTapped:" destination="HZg-3q-GvP" eventType="touchUpInside" id="GDc-Vw-yEn"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ayU-Wi-fEP">
                                 <rect key="frame" x="0.0" y="20" width="375" height="587"/>
@@ -233,6 +236,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xu-Lg-rjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134" y="1537"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4RD-wz-85U">
+            <objects>
+                <viewController id="KOD-81-a5e" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VUs-Cf-ZIU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sjc-8x-BoQ">
+                                <rect key="frame" x="-418.5" y="308.5" width="1212" height="50.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-vC-GAi">
+                                        <rect key="frame" x="0.0" y="0.0" width="1212" height="20.5"/>
+                                        <string key="text">Ваш заказ принят на обработку. Наши менеджеры свяжуться с вами в ближайшее время. Статус заказаз вы можете просмотреть во вкладке История</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-PQ-6qB">
+                                        <rect key="frame" x="499.5" y="20.5" width="213" height="30"/>
+                                        <state key="normal" title="Закрыть и вернуться обратно"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sjc-8x-BoQ" firstAttribute="centerY" secondItem="VUs-Cf-ZIU" secondAttribute="centerY" id="A1o-9k-qQj"/>
+                            <constraint firstItem="sjc-8x-BoQ" firstAttribute="centerX" secondItem="VUs-Cf-ZIU" secondAttribute="centerX" id="kBf-6z-LaZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oMO-dW-A13"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vnv-Jg-im1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="1535.9820089955024"/>
         </scene>
         <!--Testimonital View Controller-->
         <scene sceneID="5dc-2C-ElG">

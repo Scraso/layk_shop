@@ -18,6 +18,7 @@ struct CartData {
     var count: Int
     let documentId: String?
     let itemImageView: UIImage?
+    let itemName: String?
     
 }
 
