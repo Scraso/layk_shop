@@ -13,7 +13,7 @@ struct CartData {
 
     let price: Int?
     let name: String?
-    let ref: Int
+    let ref: String
     let size: String?
     var count: Int
     let documentId: String?

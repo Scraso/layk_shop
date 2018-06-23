@@ -24,7 +24,7 @@ class DataService {
     private var _REF_PROMOTION_SECTION = DB_BASE.collection("promotion_section")
     private var _REF_SHOP_CATEGORY = DB_BASE.collection("shop_category")
     private var _REF_ITEMS = DB_BASE.collection("items")
-    private var _REF_PENDING_ORDERS = DB_BASE.collection("pending_orders")
+    private var _REF_ORDERS = DB_BASE.collection("orders")
     
     
     // Storage reference
@@ -56,8 +56,8 @@ class DataService {
         return _REF_PAGECONTROL_IMAGES
     }
     
-    var REF_PENDING_ORDERS: CollectionReference {
-        return _REF_PENDING_ORDERS
+    var REF_ORDERS: CollectionReference {
+        return _REF_ORDERS
     }
     
 }

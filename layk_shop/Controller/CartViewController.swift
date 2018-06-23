@@ -59,7 +59,7 @@ extension CartViewController: UITableViewDataSource {
             let item = items[indexPath.row]
             itemCell.nameLbl.text = "\(item.name ?? "") (\(item.size ?? ""))"
             itemCell.priceLbl.text = "\(item.price ?? 0) грн"
-            itemCell.refLbl.text = "ref.\(item.ref)"
+            itemCell.refLbl.text = "Код товара: \(item.ref)"
             itemCell.itemImageView.image = item.itemImageView
             itemCell.countLbl.text = String(item.count)
             itemCell.onButtonTapped = { [weak self] (button: UIButton) in
@@ -100,7 +100,7 @@ extension CartViewController: UITableViewDataSource {
         if tableView.numberOfRows(inSection: 0) == 0 {
             // Add label wich says there is no items in the cart
             let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text = "No items in the cart"
+            noDataLabel.text = "Корзина пустая"
             noDataLabel.textColor = UIColor.gray
             noDataLabel.textAlignment = .center
             tableView.backgroundView = noDataLabel

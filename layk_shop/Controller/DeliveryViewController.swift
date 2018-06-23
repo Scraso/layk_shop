@@ -10,7 +10,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, ModalViewControllerDelegate {
+
 
     @IBOutlet weak var tableView: UITableView!
     var orderItems = [CartData]()
@@ -114,25 +115,60 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         return true
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCompletedVC" {
+            if let modalVC = segue.destination as? ProcessingViewController {
+                modalVC.delegate = self
+            }
+        }
+    }
+    
+    // MARK: - Modal Delegate
+    
+    func dismissed() {
+        let rootVC = navigationController?.viewControllers.first as? CartViewController
+        rootVC?.items.removeAll()
+        rootVC?.tableView.reloadData()
+        
+        if let tabItems = self.tabBarController?.tabBar.items as NSArray?
+        {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[3] as! UITabBarItem
+            // if array is empty, set badge to nil
+            tabItem.badgeValue = nil
+        }
+        
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+    
     
     // MARK: - Actions
 
+    
+    
     @IBAction func sendBtnTapped(_ sender: UIButton) {
         
         do {
+            // If type and then delete it allow to process. WRONG!!!
             let (name, phone, city, address) = try submitNewOrder(name: self.name ?? "", phone: self.phone ?? "", city: self.city ?? "", address: self.deliveryAddress ?? "")
             
             let details: [String: Any] = ["name": name, "phone": phone, "city": city, "address": address, "comments": comments ?? ""]
             print(details)
             
             let currentUserUid = Auth.auth().currentUser?.uid
+            let timestamp = NSDate().timeIntervalSince1970
             
             // get image name so then fetch it using FirebaseStorageUI
             for item in orderItems {
-                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.itemName!]
-                let documentId = DataService.instance.REF_PENDING_ORDERS.document()
+                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarName": item.itemName!, "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
+                let documentId = DataService.instance.REF_ORDERS.document()
                 documentId.setData(orderDetails)
-            }            
+            }
+            
+            performSegue(withIdentifier: "toCompletedVC", sender: nil)
+            
         } catch {
             let error = error.localizedDescription
             self.alert(title: "Ооооопсс...!", errMsg: error)

@@ -159,8 +159,26 @@ class ItemDetailsViewController: UIViewController {
         }
         
     }
+    
+    // Random character
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1).uppercased as String
+        }
+        
+        return randomString
+    }
 
     @IBAction func cartBtnTapped(_ sender: UIButton) {
+        
         // Index of Cart Controller in Tab Bar
         let navController = self.tabBarController?.viewControllers![3] as! UINavigationController
         // Index of View Controller in Cart Tab
@@ -174,7 +192,7 @@ class ItemDetailsViewController: UIViewController {
         }
         
         // Pass document ID in order to update the amount of items left. Move size after item name and add Delete item button.
-        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: Int(arc4random_uniform(999999)), size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView, avatarImageUrl: itemDetails.imageName)
+        let item = CartData(price: 1150, name: nameLbl.text ?? "", ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView, itemName: itemDetails.imageName)
     
         cartViewController.items.append(item)
         
