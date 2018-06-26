@@ -282,7 +282,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-PQ-6qB">
                                         <rect key="frame" x="0.0" y="102.5" width="273" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Закрыть и вернуться обратно"/>
+                                        <state key="normal" title="Закрыть и вернуться обратно">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="backBtnTapped:" destination="KOD-81-a5e" eventType="touchUpInside" id="GI7-Zz-x9Y"/>
                                         </connections>
@@ -527,9 +529,6 @@
                             <outlet property="delegate" destination="Og5-Fu-RN2" id="syK-gK-otc"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <segue destination="hB9-et-HIf" kind="show" identifier="ItemDetails" id="oAe-Zn-Pd0"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Im-3d-fYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -841,6 +840,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxi-XJ-dTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2637.5999999999999" y="1660.569715142429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tjZ-7e-By7">
+            <objects>
+                <viewController id="Di8-k1-O3Y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8NN-As-3WQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqg-cc-gjg">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить в корзину" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbr-NK-ijk">
+                                        <rect key="frame" x="82.5" y="17.5" width="211" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jbr-NK-ijk" firstAttribute="centerX" secondItem="Qqg-cc-gjg" secondAttribute="centerX" id="BRL-Q8-Wob"/>
+                                    <constraint firstItem="jbr-NK-ijk" firstAttribute="centerY" secondItem="Qqg-cc-gjg" secondAttribute="centerY" id="bqF-6Z-EuF"/>
+                                    <constraint firstAttribute="height" constant="60" id="hCX-EY-jFH"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfp-qe-nME">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="hB9-et-HIf" kind="embed" id="2CY-TL-8FY"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qfp-qe-nME" firstAttribute="leading" secondItem="OeM-qV-WZD" secondAttribute="leading" id="IF5-no-fIm"/>
+                            <constraint firstItem="Qfp-qe-nME" firstAttribute="trailing" secondItem="OeM-qV-WZD" secondAttribute="trailing" id="NGQ-bv-k3g"/>
+                            <constraint firstItem="Qqg-cc-gjg" firstAttribute="bottom" secondItem="OeM-qV-WZD" secondAttribute="bottom" id="PF6-0M-dtR"/>
+                            <constraint firstItem="OeM-qV-WZD" firstAttribute="bottom" secondItem="Qfp-qe-nME" secondAttribute="bottom" id="TZ3-J2-OyY"/>
+                            <constraint firstItem="OeM-qV-WZD" firstAttribute="trailing" secondItem="Qqg-cc-gjg" secondAttribute="trailing" id="kc9-OW-ddZ"/>
+                            <constraint firstItem="Qqg-cc-gjg" firstAttribute="leading" secondItem="OeM-qV-WZD" secondAttribute="leading" id="vMp-re-YPX"/>
+                            <constraint firstItem="Qfp-qe-nME" firstAttribute="top" secondItem="8NN-As-3WQ" secondAttribute="top" id="zVH-qn-0rn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OeM-qV-WZD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZf-UW-2SD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.5999999999999" y="820.83958020989508"/>
         </scene>
     </scenes>
     <resources>

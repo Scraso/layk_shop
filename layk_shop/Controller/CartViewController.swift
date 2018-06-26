@@ -12,14 +12,16 @@ class CartViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var tableViewBottomToNextBtnTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewBottomToViewBottomConstraint: NSLayoutConstraint!
     
     var items = [CartData]()
-    var itemsCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.reloadData()
         
     }
@@ -46,10 +48,32 @@ extension CartViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        switch section {
+        case 0:
+            if items.count == 0 {
+                tableViewBottomToNextBtnTopConstraint.priority = UILayoutPriority.defaultLow
+                tableViewBottomToViewBottomConstraint.priority = UILayoutPriority.defaultHigh
+
+                // Add label wich says there is no items in the cart
+                let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text = "Корзина пустая"
+                noDataLabel.textColor = UIColor.darkGray
+                noDataLabel.textAlignment = .center
+                tableView.backgroundView = noDataLabel
+                tableView.separatorStyle = .none
+                nextBtn.isHidden = true
+                return 0
+            }
+            tableViewBottomToNextBtnTopConstraint.priority = UILayoutPriority.defaultHigh
+            tableViewBottomToViewBottomConstraint.priority = UILayoutPriority.defaultLow
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = nil
             return items.count
+        case 1:
+            return 1
+        default:
+            return 0
         }
-        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,36 +101,9 @@ extension CartViewController: UITableViewDataSource {
                     self?.tableView.reloadData()
                 }
             }
-            
-            itemCell.countButtonTapped = { [weak self] (index: Int) in
-                if index == 1 {
-                    if self?.itemsCount == 1 {
-                        self?.itemsCount = 1
-                    } else {
-                        self?.itemsCount -= 1
-//                        self?.priceValue -= item.price ?? 0
-                    }
-                } else if index == 2 {
-                    self?.itemsCount += 1
-//                    self?.priceValue += item.price ?? 0
-                }
-                itemCell.countLbl.text = String((self?.itemsCount)!)
-              
-                
-            }
             return itemCell
         }
-        
-        if tableView.numberOfRows(inSection: 0) == 0 {
-            // Add label wich says there is no items in the cart
-            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text = "Корзина пустая"
-            noDataLabel.textColor = UIColor.gray
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView = noDataLabel
-            tableView.separatorStyle = .none
-            nextBtn.isHidden = true
-        } else {
+        if tableView.numberOfRows(inSection: 0) > 0 {
             let totalCell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as! TotalCell
             
             let cost = items.reduce(0, { (result, cartData) -> Int in
@@ -121,6 +118,29 @@ extension CartViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
+}
+
+extension CartViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            if items.count == 0 {
+                cell.isHidden = true
+            }
+        }
+    }
+    
+    
+    
     
 }
 

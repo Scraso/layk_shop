@@ -29,24 +29,56 @@ class HistoryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        authorizationStatusCheck()
+    }
+    
+    // MARK: API CALL
+    
+    
+    func authorizationStatusCheck() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
+                
+                // When user logged in, remove Child View Controller
+                if self.childViewControllers.count > 0 {
+                    let viewControllers:[UIViewController] = self.childViewControllers
+                    for viewContoller in viewControllers{
+                        viewContoller.willMove(toParentViewController: nil)
+                        viewContoller.view.removeFromSuperview()
+                        viewContoller.removeFromParentViewController()
+                        print("Child View Controller removed")
+                    }
+                }
+
                 self.fetchOrders {
                     self.historyOrderArray = [HistoryOrderData(sectionName: "В Обработке", orders: self.onProcessing), HistoryOrderData(sectionName: "В ожидании отправки", orders: self.onProcessOfSending), HistoryOrderData(sectionName: "Отправлен", orders: self.sentItem), HistoryOrderData(sectionName: "Получен", orders: self.completed)]
                     self.tableView.reloadData()
                 }
             } else {
-                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
-                noDataLabel.text          = "Надо войти"
-                noDataLabel.textColor     = UIColor.gray
-                noDataLabel.textAlignment = .center
-                self.tableView.backgroundView  = noDataLabel
-                self.tableView.separatorStyle  = .none
+                
+                // Reset all arrays and reload TableView
+                self.onProcessing.removeAll()
+                self.onProcessOfSending.removeAll()
+                self.sentItem.removeAll()
+                self.completed.removeAll()
+                self.tableView.reloadData()
+                
+                let containerView = UIView()
+                containerView.translatesAutoresizingMaskIntoConstraints = false
+                self.tableView.backgroundView = containerView
+                self.tableView.separatorStyle = .none
+                containerView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height)
+ 
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "EmptyHistoryVC")
+                self.addChildViewController(controller!)
+                containerView.addSubview((controller?.view)!)
+                controller?.view.frame = CGRect(x: 0, y: 0, width: containerView.bounds.size.width, height: containerView.bounds.size.height)
+                controller?.didMove(toParentViewController: self)
+                print("Child View Controller was added")
+                
             }
         }
     }
-    
-    // MARK: API CALL
     
     func fetchOrders(onCompleted: @escaping () -> ()) {
         
@@ -122,6 +154,12 @@ class HistoryViewController: UIViewController {
             onCompleted()
         }
         
+    }
+    
+    // MARK: - Actions
+    
+    @objc func loginButtonTapped() {
+        print("Hello")
     }
 }
 

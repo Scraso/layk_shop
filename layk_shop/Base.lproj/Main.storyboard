@@ -304,31 +304,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aez-fj-Clv">
-                                <rect key="frame" x="0.0" y="558" width="375" height="60"/>
-                                <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="E4R-pu-cBa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <state key="normal" title="ПРОДОЛЖИТЬ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextBtnTapped:" destination="Lj2-Sq-5Rh" eventType="touchUpInside" id="NOs-5s-dtE"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3gn-Cf-kOH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3gn-Cf-kOH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="acv-k3-JkB">
-                                    <rect key="frame" x="0.0" y="199" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="121" id="OlL-aW-auq" customClass="ItemsCell" customModule="layk_shop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="121"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OlL-aW-auq" id="G0X-bf-8Wm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
@@ -441,6 +422,7 @@
                                                 <constraint firstItem="JX3-9B-Jme" firstAttribute="top" secondItem="G0X-bf-8Wm" secondAttribute="top" constant="20" id="xDQ-5J-Vw6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <outlet property="countLbl" destination="tgc-dB-ZjV" id="01L-rn-V9b"/>
                                             <outlet property="deleteItemBtn" destination="cVm-qP-UaB" id="OXJ-C6-xEW"/>
@@ -451,7 +433,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TotalCell" rowHeight="50" id="P5r-QO-O63" customClass="TotalCell" customModule="layk_shop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="149" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="176.5" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P5r-QO-O63" id="QCM-Pi-JEP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
@@ -488,12 +470,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aez-fj-Clv">
+                                <rect key="frame" x="0.0" y="558" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="E4R-pu-cBa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="ПРОДОЛЖИТЬ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextBtnTapped:" destination="Lj2-Sq-5Rh" eventType="touchUpInside" id="NOs-5s-dtE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TuH-Bt-Hq7" firstAttribute="bottom" secondItem="aez-fj-Clv" secondAttribute="bottom" id="1l0-Pq-VMa"/>
                             <constraint firstItem="TuH-Bt-Hq7" firstAttribute="trailing" secondItem="3gn-Cf-kOH" secondAttribute="trailing" id="3dc-tZ-Gdb"/>
-                            <constraint firstItem="aez-fj-Clv" firstAttribute="top" secondItem="3gn-Cf-kOH" secondAttribute="bottom" id="9C8-nc-hto"/>
+                            <constraint firstItem="TuH-Bt-Hq7" firstAttribute="bottom" secondItem="3gn-Cf-kOH" secondAttribute="bottom" priority="250" id="5Ir-y7-1qP"/>
+                            <constraint firstItem="aez-fj-Clv" firstAttribute="top" secondItem="3gn-Cf-kOH" secondAttribute="bottom" priority="750" id="9C8-nc-hto"/>
                             <constraint firstItem="3gn-Cf-kOH" firstAttribute="leading" secondItem="TuH-Bt-Hq7" secondAttribute="leading" id="BhA-2i-P8n"/>
                             <constraint firstItem="3gn-Cf-kOH" firstAttribute="top" secondItem="sWn-3H-cfD" secondAttribute="top" id="FZE-Bx-NE4"/>
                             <constraint firstItem="aez-fj-Clv" firstAttribute="leading" secondItem="TuH-Bt-Hq7" secondAttribute="leading" id="IYn-jj-FgI"/>
@@ -505,6 +502,8 @@
                     <connections>
                         <outlet property="nextBtn" destination="aez-fj-Clv" id="qtS-Ac-4RI"/>
                         <outlet property="tableView" destination="3gn-Cf-kOH" id="xFj-tD-f3t"/>
+                        <outlet property="tableViewBottomToNextBtnTopConstraint" destination="9C8-nc-hto" id="Agn-CR-QAJ"/>
+                        <outlet property="tableViewBottomToViewBottomConstraint" destination="5Ir-y7-1qP" id="eQI-Fd-liA"/>
                         <segue destination="rAS-6E-cNS" kind="show" identifier="toDelivery" id="IvQ-HR-qAa"/>
                     </connections>
                 </viewController>
@@ -690,6 +689,57 @@
             </objects>
             <point key="canvasLocation" x="-153" y="920"/>
         </scene>
+        <!--History Container View Controller-->
+        <scene sceneID="twz-P1-j2O">
+            <objects>
+                <viewController storyboardIdentifier="EmptyHistoryVC" id="AlM-qR-SzS" customClass="HistoryContainerViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="som-SY-40x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hoU-Hh-e3f">
+                                <rect key="frame" x="35.5" y="286.5" width="304.5" height="94.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для просмотра истории/статуса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZG-NJ-JHI">
+                                        <rect key="frame" x="22" y="0.0" width="260.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="заказа, Вам нужно быть" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c0-X7-bnJ">
+                                        <rect key="frame" x="55.5" y="20.5" width="193.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="зарегистрированным пользователем." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTF-Z5-Yjb">
+                                        <rect key="frame" x="0.0" y="41" width="304.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG1-Rp-OrB">
+                                        <rect key="frame" x="132" y="61.5" width="40" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Вход"/>
+                                        <connections>
+                                            <segue destination="KgY-R0-eYa" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="uAC-r5-X5B"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hoU-Hh-e3f" firstAttribute="centerY" secondItem="som-SY-40x" secondAttribute="centerY" id="DIj-aS-fhZ"/>
+                            <constraint firstItem="hoU-Hh-e3f" firstAttribute="centerX" secondItem="som-SY-40x" secondAttribute="centerX" id="Nm9-fz-k77"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWl-X5-Wee" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="1165"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Layk_logo" width="839" height="839"/>
@@ -708,4 +758,7 @@
         <image name="leggins_1" width="178" height="178"/>
         <image name="twitter" width="35" height="35"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="uAC-r5-X5B"/>
+    </inferredMetricsTieBreakers>
 </document>

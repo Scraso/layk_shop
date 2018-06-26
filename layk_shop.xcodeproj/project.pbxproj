@@ -24,6 +24,7 @@
 		984058B620BC774200C7A168 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 984058B520BC774200C7A168 /* GoogleService-Info.plist */; };
 		9844219420DA21DE00B59E51 /* HistoryOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844219320DA21DE00B59E51 /* HistoryOrderData.swift */; };
 		9844219620DED73500B59E51 /* FormattedTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844219520DED73500B59E51 /* FormattedTimestamp.swift */; };
+		9844219820E0144C00B59E51 /* HistoryContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844219720E0144C00B59E51 /* HistoryContainerViewController.swift */; };
 		984621C720B181A900EB37C0 /* Embed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984621C620B181A900EB37C0 /* Embed.storyboard */; };
 		984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984621C820B187AB00EB37C0 /* TestimonitalViewController.swift */; };
 		984621CF20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984621CE20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift */; };
@@ -66,6 +67,7 @@
 		984058B520BC774200C7A168 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9844219320DA21DE00B59E51 /* HistoryOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOrderData.swift; sourceTree = "<group>"; };
 		9844219520DED73500B59E51 /* FormattedTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTimestamp.swift; sourceTree = "<group>"; };
+		9844219720E0144C00B59E51 /* HistoryContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryContainerViewController.swift; sourceTree = "<group>"; };
 		984621C620B181A900EB37C0 /* Embed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Embed.storyboard; sourceTree = "<group>"; };
 		984621C820B187AB00EB37C0 /* TestimonitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonitalViewController.swift; sourceTree = "<group>"; };
 		984621CE20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				984058A620B8772500C7A168 /* CartViewController.swift */,
 				984058A820B89A7F00C7A168 /* DeliveryViewController.swift */,
 				98E05E9A20D8336F009AED1A /* HistoryViewController.swift */,
+				9844219720E0144C00B59E51 /* HistoryContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				9839BE7820B1F8BE001C6297 /* ItemsTableViewCell.swift in Sources */,
 				98609E5C20B1D98300643203 /* Data.swift in Sources */,
 				9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */,
+				9844219820E0144C00B59E51 /* HistoryContainerViewController.swift in Sources */,
 				9839BE8520B5C3DC001C6297 /* UIButton+Designable.swift in Sources */,
 				984058B420BBE41800C7A168 /* InteractionPanToClose.swift in Sources */,
 				98E05E9720D6A9DB009AED1A /* ErrorHandler.swift in Sources */,
