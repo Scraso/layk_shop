@@ -58,7 +58,7 @@ class ItemsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemDetails" {
-            if let destination = segue.destination as? ItemDetailsViewController {
+            if let destination = segue.destination as? ParentItemDetailsViewController {
                 if let itemData = sender as? ItemListData {
                     destination.itemDetails = itemData
                 }
