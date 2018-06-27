@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -829,7 +830,7 @@
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h23-W8-k76">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.11764705882352941" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lEx-Fe-hhY"/>
                                 </constraints>
@@ -841,19 +842,43 @@
                                     <action selector="addToCartBtnTapped:" destination="Di8-k1-O3Y" eventType="touchUpInside" id="trV-TF-2Dc"/>
                                 </connections>
                             </button>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbH-l0-zlc">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Товар добавлен в корзину!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoc-sD-zdt">
+                                        <rect key="frame" x="88" y="11" width="199" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0Bz-YB-ylI"/>
+                                    <constraint firstItem="qoc-sD-zdt" firstAttribute="centerY" secondItem="hbH-l0-zlc" secondAttribute="centerY" id="9ZD-YX-VaM"/>
+                                    <constraint firstItem="qoc-sD-zdt" firstAttribute="centerX" secondItem="hbH-l0-zlc" secondAttribute="centerX" id="wnG-CW-WKf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OeM-qV-WZD" firstAttribute="bottom" secondItem="h23-W8-k76" secondAttribute="bottom" id="2dB-3y-131"/>
                             <constraint firstItem="h23-W8-k76" firstAttribute="top" secondItem="Qfp-qe-nME" secondAttribute="bottom" id="G4H-Ir-OTP"/>
                             <constraint firstItem="OeM-qV-WZD" firstAttribute="trailing" secondItem="h23-W8-k76" secondAttribute="trailing" id="Hqo-63-gdj"/>
+                            <constraint firstItem="hbH-l0-zlc" firstAttribute="top" secondItem="8NN-As-3WQ" secondAttribute="topMargin" constant="-40" id="Huz-ns-z5f"/>
                             <constraint firstItem="Qfp-qe-nME" firstAttribute="leading" secondItem="OeM-qV-WZD" secondAttribute="leading" id="IF5-no-fIm"/>
                             <constraint firstItem="Qfp-qe-nME" firstAttribute="trailing" secondItem="OeM-qV-WZD" secondAttribute="trailing" id="NGQ-bv-k3g"/>
                             <constraint firstItem="h23-W8-k76" firstAttribute="leading" secondItem="OeM-qV-WZD" secondAttribute="leading" id="SBy-7d-P19"/>
+                            <constraint firstItem="OeM-qV-WZD" firstAttribute="trailing" secondItem="hbH-l0-zlc" secondAttribute="trailing" id="hGP-7a-LSw"/>
+                            <constraint firstItem="hbH-l0-zlc" firstAttribute="leading" secondItem="OeM-qV-WZD" secondAttribute="leading" id="xe9-GI-Uah"/>
                             <constraint firstItem="Qfp-qe-nME" firstAttribute="top" secondItem="8NN-As-3WQ" secondAttribute="top" id="zVH-qn-0rn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OeM-qV-WZD"/>
                     </view>
+                    <connections>
+                        <outlet property="popupTopConstraint" destination="Huz-ns-z5f" id="Zff-vZ-fMW"/>
+                        <outlet property="popupView" destination="hbH-l0-zlc" id="vBH-O9-Jnz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZf-UW-2SD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

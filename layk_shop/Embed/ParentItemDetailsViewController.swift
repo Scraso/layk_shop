@@ -14,7 +14,9 @@ class ParentItemDetailsViewController: UIViewController {
     var itemDetails: ItemListData!
     var itemImageView: UIImage?
     var selectedBtnSize: String?
-
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var popupTopConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,6 +73,22 @@ class ParentItemDetailsViewController: UIViewController {
         let item = CartData(price: itemDetails.price, name: itemDetails.name ?? "", ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView, itemName: itemDetails.imageName)
         
         cartViewController.items.append(item)
+        
+        
+        // Animate popup notification
+        UIView.animate(withDuration: 0.5) {
+            self.popupView.alpha = 1
+            self.popupView.transform = CGAffineTransform(translationX: 0, y: 40)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8, execute: {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.popupView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    self.popupView.alpha = 0
+                })
+            })
+        }
+        
+        
         
         // Reload tableView only in case CartViewController is loaded, otherwise the app crash.
         // Set TableView reload in ViewDidLoad of Cart View Controller to reload tableView for the first time so then this method will trigger
