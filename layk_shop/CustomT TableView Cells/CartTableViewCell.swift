@@ -16,14 +16,15 @@ class ItemsCell: UITableViewCell {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var deleteItemBtn: UIButton!
     
+    
+    var deleteButtonTapped: ((UIButton) -> Void)? = nil
+    var countButtonTapped: ((Int) -> Void)? = nil
+   
     @IBAction func minutBtnTapped(_ sender: UIButton) {
         if let countButtonTapped = countButtonTapped {
             countButtonTapped(1)
         }
     }
-    
-    var onButtonTapped: ((UIButton) -> Void)? = nil
-    var countButtonTapped: ((Int) -> Void)? = nil
     
     @IBAction func plusBtnTapped(_ sender: UIButton) {
         if let countButtonTapped = countButtonTapped {
@@ -31,7 +32,7 @@ class ItemsCell: UITableViewCell {
         }
     }
     @IBAction func deleteBtnTapped(_ sender: UIButton) {
-        if let onButtonTapped = self.onButtonTapped {
+        if let onButtonTapped = self.deleteButtonTapped {
            onButtonTapped(sender)
         }
     }

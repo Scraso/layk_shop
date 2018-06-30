@@ -16,7 +16,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var tableViewBottomToViewBottomConstraint: NSLayoutConstraint!
     
     var items = [CartData]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,7 +86,7 @@ extension CartViewController: UITableViewDataSource {
             itemCell.refLbl.text = "Код товара: \(item.ref)"
             itemCell.itemImageView.image = item.itemImageView
             itemCell.countLbl.text = String(item.count)
-            itemCell.onButtonTapped = { [weak self] (button: UIButton) in
+            itemCell.deleteButtonTapped = { [weak self] (button: UIButton) in
                 if let indexPath = self?.tableView.indexPathForView(button) {
                     self?.items.remove(at: indexPath.row)
                     self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -101,17 +101,51 @@ extension CartViewController: UITableViewDataSource {
                     self?.tableView.reloadData()
                 }
             }
+
+            // Check which item in array was tapped and transform count of this struct based on the tapped button
+            itemCell.countButtonTapped = { (index: Int) in
+                if index == 1 {
+                    self.items = self.items.map {
+                        var mutableItem = $0
+                        print("Mutable Item count: \(mutableItem.count)")
+                        if $0.itemName == item.itemName && $0.size == item.size {
+                            // Check if minimum count is 1 and if yes, do not reduce the amount
+                            if mutableItem.count == 1 {
+                                print("Reached minimum count")
+                            } else {
+                                mutableItem.count -= 1
+                            }
+                        }
+                        return mutableItem
+                    }
+                    self.tableView.reloadData()
+                } else if index == 2 {
+                    self.items = self.items.map {
+                        var mutableItem = $0
+                        if $0.itemName == item.itemName && $0.size == item.size {
+                            mutableItem.count += 1
+                        }
+                        return mutableItem
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+            
+            
             return itemCell
         }
         if tableView.numberOfRows(inSection: 0) > 0 {
             let totalCell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as! TotalCell
             
+            // Check total count of the item and multiple on the price
             let cost = items.reduce(0, { (result, cartData) -> Int in
                 var priceValue = 0
-                priceValue += cartData.price ?? 0
+                priceValue += cartData.price! * cartData.count
+                print(cartData.count * cartData.price!)
                 return result + priceValue
-                
+
             })
+            
             totalCell.amountLbl.text = String("\(cost) грн")
             nextBtn.isHidden = false
             return totalCell

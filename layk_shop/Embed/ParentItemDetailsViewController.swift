@@ -80,6 +80,7 @@ class ParentItemDetailsViewController: UIViewController {
                 var mutableItem = $0
                 if $0.itemName == item.itemName && $0.size == item.size {
                     mutableItem.count += 1
+                    
                 }
                 return mutableItem
             }

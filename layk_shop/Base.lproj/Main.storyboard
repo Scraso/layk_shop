@@ -347,7 +347,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ODs-2B-sQW">
                                                     <rect key="frame" x="229" y="68.5" width="126" height="40"/>
                                                     <subviews>
-                                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMf-1v-rjQ">
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMf-1v-rjQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="kcs-PL-An8"/>
@@ -365,7 +365,7 @@
                                                             <rect key="frame" x="43" y="0.0" width="40" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgc-dB-ZjV">
-                                                                    <rect key="frame" x="16" y="9" width="8" height="20.5"/>
+                                                                    <rect key="frame" x="16.5" y="9" width="8" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -719,7 +719,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG1-Rp-OrB">
-                                        <rect key="frame" x="132" y="61.5" width="40" height="33"/>
+                                        <rect key="frame" x="132.5" y="61.5" width="40" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Вход"/>
                                         <connections>
@@ -734,6 +734,7 @@
                             <constraint firstItem="hoU-Hh-e3f" firstAttribute="centerY" secondItem="som-SY-40x" secondAttribute="centerY" id="DIj-aS-fhZ"/>
                             <constraint firstItem="hoU-Hh-e3f" firstAttribute="centerX" secondItem="som-SY-40x" secondAttribute="centerX" id="Nm9-fz-k77"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="cS8-Tw-MpW"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWl-X5-Wee" userLabel="First Responder" sceneMemberID="firstResponder"/>
