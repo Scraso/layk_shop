@@ -876,7 +876,6 @@
                         <viewLayoutGuide key="safeArea" id="OeM-qV-WZD"/>
                     </view>
                     <connections>
-                        <outlet property="popupTopConstraint" destination="Huz-ns-z5f" id="Zff-vZ-fMW"/>
                         <outlet property="popupView" destination="hbH-l0-zlc" id="vBH-O9-Jnz"/>
                     </connections>
                 </viewController>

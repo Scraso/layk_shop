@@ -15,7 +15,6 @@ class ParentItemDetailsViewController: UIViewController {
     var itemImageView: UIImage?
     var selectedBtnSize: String?
     @IBOutlet weak var popupView: UIView!
-    @IBOutlet weak var popupTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,12 +68,26 @@ class ParentItemDetailsViewController: UIViewController {
             }
         }
         
-        // Pass document ID in order to update the amount of items left. Move size after item name and add Delete item button.
+        // Pass document ID in order to update the amount of items left.
         let item = CartData(price: itemDetails.price, name: itemDetails.name ?? "", ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView, itemName: itemDetails.imageName)
+
+        // Check if there is already the same item in array
+        let isUniqueItem = cartViewController.items.contains(where: {$0.itemName == item.itemName && $0.size == item.size } )
         
-        cartViewController.items.append(item)
+        // If item is already there then update count + 1 if not then add new item in the array
+        if isUniqueItem {
+            cartViewController.items = cartViewController.items.map {
+                var mutableItem = $0
+                if $0.itemName == item.itemName && $0.size == item.size {
+                    mutableItem.count += 1
+                }
+                return mutableItem
+            }
+        } else {
+            cartViewController.items.append(item)
+        }
         
-        
+
         // Animate popup notification
         UIView.animate(withDuration: 0.5) {
             self.popupView.alpha = 1
@@ -88,8 +101,6 @@ class ParentItemDetailsViewController: UIViewController {
             })
         }
         
-        
-        
         // Reload tableView only in case CartViewController is loaded, otherwise the app crash.
         // Set TableView reload in ViewDidLoad of Cart View Controller to reload tableView for the first time so then this method will trigger
         // once the new item will be added
@@ -97,12 +108,17 @@ class ParentItemDetailsViewController: UIViewController {
             cartViewController.tableView.reloadData()
         }
         
-        // Set badgeValue to the cart depends on the item in the array
+        // Set badgeValue to the cart depends on the items count
         if let tabItems = self.tabBarController?.tabBar.items as NSArray?
         {
             // In this case we want to modify the badge number of the third tab:
             let tabItem = tabItems[3] as! UITabBarItem
-            tabItem.badgeValue = String(cartViewController.items.count)
+            
+            let count = cartViewController.items.reduce(0) { (result, cartData) -> Int in
+                return result + cartData.count
+            }
+            
+            tabItem.badgeValue = String(count)
         }
     }
 }
