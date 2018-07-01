@@ -23,7 +23,7 @@ class HistoryTableViewCell: UITableViewCell {
     func configureCell(data: ItemData) {
         self.countLbl.text = "Количество: \(data.count ?? 0)"
         self.costLbl.text = "\(data.price ?? 0) грн"
-        self.nameLbl.text = data.name
+        self.nameLbl.text = "\(data.name ?? "") (\(data.size ?? ""))"
         self.refLbl.text = "Код товара: \(data.ref ?? "")"
         
         let itemData = Date(timeIntervalSince1970: data.timestamp!)

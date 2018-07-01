@@ -876,6 +876,7 @@
                         <viewLayoutGuide key="safeArea" id="OeM-qV-WZD"/>
                     </view>
                     <connections>
+                        <outlet property="addToCartBtn" destination="h23-W8-k76" id="Kmy-Z5-dAg"/>
                         <outlet property="popupView" destination="hbH-l0-zlc" id="vBH-O9-Jnz"/>
                     </connections>
                 </viewController>

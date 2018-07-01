@@ -81,6 +81,13 @@ extension CartViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemsCell
             let item = items[indexPath.row]
+            
+            let tabItems = self.tabBarController?.tabBar.items as NSArray?
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems![3] as! UITabBarItem
+            
+            
+            
             itemCell.nameLbl.text = "\(item.name ?? "") (\(item.size ?? ""))"
             itemCell.priceLbl.text = "\(item.price ?? 0) грн"
             itemCell.refLbl.text = "Код товара: \(item.ref)"
@@ -90,24 +97,17 @@ extension CartViewController: UITableViewDataSource {
                 if let indexPath = self?.tableView.indexPathForView(button) {
                     self?.items.remove(at: indexPath.row)
                     self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-                    // Set badgeValue to the cart depends on the item in the array
-                    if let tabItems = self?.tabBarController?.tabBar.items as NSArray?
-                    {
-                        // In this case we want to modify the badge number of the third tab:
-                        let tabItem = tabItems[3] as! UITabBarItem
-                        // if array is empty, set badge to nil
-                        tabItem.badgeValue = (self?.items.count)! > 0 ? String((self?.items.count)!) : nil
-                    }
+                    // Adjust Tab Item badge based on the amount of item in array
+                    tabItem.badgeValue = (self?.items.count)! > 0 ? String((self?.items.count)!) : nil
                     self?.tableView.reloadData()
                 }
             }
-
+            
             // Check which item in array was tapped and transform count of this struct based on the tapped button
             itemCell.countButtonTapped = { (index: Int) in
                 if index == 1 {
                     self.items = self.items.map {
                         var mutableItem = $0
-                        print("Mutable Item count: \(mutableItem.count)")
                         if $0.itemName == item.itemName && $0.size == item.size {
                             // Check if minimum count is 1 and if yes, do not reduce the amount
                             if mutableItem.count == 1 {
@@ -131,7 +131,12 @@ extension CartViewController: UITableViewDataSource {
                 }
             }
             
-            
+            // Adjust Tab Item badge based on the amount of item in array
+            let count = items.reduce(0) { (result, cartData) -> Int in
+                return result + cartData.count
+            }
+            tabItem.badgeValue = String(count)
+    
             return itemCell
         }
         if tableView.numberOfRows(inSection: 0) > 0 {
@@ -141,7 +146,6 @@ extension CartViewController: UITableViewDataSource {
             let cost = items.reduce(0, { (result, cartData) -> Int in
                 var priceValue = 0
                 priceValue += cartData.price! * cartData.count
-                print(cartData.count * cartData.price!)
                 return result + priceValue
 
             })
@@ -150,6 +154,7 @@ extension CartViewController: UITableViewDataSource {
             nextBtn.isHidden = false
             return totalCell
         }
+        
         return UITableViewCell()
     }
     

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ParentItemDetailsViewController: UIViewController {
-    
+class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControllerDelegate {
+ 
     weak var containerViewController: ItemDetailsViewController?
+    @IBOutlet weak var addToCartBtn: UIButton!
     var itemDetails: ItemListData!
     var itemImageView: UIImage?
     var selectedBtnSize: String?
+    
     @IBOutlet weak var popupView: UIView!
     
     override func viewDidLoad() {
@@ -28,6 +30,7 @@ class ParentItemDetailsViewController: UIViewController {
         if segue.identifier == "EmbedVC" {
             if let destination = segue.destination as? ItemDetailsViewController {
                 self.containerViewController = destination
+                destination.delegate = self
                 destination.itemDetails = itemDetails
                 destination.itemImageView = itemImageView
             }
@@ -53,6 +56,15 @@ class ParentItemDetailsViewController: UIViewController {
         return randomString
     }
     
+    // MARK: - Delegate
+    
+    func cartButton(status: Bool) {
+        addToCartBtn.isEnabled = status
+        addToCartBtn.alpha = 0.5
+    }
+    
+    
+    // MARK: - Actions
 
     @IBAction func addToCartBtnTapped(_ sender: UIButton) {
         

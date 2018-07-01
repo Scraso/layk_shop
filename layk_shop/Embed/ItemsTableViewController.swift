@@ -40,16 +40,20 @@ class ItemsTableViewController: UITableViewController {
     
     func fetchItemList() {
         listener = DataService.instance.REF_ITEMS.whereField("category", isEqualTo: categoryTitle ?? "").addSnapshotListener({ [weak self] (documentSnapshot, error) in
-            guard let snapshot = documentSnapshot else {
+            
+            // Reset array to avoid dublicates
+            self?.itemList = []
+            
+            guard let documents = documentSnapshot?.documents else {
                 print("Error fetching snapshots: \(error!)")
                 return
             }
-            snapshot.documentChanges.forEach({ (diff) in
-                if (diff.type == .added) {
-                    let data = ItemListData(data: diff.document.data(), documentId: diff.document.documentID)
-                    self?.itemList.append(data)
-                }
-            })
+            
+            for document in documents {
+                let data = ItemListData(data: document.data(), documentId: document.documentID)
+                self?.itemList.append(data)
+            }
+    
             self?.tableView.reloadData()
         })
     }

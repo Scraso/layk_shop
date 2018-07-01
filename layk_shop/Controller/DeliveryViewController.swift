@@ -21,6 +21,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var deliveryAddress: String?
     var comments: String?
     var placeholderLbl: UILabel!
+    var sizeCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,10 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    deinit {
+        print("DeliveryViewController has been deinitialized")
     }
     
     // MARK: - TextView Delegate
@@ -145,9 +150,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     
     // MARK: - Actions
-
-    
-    
+ 
     @IBAction func sendBtnTapped(_ sender: UIButton) {
         
         do {
@@ -165,6 +168,50 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarName": item.itemName!, "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
                 let documentId = DataService.instance.REF_ORDERS.document()
                 documentId.setData(orderDetails)
+                
+                // Reference to the item document
+                let documentRef = DataService.instance.REF_ITEMS.document(item.documentId ?? "")
+                
+                // Run transcation
+                Firestore.firestore().runTransaction({ [weak self] (transaction, errorPointer) -> Any?  in
+                    let document: DocumentSnapshot
+                    do {
+                        try document = transaction.getDocument(documentRef)
+                    } catch let fetchError as NSError {
+                        errorPointer?.pointee = fetchError
+                        return nil
+                    }
+
+                    // Fetch amount of size of the purchased item
+                    if let nestedDictionary = document.data()?["size"] as? [String: Any] {
+                        if let sizeCount = nestedDictionary[item.size ?? ""] as? Int {
+                            self?.sizeCount = sizeCount
+                        }
+                    }
+                    
+                    guard let oldSizeCount = self?.sizeCount else {
+                        let error = NSError(
+                            domain: "AppErrorDomain",
+                            code: -1,
+                            userInfo: [
+                                NSLocalizedDescriptionKey: "Unable to retrieve size from snapshot \(document)"
+                            ]
+                        )
+                        errorPointer?.pointee = error
+                        return nil
+                    }
+                    
+                    // Deduct from the current items count the amount of the bought items
+                    transaction.updateData(["size.\(item.size ?? "")": oldSizeCount - item.count], forDocument: documentRef)
+                    return nil
+                }) { (object, error) in
+                    if let error = error {
+                        print("Transaction failed: \(error)")
+                    } else {
+                        print("Transaction successfully committed!")
+                    }
+                }
+                
             }
             
             performSegue(withIdentifier: "toCompletedVC", sender: nil)

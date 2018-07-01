@@ -10,6 +10,10 @@ import UIKit
 import FirebaseStorageUI
 import SDWebImage
 
+protocol ItemDetailsViewControllerDelegate: class {
+    func cartButton(status: Bool)
+}
+
 class ItemDetailsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -32,6 +36,8 @@ class ItemDetailsViewController: UIViewController {
     var count = -1
     var itemDetails: ItemListData!
     var itemImageView: UIImage?
+    
+    weak var delegate: ItemDetailsViewControllerDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +89,10 @@ class ItemDetailsViewController: UIViewController {
                     button.backgroundColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
                     button.setTitleColor(UIColor.white, for: .normal)
                     button.borderColor = UIColor.clear
+                } else {
+                    if delegate != nil {
+                        delegate?.cartButton(status: false)
+                    }
                 }
             }
         }

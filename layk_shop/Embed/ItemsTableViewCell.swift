@@ -24,12 +24,16 @@ class ItemsTableViewCell: UITableViewCell {
     func configureCell(data: ItemListData) {
         itemNameLbl.text = data.name
         priceLbl.text = "\(data.price ?? 0) грн"
-        if data.isAvailable == true {
-            availabilityLbl.text = "Есть в наличии"
-            availabilityLbl.textColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)
-        } else {
-            availabilityLbl.text = "Нету в наличии"
-            availabilityLbl.textColor = UIColor.init(red: 255/255, green: 59/255, blue: 48/255, alpha: 100)
+        
+        // Update available status of the item based on the size count
+        if let xs = data.xsSize, let s = data.sSize, let m = data.mSize, let l = data.lSize, let xl = data.xlSize {
+            if xs <= 0 && s <= 0 && m <= 0 && l <= 0 && xl <= 0 {
+                availabilityLbl.text = "Нету в наличии"
+                availabilityLbl.textColor = UIColor.init(red: 255/255, green: 59/255, blue: 48/255, alpha: 100)
+            } else {
+                availabilityLbl.text = "Есть в наличии"
+                availabilityLbl.textColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)
+            }
         }
         
         let ref = DataService.instance.REF_ITEMLIST_IMAGES.child("\(data.imageName ?? "").jpg")
