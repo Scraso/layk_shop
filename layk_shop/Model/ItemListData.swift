@@ -16,13 +16,10 @@ struct ItemListData {
     var isAvailable: Bool? = false
     var imageName: String?
     var itemDetails = [String]()
-    var xsSize: Int?
-    var xlSize: Int?
-    var sSize: Int?
-    var mSize: Int?
-    var lSize: Int?
     var imageURLs = [String]()
     var documentId: String?
+    var itemSizes = [String: Int]()
+    
     
     init(data: Dictionary<String, Any>, documentId: String?) {
         
@@ -41,31 +38,14 @@ struct ItemListData {
             let name = imageName.slice(from: "itemList-images/", to: ".jpg")
             self.imageName = name
         }
-        
         if data["itemDetails"] != nil {
             if let itemData = data["itemDetails"] as? NSArray {
                 self.itemDetails = (itemData as? [String])!
             }
         }
-        
-        if let nestedDictionary = data["size"] as? [String: Any] {
-            if let xsSize = nestedDictionary["XS"] as? Int {
-                self.xsSize = xsSize
-            }
-            if let xlSize = nestedDictionary["XL"] as? Int {
-                self.xlSize = xlSize
-            }
-            if let sSize = nestedDictionary["S"] as? Int {
-                self.sSize = sSize
-            }
-            if let mSize = nestedDictionary["M"] as? Int {
-                self.mSize = mSize
-            }
-            if let lSize = nestedDictionary["L"] as? Int {
-                self.lSize = lSize
-            }
-        }
-        
+        if let sizeDictionary = data["size"] as? [String: Int] {
+            self.itemSizes = sizeDictionary
+        }        
         if data["images"] != nil {
             if let imgData = data["images"] as? NSArray {
                 self.imageURLs = (imgData as? [String])!

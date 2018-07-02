@@ -24,13 +24,9 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var firstDetailLbl: UILabel!
     @IBOutlet weak var secondDetailLbl: UILabel!
     @IBOutlet weak var thirdDetailLbl: UILabel!
-    @IBOutlet weak var xsBtn: UIButton!
-    @IBOutlet weak var sBtn: UIButton!
-    @IBOutlet weak var mBtn: UIButton!
-    @IBOutlet weak var lBtn: UIButton!
-    @IBOutlet weak var xlBtn: UIButton!
     
     @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var detailLables: [UILabel]!
     
     var contentWidth: CGFloat = 0.0
     var count = -1
@@ -71,18 +67,17 @@ class ItemDetailsViewController: UIViewController {
         //Set UI
         nameLbl.text = itemDetails.name
         priceLbl.text = "\(itemDetails.price ?? 0) грн"
+        
+        
         // Possible crash !!!!!
         firstDetailLbl.text = itemDetails.itemDetails[0]
         secondDetailLbl.text = itemDetails.itemDetails[1]
         thirdDetailLbl.text = itemDetails.itemDetails[2]
         
-        
-        let sizeArray = ["XS" : itemDetails.xsSize ?? 0, "S" : itemDetails.sSize ?? 0, "M" : itemDetails.mSize ?? 0, "L" : itemDetails.lSize ?? 0, "XL" : itemDetails.xlSize ?? 0]
-        
-        // Get the size which has the most value and make it checked by default
-        let maxValue = sizeArray.max(by: { (a, b) -> Bool in
+        // Get the item with the maxium count and set it as a default one.
+        let maxValue = itemDetails.itemSizes.max { (a, b) -> Bool in
             return a.value < b.value
-        })
+        }
         for button in buttons {
             if button.currentTitle == maxValue?.key {
                 if button.isEnabled == true && (maxValue?.value)! > 0 {
@@ -96,40 +91,17 @@ class ItemDetailsViewController: UIViewController {
                 }
             }
         }
-    
-        if let xsSize = itemDetails.xsSize {
-            if xsSize > 0 {
-                buttonStatus(button: xsBtn, isEnabled: true)
-            } else {
-                buttonStatus(button: xsBtn, isEnabled: false)
-            }
-        }
-        if let sSize = itemDetails.sSize {
-            if sSize > 0 {
-                buttonStatus(button: sBtn, isEnabled: true)
-            } else {
-                buttonStatus(button: sBtn, isEnabled: false)
-            }
-        }
-        if let mSize = itemDetails.mSize {
-            if mSize > 0 {
-                buttonStatus(button: mBtn, isEnabled: true)
-            } else {
-                buttonStatus(button: mBtn, isEnabled: false)
-            }
-        }
-        if let lSize = itemDetails.lSize {
-            if lSize > 0 {
-                buttonStatus(button: lBtn, isEnabled: true)
-            } else {
-                buttonStatus(button: lBtn, isEnabled: false)
-            }
-        }
-        if let xlSize = itemDetails.xlSize {
-            if xlSize > 0 {
-                buttonStatus(button: xlBtn, isEnabled: true)
-            } else {
-                buttonStatus(button: xlBtn, isEnabled: false)
+        
+        // Check which size is available
+        for button in buttons {
+            for (key, value) in itemDetails.itemSizes {
+                if button.currentTitle == key {
+                    if value > 0 {
+                        buttonStatus(button: button, isEnabled: true)
+                    } else {
+                        buttonStatus(button: button, isEnabled: false)
+                    }
+                }
             }
         }
     }

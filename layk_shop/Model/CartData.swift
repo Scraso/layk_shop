@@ -22,7 +22,3 @@ struct CartData {
     
 }
 
-//func ==(lhs: CartData, rhs: CartData) -> Bool {
-//    return lhs.name == rhs.name && lhs.size == rhs.size
-//}
-

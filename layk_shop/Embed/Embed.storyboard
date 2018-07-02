@@ -716,9 +716,7 @@
                                                             <constraint firstAttribute="width" constant="44" id="Z4E-LX-jp7"/>
                                                             <constraint firstAttribute="height" constant="44" id="tke-YS-dLF"/>
                                                         </constraints>
-                                                        <state key="normal" title="XL">
-                                                            <color key="titleColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
+                                                        <state key="normal" title="XL"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                 <real key="value" value="1"/>
@@ -727,7 +725,7 @@
                                                                 <real key="value" value="22"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="value" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -791,23 +789,21 @@
                     <size key="freeformSize" width="375" height="776"/>
                     <connections>
                         <outlet property="firstDetailLbl" destination="WEo-b5-XOm" id="npn-15-TOl"/>
-                        <outlet property="lBtn" destination="WPo-yZ-az7" id="c7h-T5-Quo"/>
-                        <outlet property="mBtn" destination="Q3i-g1-2Zn" id="ADM-wo-ZFI"/>
                         <outlet property="nameLbl" destination="ODV-cU-2Ta" id="5YS-4f-WLY"/>
                         <outlet property="pageControl" destination="d0G-ly-d5T" id="7Bq-lq-Ebr"/>
                         <outlet property="pageScrollView" destination="pi2-4t-8Gr" id="JXh-W8-57N"/>
                         <outlet property="priceLbl" destination="yMl-Rn-pGJ" id="U6q-BU-1Cz"/>
-                        <outlet property="sBtn" destination="tBl-HZ-aQy" id="OFC-ch-0aV"/>
                         <outlet property="scrollView" destination="QfT-7v-5lC" id="gfQ-4q-1Bk"/>
                         <outlet property="secondDetailLbl" destination="Zh3-Gn-XqG" id="wll-0L-LLL"/>
                         <outlet property="thirdDetailLbl" destination="FqX-ur-f9c" id="6sn-XP-hL3"/>
-                        <outlet property="xlBtn" destination="woA-pW-nng" id="jIv-xN-OJs"/>
-                        <outlet property="xsBtn" destination="kRC-wm-W9B" id="mna-12-cSF"/>
                         <outletCollection property="buttons" destination="kRC-wm-W9B" collectionClass="NSMutableArray" id="usa-tF-04W"/>
                         <outletCollection property="buttons" destination="tBl-HZ-aQy" collectionClass="NSMutableArray" id="Rwy-ph-bpG"/>
                         <outletCollection property="buttons" destination="Q3i-g1-2Zn" collectionClass="NSMutableArray" id="9Sb-65-XK4"/>
                         <outletCollection property="buttons" destination="WPo-yZ-az7" collectionClass="NSMutableArray" id="85Q-37-yFQ"/>
                         <outletCollection property="buttons" destination="woA-pW-nng" collectionClass="NSMutableArray" id="s1T-eg-8nc"/>
+                        <outletCollection property="detailLables" destination="WEo-b5-XOm" collectionClass="NSMutableArray" id="rQG-9i-ZAZ"/>
+                        <outletCollection property="detailLables" destination="Zh3-Gn-XqG" collectionClass="NSMutableArray" id="Jnm-eC-4t2"/>
+                        <outletCollection property="detailLables" destination="FqX-ur-f9c" collectionClass="NSMutableArray" id="QWU-Ia-M7Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxi-XJ-dTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
