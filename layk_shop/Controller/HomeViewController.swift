@@ -51,6 +51,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWebVC" {
+            let toNav = segue.destination as! UINavigationController
+            let toVC = toNav.viewControllers.first as! WebViewController
+            toVC.urlString = sender as! String
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func loginBtnTapped(_ sender: UIBarButtonItem) {
@@ -65,6 +75,16 @@ class HomeViewController: UIViewController {
         } else {
             performSegue(withIdentifier: "toLogin", sender: nil)
         }
+    }
+    
+    @IBAction func instagramBtnTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toWebVC", sender: "https://www.instagram.com/laykwear/")
+    }
+    @IBAction func twitterBtnTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toWebVC", sender: "https://twitter.com/laykwear")
+    }
+    @IBAction func facebookBtnTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toWebVC", sender: "https://www.facebook.com/laykwear/")
     }
     
 }

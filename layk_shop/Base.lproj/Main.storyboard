@@ -74,14 +74,23 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-l1-ZEp">
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                         <state key="normal" backgroundImage="instragram"/>
+                                                        <connections>
+                                                            <action selector="instagramBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pqK-jn-73f"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHR-Uq-VHc">
                                                         <rect key="frame" x="65" y="0.0" width="35" height="35"/>
                                                         <state key="normal" backgroundImage="twitter"/>
+                                                        <connections>
+                                                            <action selector="twitterBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jcb-pn-Xi7"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlN-z0-gtU">
                                                         <rect key="frame" x="130" y="0.0" width="35" height="35"/>
                                                         <state key="normal" backgroundImage="facebook"/>
+                                                        <connections>
+                                                            <action selector="facebookBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6Q-ge-BoE"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -168,6 +177,7 @@
                         <outlet property="logoImageView" destination="oFW-90-mVO" id="0SF-eu-a2d"/>
                         <outlet property="scrollView" destination="w33-CT-heb" id="jry-MQ-l35"/>
                         <segue destination="KgY-R0-eYa" kind="presentation" identifier="toLogin" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Gxp-NK-Var"/>
+                        <segue destination="7YD-js-mTM" kind="presentation" identifier="toWebVC" id="wjE-jt-cW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -689,6 +699,14 @@
             </objects>
             <point key="canvasLocation" x="-153" y="920"/>
         </scene>
+        <!--WebVC-->
+        <scene sceneID="74a-UB-yAh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WebViewController" referencedIdentifier="WebVC" id="7YD-js-mTM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PdL-hC-QIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-149" y="1196"/>
+        </scene>
         <!--History Container View Controller-->
         <scene sceneID="twz-P1-j2O">
             <objects>
@@ -760,6 +778,6 @@
         <image name="twitter" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uAC-r5-X5B"/>
+        <segue reference="Gxp-NK-Var"/>
     </inferredMetricsTieBreakers>
 </document>

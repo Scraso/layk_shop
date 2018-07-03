@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseStorageUI
+import FirebaseUI
 import SDWebImage
 
 protocol ItemDetailsViewControllerDelegate: class {

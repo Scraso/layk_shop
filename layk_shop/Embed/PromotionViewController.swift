@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseFirestore
-import FirebaseStorageUI
+import FirebaseUI
 import SDWebImage
 
 class PromotionViewController: UIViewController {

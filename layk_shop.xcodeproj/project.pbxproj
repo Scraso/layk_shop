@@ -37,6 +37,8 @@
 		988265C420AD1A310015C526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988265C220AD1A310015C526 /* LaunchScreen.storyboard */; };
 		9888403920AF7929002CCF29 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403820AF7929002CCF29 /* PromotionViewController.swift */; };
 		9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */; };
+		98A10A2020EBA6C700AD8F4D /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */; };
+		98A10A2220EBABF400AD8F4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2120EBABF400AD8F4D /* WebViewController.swift */; };
 		98E05E9520D2C5A7009AED1A /* UITableView+indexPathForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */; };
 		98E05E9720D6A9DB009AED1A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */; };
 		98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */; };
@@ -83,6 +85,8 @@
 		988265C520AD1A310015C526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9888403820AF7929002CCF29 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
+		98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
+		98A10A2120EBABF400AD8F4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+indexPathForView.swift"; sourceTree = "<group>"; };
 		98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 		988265B820AD1A2E0015C526 /* layk_shop */ = {
 			isa = PBXGroup;
 			children = (
+				98A10A1E20EBA6A200AD8F4D /* WebViewController */,
 				988265C520AD1A310015C526 /* Info.plist */,
 				984058B520BC774200C7A168 /* GoogleService-Info.plist */,
 				9839BE6E20B1F513001C6297 /* Model */,
@@ -243,6 +248,15 @@
 				988265C020AD1A310015C526 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98A10A1E20EBA6A200AD8F4D /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */,
+				98A10A2120EBABF400AD8F4D /* WebViewController.swift */,
+			);
+			path = WebViewController;
 			sourceTree = "<group>";
 		};
 		98F0FBEE20BE77BA00F9A1F8 /* Services */ = {
@@ -274,7 +288,6 @@
 				988265B320AD1A2E0015C526 /* Frameworks */,
 				988265B420AD1A2E0015C526 /* Resources */,
 				2DEF4DCA31C112FC17F07852 /* [CP] Embed Pods Frameworks */,
-				64D23D0456AE3791CC6E3AFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,6 +341,7 @@
 				988265C120AD1A310015C526 /* Assets.xcassets in Resources */,
 				9839BE7B20B31375001C6297 /* Login.storyboard in Resources */,
 				988265BF20AD1A2E0015C526 /* Main.storyboard in Resources */,
+				98A10A2020EBA6C700AD8F4D /* WebViewController.storyboard in Resources */,
 				984058B620BC774200C7A168 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +359,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -359,6 +374,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -371,21 +387,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		64D23D0456AE3791CC6E3AFC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E7F221A691A335CE1BF2921A /* [CP] Check Pods Manifest.lock */ = {
@@ -442,6 +443,7 @@
 				98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */,
 				984058A720B8772500C7A168 /* CartViewController.swift in Sources */,
 				983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */,
+				98A10A2220EBABF400AD8F4D /* WebViewController.swift in Sources */,
 				98F60D5720CA10E80074728C /* CartData.swift in Sources */,
 				984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */,
 				98E05E9520D2C5A7009AED1A /* UITableView+indexPathForView.swift in Sources */,
