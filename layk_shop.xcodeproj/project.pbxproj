@@ -39,6 +39,7 @@
 		9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */; };
 		98A10A2020EBA6C700AD8F4D /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */; };
 		98A10A2220EBABF400AD8F4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2120EBABF400AD8F4D /* WebViewController.swift */; };
+		98A10A2420EBDA4800AD8F4D /* Array + SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */; };
 		98E05E9520D2C5A7009AED1A /* UITableView+indexPathForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */; };
 		98E05E9720D6A9DB009AED1A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */; };
 		98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */; };
@@ -87,6 +88,7 @@
 		9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
 		98A10A2120EBABF400AD8F4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + SafeIndex.swift"; sourceTree = "<group>"; };
 		98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+indexPathForView.swift"; sourceTree = "<group>"; };
 		98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */,
 				98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */,
 				9844219520DED73500B59E51 /* FormattedTimestamp.swift */,
+				98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,7 +226,6 @@
 		988265B820AD1A2E0015C526 /* layk_shop */ = {
 			isa = PBXGroup;
 			children = (
-				98A10A1E20EBA6A200AD8F4D /* WebViewController */,
 				988265C520AD1A310015C526 /* Info.plist */,
 				984058B520BC774200C7A168 /* GoogleService-Info.plist */,
 				9839BE6E20B1F513001C6297 /* Model */,
@@ -231,6 +233,7 @@
 				984058AB20B9F1B500C7A168 /* Controller */,
 				984058AE20B9F21A00C7A168 /* CustomT TableView Cells */,
 				984621C520B1818800EB37C0 /* Embed */,
+				98A10A1E20EBA6A200AD8F4D /* WebViewController */,
 				9839BE7920B31358001C6297 /* Login */,
 				988265BD20AD1A2E0015C526 /* Main.storyboard */,
 				9839BE8120B5C33D001C6297 /* Extensions */,
@@ -434,6 +437,7 @@
 				984058A920B89A7F00C7A168 /* DeliveryViewController.swift in Sources */,
 				9839BE8720B5CCC9001C6297 /* UIView+Designable.swift in Sources */,
 				9839BE7620B1F6AC001C6297 /* ItemsTableViewController.swift in Sources */,
+				98A10A2420EBDA4800AD8F4D /* Array + SafeIndex.swift in Sources */,
 				98F0FBF220C1526E00F9A1F8 /* ShopData.swift in Sources */,
 				9844219420DA21DE00B59E51 /* HistoryOrderData.swift in Sources */,
 				98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */,

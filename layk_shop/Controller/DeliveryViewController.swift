@@ -10,18 +10,24 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, ModalViewControllerDelegate {
+protocol DeliveryViewControllerDelegate: class {
+    func textField(details: [String: Any])
+    func textView(details: String)
+}
 
+class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var delegate: DeliveryViewControllerDelegate? = nil
+    
     var orderItems = [CartData]()
-    var name: String?
-    var phone: String?
-    var city: String?
-    var deliveryAddress: String?
-    var comments: String?
+    
+    var textViewDetails: String?
     var placeholderLbl: UILabel!
     var sizeCount: Int?
+    
+    var contactDetails = [String: Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +43,21 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         }
     }
     
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            if delegate != nil {
+                delegate?.textField(details: contactDetails)
+                delegate?.textView(details: textViewDetails ?? "")
+            }
+        }
+    }
+    
     deinit {
         print("DeliveryViewController has been deinitialized")
     }
+    
     
     // MARK: - TextView Delegate
     
@@ -65,29 +83,29 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         tableView.endUpdates()
         UIView.setAnimationsEnabled(true)
         tableView.setContentOffset(currentOffset, animated: false)
-        // Copy textView text to 'Comments' variable
-        comments = textView.text
+        // Copy textView text to 'textViewDetails' variable
+        textViewDetails = textView.text
         
     }
     
     // MARK: - Error handler
     
-    func submitNewOrder(name: String, phone: String, city: String, address: String) throws -> (String, String, String, String) {
+    func submitNewOrder(dict: [String: Any]) throws -> [String: Any] {
         
-        guard name.count > 0 else {
+        guard dict.keys.contains("name") == true else {
             throw NewOrderErrors.invalidName
         }
-        guard phone.count > 0 else {
-            throw NewOrderErrors.invalidPhone
+        guard dict.keys.contains("city") == true else {
+            throw NewOrderErrors.invalidName
         }
-        guard city.count > 0 else {
-            throw NewOrderErrors.invalidCity
+        guard dict.keys.contains("phone") == true else {
+            throw NewOrderErrors.invalidName
         }
-        guard address.count > 0 else {
-            throw NewOrderErrors.invalidDeliveryAddress
+        guard dict.keys.contains("address") == true else {
+            throw NewOrderErrors.invalidName
         }
         
-        return (name, phone, city, address)
+        return dict
     }
     
     // MARK: - Alerts
@@ -103,49 +121,25 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     // Get values from the textFields based on their tags which were assigned in cellForRowAt indexPath
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let kActualText = (textField.text ?? "") + string
+        
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let kActualText = currentText.replacingCharacters(in: stringRange, with: string)
+        
         switch textField.tag
         {
         case 0:
-            name = kActualText;
+            contactDetails["name"] = kActualText;
         case 1:
-            phone = kActualText;
+            contactDetails["phone"] = kActualText;
         case 2:
-            city = kActualText;
+            contactDetails["city"] = kActualText;
         case 3:
-            deliveryAddress = kActualText;
+            contactDetails["address"] = kActualText;
         default:
             print("It is nothing");
         }
         return true
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toCompletedVC" {
-            if let modalVC = segue.destination as? ProcessingViewController {
-                modalVC.delegate = self
-            }
-        }
-    }
-    
-    // MARK: - Modal Delegate
-    
-    func dismissed() {
-        let rootVC = navigationController?.viewControllers.first as? CartViewController
-        rootVC?.items.removeAll()
-        rootVC?.tableView.reloadData()
-        
-        if let tabItems = self.tabBarController?.tabBar.items as NSArray?
-        {
-            // In this case we want to modify the badge number of the third tab:
-            let tabItem = tabItems[3] as! UITabBarItem
-            // if array is empty, set badge to nil
-            tabItem.badgeValue = nil
-        }
-        
-        self.navigationController?.popToRootViewController(animated: false)
     }
     
     
@@ -154,10 +148,11 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBAction func sendBtnTapped(_ sender: UIButton) {
         
         do {
-            // If type and then delete it allow to process. WRONG!!!
-            let (name, phone, city, address) = try submitNewOrder(name: self.name ?? "", phone: self.phone ?? "", city: self.city ?? "", address: self.deliveryAddress ?? "")
+            let (contactDict) = try submitNewOrder(dict: contactDetails)
             
-            let details: [String: Any] = ["name": name, "phone": phone, "city": city, "address": address, "comments": comments ?? ""]
+            var details: [String: Any] = contactDict
+            details["comments"] = textViewDetails
+            
             print(details)
             
             let currentUserUid = Auth.auth().currentUser?.uid
@@ -165,7 +160,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
             
             // get image name so then fetch it using FirebaseStorageUI
             for item in orderItems {
-                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarName": item.itemName!, "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
+                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarName": item.itemName ?? "", "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
                 let documentId = DataService.instance.REF_ORDERS.document()
                 documentId.setData(orderDetails)
                 
@@ -234,18 +229,22 @@ extension DeliveryViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
             addTextViewPlaceholder(textView: cell.commentTextView)
             cell.commentTextView.delegate = self
+            cell.commentTextView.text = textViewDetails
+            placeholderLbl.isHidden = !cell.commentTextView.text.isEmpty
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath) as! AddressCell
+        cell.details = contactDetails
         switch indexPath.row {
         case 0:
-            // Maybe better solution without tag?
             cell.detailsTextField.placeholder = "Ф.И.О"
             cell.detailsTextField.tag = 0
+            cell.detailsTextField.becomeFirstResponder()
         case 1:
             cell.detailsTextField.placeholder = "Номер телефона"
             cell.detailsTextField.tag = 1
+            cell.detailsTextField.keyboardType = .phonePad
         case 2:
             cell.detailsTextField.placeholder = "Город"
             cell.detailsTextField.tag = 2
@@ -256,6 +255,7 @@ extension DeliveryViewController: UITableViewDataSource {
             break
         }
         cell.detailsTextField.delegate = self
+   
         return cell
         
     }

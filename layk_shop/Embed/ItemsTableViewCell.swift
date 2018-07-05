@@ -32,7 +32,7 @@ class ItemsTableViewCell: UITableViewCell {
         }
         
         if totalSizeCount <= 0 {
-            availabilityLbl.text = "Нету в наличии"
+            availabilityLbl.text = "Нет в наличии"
             availabilityLbl.textColor = UIColor.init(red: 255/255, green: 59/255, blue: 48/255, alpha: 100)
         } else {
             availabilityLbl.text = "Есть в наличии"
@@ -45,8 +45,8 @@ class ItemsTableViewCell: UITableViewCell {
         itemImageView.sd_setIndicatorStyle(.gray)
         itemImageView.sd_setImage(with: ref, placeholderImage: placeHolderImage)
         
-        descriptionFirstLbl.text = data.itemDetails[0]
-        descriptionSecondLbl.text = data.itemDetails[1]
+        descriptionFirstLbl.text = data.itemDetails[exist: 0]
+        descriptionSecondLbl.text = data.itemDetails[exist: 1]
     }
 
 }

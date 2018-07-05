@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartViewController: UIViewController {
+class CartViewController: UIViewController, DeliveryViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextBtn: UIButton!
@@ -16,6 +16,8 @@ class CartViewController: UIViewController {
     @IBOutlet weak var tableViewBottomToViewBottomConstraint: NSLayoutConstraint!
     
     var items = [CartData]()
+    var textFieldDetails: [String: Any]?
+    var textViewDetails: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +34,39 @@ class CartViewController: UIViewController {
         if segue.identifier == "toDelivery" {
             let destination = segue.destination as? DeliveryViewController
             destination?.orderItems = items
+            destination?.delegate = self
+            destination?.contactDetails = textFieldDetails ?? [:]
+            destination?.textViewDetails = textViewDetails
+            
         }
     }
     
+    // MARK: - Delegates
+    
+    func textField(details: [String : Any]) {
+        self.textFieldDetails = details
+    }
+    func textView(details: String) {
+        self.textViewDetails = details
+    }
+    
+    // MARK: Actions
+    
     @IBAction func nextBtnTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "toDelivery", sender: self)
+    }
+    
+    @IBAction func unwindFromProcessing(segue: UIStoryboardSegue) {
+        self.items.removeAll()
+        tableView.reloadData()
+        
+        if let tabItems = self.tabBarController?.tabBar.items as NSArray?
+        {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[3] as! UITabBarItem
+            // if array is empty, set badge to nil
+            tabItem.badgeValue = nil
+        }
     }
 
 }
@@ -177,8 +207,6 @@ extension CartViewController: UITableViewDelegate {
             }
         }
     }
-    
-    
     
     
 }

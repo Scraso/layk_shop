@@ -8,27 +8,17 @@
 
 import UIKit
 
-protocol ModalViewControllerDelegate: class {
-    func dismissed()
-}
 
 class ProcessingViewController: UIViewController {
-    
-    var delegate: ModalViewControllerDelegate? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        delegate?.dismissed()
 
     }
 
     @IBAction func backBtnTapped(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "unwindToCart", sender: self)
         
-        if delegate != nil {
-            delegate?.dismissed()
-            self.dismiss(animated: false, completion: nil)
-        }
     }
     
 

@@ -41,6 +41,7 @@ class ItemDetailsViewController: UIViewController {
         pageScrollView.delegate = self
         pageController()
         setupUserInterface()
+        pageControl.numberOfPages = itemDetails.imageURLs.count
         
     }
     
@@ -68,11 +69,9 @@ class ItemDetailsViewController: UIViewController {
         nameLbl.text = itemDetails.name
         priceLbl.text = "\(itemDetails.price ?? 0) грн"
         
-        
-        // Possible crash !!!!!
-        firstDetailLbl.text = itemDetails.itemDetails[0]
-        secondDetailLbl.text = itemDetails.itemDetails[1]
-        thirdDetailLbl.text = itemDetails.itemDetails[2]
+        firstDetailLbl.text = itemDetails.itemDetails[exist: 0]
+        secondDetailLbl.text = itemDetails.itemDetails[exist: 1]
+        thirdDetailLbl.text = itemDetails.itemDetails[exist: 2]
         
         // Get the item with the maxium count and set it as a default one.
         let maxValue = itemDetails.itemSizes.max { (a, b) -> Bool in
@@ -147,5 +146,7 @@ extension ItemDetailsViewController: UIScrollViewDelegate {
         pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(view.frame.width))
     }
 }
+
+
 
 

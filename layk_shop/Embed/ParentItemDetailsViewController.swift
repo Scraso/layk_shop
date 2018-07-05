@@ -86,7 +86,7 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
         // Check if there is already the same item in array
         let isUniqueItem = cartViewController.items.contains(where: {$0.itemName == item.itemName && $0.size == item.size } )
         
-        // If item is already there then update count + 1 if not then add new item in the array
+        // If item is already there, update count + 1 but if not then add new item in the array
         if isUniqueItem {
             cartViewController.items = cartViewController.items.map {
                 var mutableItem = $0
