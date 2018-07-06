@@ -172,13 +172,15 @@ extension HistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if onProcessing.count == 0 && onProcessOfSending.count == 0 && sentItem.count == 0 && completed.count == 0 {
-            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "История покупок пустая"
-            noDataLabel.textColor     = UIColor.gray
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView  = noDataLabel
-            tableView.separatorStyle  = .none
-            return 0
+            if Auth.auth().currentUser != nil {
+                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text          = "История покупок пустая"
+                noDataLabel.textColor     = UIColor.gray
+                noDataLabel.textAlignment = .center
+                tableView.backgroundView  = noDataLabel
+                tableView.separatorStyle  = .none
+                return 0
+            }
         }
         let items = historyOrderArray[section].orders
         tableView.separatorStyle = .singleLine
@@ -189,19 +191,12 @@ extension HistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryTableViewCell
         let items = self.historyOrderArray[indexPath.section].orders
-        let itemsName = historyOrderArray[indexPath.section].sectionName
+        let sectionName = historyOrderArray[indexPath.section].sectionName
         let item = items[indexPath.row]
-        cell.configureCell(data: item)
-        if itemsName == "В обработке" {
-            cell.statusView.backgroundColor = UIColor.init(red: 255/255, green: 149/255, blue: 0/255, alpha: 100)
-        } else if itemsName == "В ожидании отправки" {
-            cell.statusView.backgroundColor = UIColor.init(red: 88/255, green: 86/255, blue: 214/255, alpha: 100)
-        } else if itemsName == "Отправлен" {
-            cell.statusView.backgroundColor = UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 100)
-        } else if itemsName == "Получен" {
-           cell.statusView.backgroundColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)
-        }
         
+        cell.configureCell(data: item, sectionName: sectionName)
+        
+
         return cell
     }
     
@@ -232,6 +227,10 @@ extension HistoryViewController: UITableViewDelegate {
             if self.tableView(tableView, numberOfRowsInSection: section) <= 0 {
                 return CGFloat.leastNonzeroMagnitude
             }
+        case 3:
+            if self.tableView(tableView, numberOfRowsInSection: section) <= 0 {
+                return CGFloat.leastNonzeroMagnitude
+            }
         default:
             return UITableViewAutomaticDimension
         }
@@ -250,6 +249,10 @@ extension HistoryViewController: UITableViewDelegate {
                 return CGFloat.leastNonzeroMagnitude
             }
         case 2:
+            if self.tableView(tableView, numberOfRowsInSection: section) <= 0 {
+                return CGFloat.leastNonzeroMagnitude
+            }
+        case 3:
             if self.tableView(tableView, numberOfRowsInSection: section) <= 0 {
                 return CGFloat.leastNonzeroMagnitude
             }

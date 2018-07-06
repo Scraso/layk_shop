@@ -96,13 +96,13 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
             throw NewOrderErrors.invalidName
         }
         guard dict.keys.contains("city") == true else {
-            throw NewOrderErrors.invalidName
+            throw NewOrderErrors.invalidCity
         }
         guard dict.keys.contains("phone") == true else {
-            throw NewOrderErrors.invalidName
+            throw NewOrderErrors.invalidPhone
         }
         guard dict.keys.contains("address") == true else {
-            throw NewOrderErrors.invalidName
+            throw NewOrderErrors.invalidDeliveryAddress
         }
         
         return dict
@@ -130,12 +130,25 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         {
         case 0:
             contactDetails["name"] = kActualText;
+            // Delete key in case field is empty so error handler can check for key is nil
+            if kActualText == "" {
+                contactDetails.removeValue(forKey: "name")
+            }
         case 1:
             contactDetails["phone"] = kActualText;
+            if kActualText == "" {
+                contactDetails.removeValue(forKey: "phone")
+            }
         case 2:
             contactDetails["city"] = kActualText;
+            if kActualText == "" {
+                contactDetails.removeValue(forKey: "city")
+            }
         case 3:
             contactDetails["address"] = kActualText;
+            if kActualText == "" {
+                contactDetails.removeValue(forKey: "address")
+            }
         default:
             print("It is nothing");
         }

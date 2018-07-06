@@ -20,7 +20,7 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var timestampLbl: UILabel!
     @IBOutlet weak var costLbl: UILabel!
     
-    func configureCell(data: ItemData) {
+    func configureCell(data: ItemData, sectionName: String) {
         self.countLbl.text = "Количество: \(data.count ?? 0)"
         self.costLbl.text = "\(data.price ?? 0) грн"
         self.nameLbl.text = "\(data.name ?? "") (\(data.size ?? ""))"
@@ -34,6 +34,36 @@ class HistoryTableViewCell: UITableViewCell {
         avatarImageView.sd_setShowActivityIndicatorView(true)
         avatarImageView.sd_setIndicatorStyle(.gray)
         avatarImageView.sd_setImage(with: ref, placeholderImage: placeHolderImage)
+        
+        print(sectionName)
+        
+//        switch sectionName {
+//        case "В обработке":
+//            statusView.backgroundColor = UIColor.init(red: 255/255, green: 149/255, blue: 0/255, alpha: 100)
+//        case "В ожидании отправки":
+//            statusView.backgroundColor = UIColor.init(red: 88/255, green: 86/255, blue: 214/255, alpha: 100)
+//        case "Отправлен":
+//            statusView.backgroundColor = UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 100)
+//        case "Получен":
+//            statusView.backgroundColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)
+//        default:
+//            print("Something went wrong")
+//        }
+        
+        
+        
+        if sectionName == "В обработке" {
+            statusView.backgroundColor = UIColor.init(red: 255/255, green: 149/255, blue: 0/255, alpha: 100)
+        }
+        if sectionName == "В ожидании отправки" {
+            statusView.backgroundColor = UIColor.init(red: 88/255, green: 86/255, blue: 214/255, alpha: 100)
+        }
+        if sectionName == "Отправлен" {
+            statusView.backgroundColor = UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 100)
+        }
+        if sectionName == "Получен" {
+            statusView.backgroundColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)
+        }
         
     }
     
