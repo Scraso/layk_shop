@@ -13,6 +13,9 @@ import FirebaseAuth
 class HistoryViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var emptyHistoryOrderView: UIView!
+    @IBOutlet var loginNotificationView: UIView!
+    
     var listener: ListenerRegistration!
     
     var onProcessing = [ItemData]()
@@ -30,6 +33,7 @@ class HistoryViewController: UIViewController {
         tableView.delegate = self
         
         authorizationStatusCheck()
+        
     }
     
     // MARK: API CALL
@@ -39,53 +43,41 @@ class HistoryViewController: UIViewController {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 
-                // When user logged in, remove Child View Controller
-                if self.childViewControllers.count > 0 {
-                    let viewControllers:[UIViewController] = self.childViewControllers
-                    for viewContoller in viewControllers{
-                        viewContoller.willMove(toParentViewController: nil)
-                        viewContoller.view.removeFromSuperview()
-                        viewContoller.removeFromParentViewController()
-                        print("Child View Controller removed")
-                    }
-                }
+                // Remove background View
+                self.tableView.backgroundView = nil
+                print("Authronization background view was removed")
+                
 
                 self.fetchOrders {
-                    self.historyOrderArray = [HistoryOrderData(sectionName: "В Обработке", orders: self.onProcessing), HistoryOrderData(sectionName: "В ожидании отправки", orders: self.onProcessOfSending), HistoryOrderData(sectionName: "Отправлен", orders: self.sentItem), HistoryOrderData(sectionName: "Получен", orders: self.completed)]
+                    self.historyOrderArray = [HistoryOrderData(sectionName: "В обработке", orders: self.onProcessing), HistoryOrderData(sectionName: "В ожидании отправки", orders: self.onProcessOfSending), HistoryOrderData(sectionName: "Отправлен", orders: self.sentItem), HistoryOrderData(sectionName: "Получен", orders: self.completed)]
                     self.tableView.reloadData()
                 }
             } else {
                 
-                // Reset all arrays and reload TableView
+                self.tableView.backgroundView = self.loginNotificationView
+                print("Login Notification View was added")
+                // Reset all arrays, reload TableView and set backgroundView
                 self.onProcessing.removeAll()
                 self.onProcessOfSending.removeAll()
                 self.sentItem.removeAll()
                 self.completed.removeAll()
                 self.tableView.reloadData()
                 
-                let containerView = UIView()
-                containerView.translatesAutoresizingMaskIntoConstraints = false
-                self.tableView.backgroundView = containerView
-                self.tableView.separatorStyle = .none
-                containerView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height)
- 
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "EmptyHistoryVC")
-                self.addChildViewController(controller!)
-                containerView.addSubview((controller?.view)!)
-                controller?.view.frame = CGRect(x: 0, y: 0, width: containerView.bounds.size.width, height: containerView.bounds.size.height)
-                controller?.didMove(toParentViewController: self)
-                print("Child View Controller was added")
+                
                 
             }
         }
     }
     
+    
     func fetchOrders(onCompleted: @escaping () -> ()) {
         
         let ref = DataService.instance.REF_ORDERS
-        let currentUserUid = Auth.auth().currentUser?.uid
+        guard let currentUserUid = Auth.auth().currentUser?.uid else {
+            return
+        }
         
-        ref.whereField("isProcessed", isEqualTo: false).whereField("isSent", isEqualTo: false).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid ?? "").addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("isProcessed", isEqualTo: false).whereField("isSent", isEqualTo: false).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.onProcessing = []
             
@@ -103,7 +95,7 @@ class HistoryViewController: UIViewController {
             
         }
         
-        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: false).whereField("isDelivered", isEqualTo: false).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: false).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.onProcessOfSending = []
             
@@ -120,7 +112,7 @@ class HistoryViewController: UIViewController {
             onCompleted()
         }
         
-        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: true).whereField("isDelivered", isEqualTo: false).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: true).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.sentItem = []
             
@@ -137,7 +129,7 @@ class HistoryViewController: UIViewController {
             onCompleted()
         }
         
-        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: true).whereField("isDelivered", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: true).whereField("isDelivered", isEqualTo: true).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.completed = []
             
@@ -172,19 +164,15 @@ extension HistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if onProcessing.count == 0 && onProcessOfSending.count == 0 && sentItem.count == 0 && completed.count == 0 {
-            if Auth.auth().currentUser != nil {
-                let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text          = "История покупок пустая"
-                noDataLabel.textColor     = UIColor.gray
-                noDataLabel.textAlignment = .center
-                tableView.backgroundView  = noDataLabel
-                tableView.separatorStyle  = .none
-                return 0
+            // Check if backgroundView is nil (in this case LoginNotificationView) and if yes only in this case show Empty History Order View
+            if tableView.backgroundView == nil {
+                tableView.backgroundView = emptyHistoryOrderView
             }
+            return 0
         }
         let items = historyOrderArray[section].orders
-        tableView.separatorStyle = .singleLine
         tableView.backgroundView = nil
+        print("Empty History Order View was removed")
         return items.count
     }
     

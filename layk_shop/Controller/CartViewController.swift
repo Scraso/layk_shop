@@ -15,6 +15,7 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
     @IBOutlet weak var tableViewBottomToNextBtnTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewBottomToViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var noItemsView: UIView!
     var items = [CartData]()
     var textFieldDetails: [String: Any]?
     var textViewDetails: String?
@@ -83,20 +84,12 @@ extension CartViewController: UITableViewDataSource {
             if items.count == 0 {
                 tableViewBottomToNextBtnTopConstraint.priority = UILayoutPriority.defaultLow
                 tableViewBottomToViewBottomConstraint.priority = UILayoutPriority.defaultHigh
-
-                // Add label wich says there is no items in the cart
-                let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text = "Корзина пустая"
-                noDataLabel.textColor = UIColor.darkGray
-                noDataLabel.textAlignment = .center
-                tableView.backgroundView = noDataLabel
-                tableView.separatorStyle = .none
+                tableView.backgroundView = noItemsView
                 nextBtn.isHidden = true
                 return 0
             }
             tableViewBottomToNextBtnTopConstraint.priority = UILayoutPriority.defaultHigh
             tableViewBottomToViewBottomConstraint.priority = UILayoutPriority.defaultLow
-            tableView.separatorStyle = .singleLine
             tableView.backgroundView = nil
             return items.count
         case 1:

@@ -299,12 +299,75 @@
                     </view>
                     <navigationItem key="navigationItem" title="История" id="Vpr-oX-8w0"/>
                     <connections>
+                        <outlet property="emptyHistoryOrderView" destination="cuW-D2-AVT" id="ONp-fq-ikm"/>
+                        <outlet property="loginNotificationView" destination="Sx8-dL-TfJ" id="YGn-MN-Duq"/>
                         <outlet property="tableView" destination="WUk-kR-WKc" id="ceU-Nj-xmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBa-1d-26B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Sx8-dL-TfJ">
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="140"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kbX-IR-kzg">
+                            <rect key="frame" x="19.5" y="23" width="304.5" height="94.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для просмотра истории/статуса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY4-5e-gTM">
+                                    <rect key="frame" x="22" y="0.0" width="260.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="заказа, Вам нужно быть" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3E-Py-1bz">
+                                    <rect key="frame" x="55.5" y="20.5" width="193.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="зарегистрированным пользователем." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSY-Tk-gTc">
+                                    <rect key="frame" x="0.0" y="41" width="304.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqW-n7-rtW">
+                                    <rect key="frame" x="132.5" y="61.5" width="40" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="Вход"/>
+                                    <connections>
+                                        <segue destination="KgY-R0-eYa" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="gHj-0F-opa"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="kbX-IR-kzg" firstAttribute="centerX" secondItem="Sx8-dL-TfJ" secondAttribute="centerX" id="a6q-U2-KFw"/>
+                        <constraint firstItem="kbX-IR-kzg" firstAttribute="centerY" secondItem="Sx8-dL-TfJ" secondAttribute="centerY" id="oXP-bH-6zj"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="kEb-US-LKO"/>
+                </view>
+                <view contentMode="scaleToFill" id="cuW-D2-AVT">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="История покупок пустая" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yp-7n-qKY">
+                            <rect key="frame" x="22.5" y="54" width="195" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="8yp-7n-qKY" firstAttribute="centerX" secondItem="cuW-D2-AVT" secondAttribute="centerX" id="4AX-Dg-geW"/>
+                        <constraint firstItem="8yp-7n-qKY" firstAttribute="centerY" secondItem="cuW-D2-AVT" secondAttribute="centerY" id="9Rs-cl-YYy"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Rqx-KB-ief"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1253.5999999999999" y="446.62668665667172"/>
+            <point key="canvasLocation" x="1254" y="708"/>
         </scene>
         <!--Корзина-->
         <scene sceneID="Ium-9F-O3l">
@@ -511,6 +574,7 @@
                     <navigationItem key="navigationItem" title="Корзина" id="hkj-mS-D0T"/>
                     <connections>
                         <outlet property="nextBtn" destination="aez-fj-Clv" id="qtS-Ac-4RI"/>
+                        <outlet property="noItemsView" destination="aPJ-mo-awI" id="HGr-ng-brB"/>
                         <outlet property="tableView" destination="3gn-Cf-kOH" id="xFj-tD-f3t"/>
                         <outlet property="tableViewBottomToNextBtnTopConstraint" destination="9C8-nc-hto" id="Agn-CR-QAJ"/>
                         <outlet property="tableViewBottomToViewBottomConstraint" destination="5Ir-y7-1qP" id="eQI-Fd-liA"/>
@@ -518,8 +582,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fZ-mb-2Vu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="aPJ-mo-awI">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Корзина пустая" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTC-H3-MWC">
+                            <rect key="frame" x="57.5" y="54" width="125.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pTC-H3-MWC" firstAttribute="centerY" secondItem="aPJ-mo-awI" secondAttribute="centerY" id="5g5-21-VWn"/>
+                        <constraint firstItem="pTC-H3-MWC" firstAttribute="centerX" secondItem="aPJ-mo-awI" secondAttribute="centerX" id="yrA-ph-oiY"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="db1-Gr-kmd"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="2358" y="448"/>
+            <point key="canvasLocation" x="2358" y="546"/>
         </scene>
         <!--DeliveryDetails-->
         <scene sceneID="PWF-5x-V9H">
@@ -707,58 +789,6 @@
             </objects>
             <point key="canvasLocation" x="-149" y="1196"/>
         </scene>
-        <!--History Container View Controller-->
-        <scene sceneID="twz-P1-j2O">
-            <objects>
-                <viewController storyboardIdentifier="EmptyHistoryVC" id="AlM-qR-SzS" customClass="HistoryContainerViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="som-SY-40x">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hoU-Hh-e3f">
-                                <rect key="frame" x="35.5" y="286.5" width="304.5" height="94.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для просмотра истории/статуса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZG-NJ-JHI">
-                                        <rect key="frame" x="22" y="0.0" width="260.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="заказа, Вам нужно быть" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c0-X7-bnJ">
-                                        <rect key="frame" x="55.5" y="20.5" width="193.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="зарегистрированным пользователем." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTF-Z5-Yjb">
-                                        <rect key="frame" x="0.0" y="41" width="304.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG1-Rp-OrB">
-                                        <rect key="frame" x="132.5" y="61.5" width="40" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Вход"/>
-                                        <connections>
-                                            <segue destination="KgY-R0-eYa" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="uAC-r5-X5B"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="hoU-Hh-e3f" firstAttribute="centerY" secondItem="som-SY-40x" secondAttribute="centerY" id="DIj-aS-fhZ"/>
-                            <constraint firstItem="hoU-Hh-e3f" firstAttribute="centerX" secondItem="som-SY-40x" secondAttribute="centerX" id="Nm9-fz-k77"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="cS8-Tw-MpW"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWl-X5-Wee" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1254" y="1165"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Layk_logo" width="839" height="839"/>
@@ -778,6 +808,6 @@
         <image name="twitter" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gxp-NK-Var"/>
+        <segue reference="gHj-0F-opa"/>
     </inferredMetricsTieBreakers>
 </document>
