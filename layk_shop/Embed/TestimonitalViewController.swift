@@ -16,6 +16,7 @@ class TestimonitalViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.dataSource = self
+
     }
 
 }

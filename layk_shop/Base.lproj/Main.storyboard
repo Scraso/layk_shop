@@ -204,7 +204,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-qW-WAH">
-                                                    <rect key="frame" x="100" y="17" width="99" height="64.5"/>
+                                                    <rect key="frame" x="100" y="16" width="99" height="65.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Fury" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-iP-WgQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
@@ -222,7 +222,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Количество: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXt-bI-yND">
-                                                            <rect key="frame" x="0.0" y="46.5" width="99" height="18"/>
+                                                            <rect key="frame" x="0.0" y="46.5" width="99" height="19"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.56078431370000004" green="0.5568627451" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -240,17 +240,17 @@
                                                     <rect key="frame" x="23" y="16" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="5TP-W3-a6v"/>
-                                                        <constraint firstAttribute="height" constant="65" id="Gkj-zp-ODK"/>
+                                                        <constraint firstAttribute="height" constant="65" id="Prg-LI-Rjs"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQa-qE-IrB">
-                                                    <rect key="frame" x="292" y="18.5" width="68" height="18"/>
+                                                    <rect key="frame" x="292" y="17.5" width="68" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1245 грн" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs5-vt-Kik">
-                                                    <rect key="frame" x="297" y="62.5" width="62.5" height="19"/>
+                                                    <rect key="frame" x="297" y="63.5" width="62.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -266,7 +266,6 @@
                                                 <constraint firstItem="ivr-qW-WAH" firstAttribute="leading" secondItem="Cld-d1-97d" secondAttribute="trailing" constant="12" id="Viy-cn-sbf"/>
                                                 <constraint firstAttribute="trailing" secondItem="fQa-qE-IrB" secondAttribute="trailing" constant="15" id="WT3-z8-jhV"/>
                                                 <constraint firstItem="fs5-vt-Kik" firstAttribute="centerY" secondItem="QXt-bI-yND" secondAttribute="centerY" id="XMW-Mz-4nM"/>
-                                                <constraint firstAttribute="bottom" secondItem="Cld-d1-97d" secondAttribute="bottom" constant="16" id="ald-49-Mqq"/>
                                                 <constraint firstItem="fQa-qE-IrB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="THB-6x-8Ri" secondAttribute="leading" constant="20" symbolic="YES" id="hG7-YS-6Vr"/>
                                                 <constraint firstAttribute="bottom" secondItem="jEG-gW-hcd" secondAttribute="bottom" id="jg6-vD-ipm"/>
                                                 <constraint firstItem="Cld-d1-97d" firstAttribute="top" secondItem="THB-6x-8Ri" secondAttribute="top" constant="16" id="kfU-cc-6xi"/>
@@ -290,12 +289,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xfm-J8-JU4" firstAttribute="trailing" secondItem="WUk-kR-WKc" secondAttribute="trailing" id="Jv9-T2-Xw9"/>
-                            <constraint firstItem="xfm-J8-JU4" firstAttribute="bottom" secondItem="WUk-kR-WKc" secondAttribute="bottom" id="RNH-1d-RbS"/>
-                            <constraint firstItem="WUk-kR-WKc" firstAttribute="top" secondItem="xfm-J8-JU4" secondAttribute="top" id="kH8-tw-Knb"/>
-                            <constraint firstItem="WUk-kR-WKc" firstAttribute="leading" secondItem="xfm-J8-JU4" secondAttribute="leading" id="xIU-3E-Kef"/>
+                            <constraint firstItem="WUk-kR-WKc" firstAttribute="top" secondItem="bFA-If-mwe" secondAttribute="top" id="IQ5-qw-G8i"/>
+                            <constraint firstItem="WUk-kR-WKc" firstAttribute="leading" secondItem="bFA-If-mwe" secondAttribute="leading" id="RDd-WX-OmN"/>
+                            <constraint firstItem="WUk-kR-WKc" firstAttribute="trailing" secondItem="bFA-If-mwe" secondAttribute="trailing" id="V6F-pd-Xkj"/>
+                            <constraint firstItem="bFA-If-mwe" firstAttribute="bottom" secondItem="WUk-kR-WKc" secondAttribute="bottom" id="jOp-ro-3QF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xfm-J8-JU4"/>
+                        <viewLayoutGuide key="safeArea" id="bFA-If-mwe"/>
                     </view>
                     <navigationItem key="navigationItem" title="История" id="Vpr-oX-8w0"/>
                     <connections>
@@ -681,11 +680,11 @@
             </objects>
             <point key="canvasLocation" x="212" y="-1249"/>
         </scene>
-        <!--Home-->
+        <!--Меню-->
         <scene sceneID="ZBu-Ey-9yC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MoH-zH-uJL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="Tab Bar/home" selectedImage="Tab Bar/home-active" id="ZrG-or-OgO"/>
+                    <tabBarItem key="tabBarItem" title="Меню" image="Tab Bar/home" selectedImage="Tab Bar/home-active" id="ZrG-or-OgO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="D3b-3P-EUT">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -700,11 +699,11 @@
             </objects>
             <point key="canvasLocation" x="-831" y="-346"/>
         </scene>
-        <!--Shop-->
+        <!--Магазин-->
         <scene sceneID="jv6-i6-mwL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1mg-I0-Gkb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shop" image="Tab Bar/shop" selectedImage="Tab Bar/shop-active" id="PFj-f3-Fb0"/>
+                    <tabBarItem key="tabBarItem" title="Магазин" image="Tab Bar/shop" selectedImage="Tab Bar/shop-active" id="PFj-f3-Fb0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="2Vm-uL-Ur8">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -719,11 +718,11 @@
             </objects>
             <point key="canvasLocation" x="212" y="-393"/>
         </scene>
-        <!--History-->
+        <!--История-->
         <scene sceneID="Mf7-cm-zT7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3XE-eQ-mlX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" image="Tab Bar/history" selectedImage="Tab Bar/history-active" id="Ror-EJ-d3M"/>
+                    <tabBarItem key="tabBarItem" title="История" image="Tab Bar/history" selectedImage="Tab Bar/history-active" id="Ror-EJ-d3M"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Xy0-z6-366">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -738,11 +737,11 @@
             </objects>
             <point key="canvasLocation" x="1255" y="-347"/>
         </scene>
-        <!--Cart-->
+        <!--Корзина-->
         <scene sceneID="OmN-Ts-7cX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="COO-gO-BYh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cart" image="Tab Bar/cart" selectedImage="Tab Bar/cart-active" id="gnB-lN-leK"/>
+                    <tabBarItem key="tabBarItem" title="Корзина" image="Tab Bar/cart" selectedImage="Tab Bar/cart-active" id="gnB-lN-leK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wQG-Lz-q7F">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>

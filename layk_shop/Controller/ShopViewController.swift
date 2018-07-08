@@ -22,6 +22,10 @@ class ShopViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        if #available(iOS 11.0, *) {
+            tableView.insetsContentViewsToSafeArea = true
+        }
+        
         fetchShopCategory()
 
     }

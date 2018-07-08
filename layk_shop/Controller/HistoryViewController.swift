@@ -172,7 +172,6 @@ extension HistoryViewController: UITableViewDataSource {
         }
         let items = historyOrderArray[section].orders
         tableView.backgroundView = nil
-        print("Empty History Order View was removed")
         return items.count
     }
     
