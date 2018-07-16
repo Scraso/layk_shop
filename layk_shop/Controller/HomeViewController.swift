@@ -17,6 +17,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var loginBtn: UIBarButtonItem!
     
+    let presentSectionViewController = PresentSectionViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +61,18 @@ class HomeViewController: UIViewController {
             let toVC = toNav.viewControllers.first as! WebViewController
             toVC.urlString = sender as! String
         }
+        if segue.identifier  == "toPromotionItem" {
+            let destination = segue.destination as! PromotionItemDetailsViewController
+            destination.transitioningDelegate = self
+            let historyData = sender as! HistorySectionData
+            destination.historyData = historyData
+            
+        }
+        if segue.identifier == "PromotionEmbed" {
+            if let destination = segue.destination as? PromotionViewController {
+                destination.delegate = self
+            }
+        }
     }
     
     // MARK: - Actions
@@ -87,6 +101,34 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "toWebVC", sender: "https://www.facebook.com/laykwear/")
     }
     
+    @IBAction func unwindFromPromotion(segue: UIStoryboardSegue) {
+    }
+    
+}
+
+extension HomeViewController : UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return presentSectionViewController
+    }
+    
+}
+
+extension HomeViewController: PromotionCollectionDelegate {
+    
+    func didTap(cell: PromotionCollectionViewCell, on collectionView: UICollectionView, with transform: CATransform3D, for historySection: HistorySectionData) {
+        
+        let indexPath = collectionView.indexPath(for: cell)!
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)!
+        let frame = collectionView.convert(attributes.frame, to: view)
+        presentSectionViewController.cellFrame = frame
+        presentSectionViewController.cellTransform = transform
+        
+        performSegue(withIdentifier: "toPromotionItem", sender: historySection)
+        
+        
+    }
 }
 
 extension HomeViewController: UIScrollViewDelegate {

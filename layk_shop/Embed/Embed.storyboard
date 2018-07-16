@@ -14,27 +14,20 @@
         <!--Promotion View Controller-->
         <scene sceneID="hXf-KC-blk">
             <objects>
-                <viewController storyboardIdentifier="Promotion" id="P8O-Bk-m4y" customClass="PromotionViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0yI-nN-xeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="Promotion" automaticallyAdjustsScrollViewInsets="NO" id="P8O-Bk-m4y" customClass="PromotionViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TvY-Wd-LH4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="356"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЖЕНСКИЕ ЛОСИНЫ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwB-pM-keI" userLabel="Title Label">
-                                <rect key="frame" x="20" y="50" width="149" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ИСТОРИЯ СОЗДАНИЯ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwB-pM-keI" userLabel="Title Label">
+                                <rect key="frame" x="20" y="30" width="339" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11V-lk-AoK" userLabel="Title Button">
-                                <rect key="frame" x="239" y="50" width="116" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="Ck8-MX-Ww7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="СМОТРЕТЬ ВСЕ"/>
-                            </button>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDd-9M-aQe">
-                                <rect key="frame" x="0.0" y="84" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="Zne-ro-QSj">
                                     <size key="itemSize" width="300" height="240"/>
@@ -114,23 +107,21 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wDd-9M-aQe" firstAttribute="top" secondItem="mwB-pM-keI" secondAttribute="bottom" constant="16" id="48p-W7-I4O"/>
-                            <constraint firstItem="mwB-pM-keI" firstAttribute="top" secondItem="TvY-Wd-LH4" secondAttribute="top" constant="50" id="NtX-tO-cT6"/>
+                            <constraint firstItem="wDd-9M-aQe" firstAttribute="top" secondItem="mwB-pM-keI" secondAttribute="bottom" constant="18" id="48p-W7-I4O"/>
+                            <constraint firstItem="1RZ-5r-3vz" firstAttribute="trailing" secondItem="mwB-pM-keI" secondAttribute="trailing" constant="16" id="D9O-98-ivX"/>
+                            <constraint firstItem="mwB-pM-keI" firstAttribute="top" secondItem="TvY-Wd-LH4" secondAttribute="top" constant="30" id="NtX-tO-cT6"/>
                             <constraint firstItem="wDd-9M-aQe" firstAttribute="leading" secondItem="TvY-Wd-LH4" secondAttribute="leading" id="Ntc-Je-fHc"/>
-                            <constraint firstAttribute="trailing" secondItem="11V-lk-AoK" secondAttribute="trailing" constant="20" id="Q8d-0v-HLz"/>
                             <constraint firstItem="mwB-pM-keI" firstAttribute="leading" secondItem="1RZ-5r-3vz" secondAttribute="leading" constant="20" id="RZI-EN-lco"/>
-                            <constraint firstItem="11V-lk-AoK" firstAttribute="top" secondItem="TvY-Wd-LH4" secondAttribute="top" constant="50" id="TDM-aJ-Q1M"/>
                             <constraint firstAttribute="trailing" secondItem="wDd-9M-aQe" secondAttribute="trailing" id="Wld-H3-c2V"/>
                             <constraint firstAttribute="bottom" secondItem="wDd-9M-aQe" secondAttribute="bottom" constant="50" id="oI1-BA-JAe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1RZ-5r-3vz"/>
                     </view>
-                    <size key="freeformSize" width="375" height="374"/>
+                    <size key="freeformSize" width="375" height="356"/>
                     <connections>
                         <outlet property="collectionView" destination="wDd-9M-aQe" id="fLU-a8-Yuh"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0yI-nN-xeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135" y="975"/>
         </scene>

@@ -69,7 +69,6 @@ class HistoryViewController: UIViewController {
         }
     }
     
-    
     func fetchOrders(onCompleted: @escaping () -> ()) {
         
         let ref = DataService.instance.REF_ORDERS

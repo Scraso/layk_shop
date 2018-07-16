@@ -21,14 +21,14 @@ class DataService {
     }
     
     // Firestore reference
-    private var _REF_PROMOTION_SECTION = DB_BASE.collection("promotion_section")
+    private var _REF_PROMOTION_SECTION = DB_BASE.collection("history_section")
     private var _REF_SHOP_CATEGORY = DB_BASE.collection("shop_category")
     private var _REF_ITEMS = DB_BASE.collection("items")
     private var _REF_ORDERS = DB_BASE.collection("orders")
     
     
     // Storage reference
-    private var _REF_PROMOTION_IMAGES = DB_STORAGE.child("promotion-images")
+    private var _REF_PROMOTION_IMAGES = DB_STORAGE.child("history-images")
     private var _REF_ITEMLIST_IMAGES = DB_STORAGE.child("itemList-images")
     private var _REF_PAGECONTROL_IMAGES = DB_STORAGE.child("pageControl-images")
     
