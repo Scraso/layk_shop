@@ -109,12 +109,15 @@ extension CartViewController: UITableViewDataSource {
             // In this case we want to modify the badge number of the third tab:
             let tabItem = tabItems![3] as! UITabBarItem
             
-            
-            
             itemCell.nameLbl.text = "\(item.name ?? "") (\(item.size ?? ""))"
             itemCell.priceLbl.text = "\(item.price ?? 0) грн"
             itemCell.refLbl.text = "Код товара: \(item.ref)"
-            itemCell.itemImageView.image = item.itemImageView
+            
+            let placeHolderImage = #imageLiteral(resourceName: "promotion_placeholder")
+            itemCell.itemImageView.sd_setShowActivityIndicatorView(true)
+            itemCell.itemImageView.sd_setIndicatorStyle(.gray)
+            itemCell.itemImageView.sd_setImage(with: URL(string: item.avatarImageUrl ?? ""), placeholderImage: placeHolderImage)
+   
             itemCell.countLbl.text = String(item.count)
             itemCell.deleteButtonTapped = { [weak self] (button: UIButton) in
                 if let indexPath = self?.tableView.indexPathForView(button) {
@@ -131,7 +134,7 @@ extension CartViewController: UITableViewDataSource {
                 if index == 1 {
                     self.items = self.items.map {
                         var mutableItem = $0
-                        if $0.itemName == item.itemName && $0.size == item.size {
+                        if $0.avatarImageUrl == item.avatarImageUrl && $0.size == item.size {
                             // Check if minimum count is 1 and if yes, do not reduce the amount
                             if mutableItem.count == 1 {
                                 print("Reached minimum count")
@@ -145,7 +148,7 @@ extension CartViewController: UITableViewDataSource {
                 } else if index == 2 {
                     self.items = self.items.map {
                         var mutableItem = $0
-                        if $0.itemName == item.itemName && $0.size == item.size {
+                        if $0.avatarImageUrl == item.avatarImageUrl && $0.size == item.size {
                             mutableItem.count += 1
                         }
                         return mutableItem

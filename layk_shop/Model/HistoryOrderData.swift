@@ -10,7 +10,7 @@ import Foundation
 
 struct ItemData {
     
-    var avatarName: String?
+    var avatarImageUrl: String?
     var count: Int?
     var isProcessed: Bool?
     var isDelivered: Bool?
@@ -38,8 +38,8 @@ struct ItemData {
         if let isSent = itemData["isSent"] as? Bool {
             self.isSent = isSent
         }
-        if let avatarName = itemData["avatarName"] as? String {
-            self.avatarName = avatarName
+        if let avatarImageUrl = itemData["avatarImageUrl"] as? String {
+            self.avatarImageUrl = avatarImageUrl
         }
         if let name = itemData["name"] as? String {
             self.name = name

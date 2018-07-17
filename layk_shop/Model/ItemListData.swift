@@ -14,7 +14,7 @@ struct ItemListData {
     var name: String?
     var price: Int?
     var isAvailable: Bool? = false
-    var imageName: String?
+    var avatarImageUrl: String?
     var itemDetails = [String]()
     var imageURLs = [String]()
     var documentId: String?
@@ -34,9 +34,8 @@ struct ItemListData {
         if let isAvailable = data["isAvailable"] as? Bool {
             self.isAvailable = isAvailable
         }
-        if let imageName = data["avatarImageURL"] as? String {
-            let name = imageName.slice(from: "itemList-images/", to: ".jpg")
-            self.imageName = name
+        if let avatarImageUrl = data["avatarImageURL"] as? String {
+            self.avatarImageUrl = avatarImageUrl
         }
         if data["itemDetails"] != nil {
             if let itemData = data["itemDetails"] as? NSArray {

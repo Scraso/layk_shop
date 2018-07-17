@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseUI
 import SDWebImage
 
 class HistoryTableViewCell: UITableViewCell {
@@ -29,11 +28,10 @@ class HistoryTableViewCell: UITableViewCell {
         let itemData = Date(timeIntervalSince1970: data.timestamp!)
         timestampLbl.text = itemData.formattedTableViewString()
         
-        let ref = DataService.instance.REF_ITEMLIST_IMAGES.child("\(data.avatarName ?? "").jpg")
         let placeHolderImage = #imageLiteral(resourceName: "promotion_placeholder")
         avatarImageView.sd_setShowActivityIndicatorView(true)
         avatarImageView.sd_setIndicatorStyle(.gray)
-        avatarImageView.sd_setImage(with: ref, placeholderImage: placeHolderImage)
+        avatarImageView.sd_setImage(with: URL(string: data.avatarImageUrl ?? ""), placeholderImage: placeHolderImage)
     
         
         if sectionName == "В обработке" {

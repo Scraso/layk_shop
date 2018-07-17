@@ -39,11 +39,10 @@ class ItemsTableViewCell: UITableViewCell {
             availabilityLbl.textColor = UIColor.init(red: 76/255, green: 217/255, blue: 100/255, alpha: 100)
         }
         
-        let ref = DataService.instance.REF_ITEMLIST_IMAGES.child("\(data.imageName ?? "").jpg")
         let placeHolderImage = #imageLiteral(resourceName: "promotion_placeholder")
         itemImageView.sd_setShowActivityIndicatorView(true)
         itemImageView.sd_setIndicatorStyle(.gray)
-        itemImageView.sd_setImage(with: ref, placeholderImage: placeHolderImage)
+        itemImageView.sd_setImage(with: URL(string: data.avatarImageUrl ?? ""), placeholderImage: placeHolderImage)
         
         descriptionFirstLbl.text = data.itemDetails[exist: 0]
         descriptionSecondLbl.text = data.itemDetails[exist: 1]

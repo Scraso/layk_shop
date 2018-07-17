@@ -66,16 +66,13 @@ class ItemsTableViewController: UITableViewController {
                 if let itemData = sender as? ItemListData {
                     destination.itemDetails = itemData
                 }
-                // Delegate Image View
-                destination.itemImageView = itemImageView
+
             }
         }
     }
     
 
     // MARK: - TableView DataSource
-    
-    var itemImageView: UIImage?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemList.count
@@ -86,8 +83,6 @@ class ItemsTableViewController: UITableViewController {
         cell.selectionStyle = .none
         let item = itemList[indexPath.row]
         cell.configureCell(data: item)
-        // Save item imageView to delegate to Details View Controller
-        itemImageView = cell.itemImageView.image
         
         return cell
     }

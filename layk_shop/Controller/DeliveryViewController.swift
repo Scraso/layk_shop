@@ -173,7 +173,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
             
             // get image name so then fetch it using FirebaseStorageUI
             for item in orderItems {
-                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarName": item.itemName ?? "", "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
+                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.avatarImageUrl ?? "", "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
                 let documentId = DataService.instance.REF_ORDERS.document()
                 documentId.setData(orderDetails)
                 

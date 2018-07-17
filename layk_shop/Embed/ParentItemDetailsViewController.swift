@@ -10,19 +10,14 @@ import UIKit
 
 class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControllerDelegate {
  
-    weak var containerViewController: ItemDetailsViewController?
-    @IBOutlet weak var addToCartBtn: UIButton!
-    var itemDetails: ItemListData!
-    var itemImageView: UIImage?
-    var selectedBtnSize: String?
     
+    @IBOutlet weak var addToCartBtn: UIButton!
     @IBOutlet weak var popupView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    var itemDetails: ItemListData!
+    var selectedBtnSize: String?
+    
+    weak var containerViewController: ItemDetailsViewController?
     
     // MARK: - Navigation
 
@@ -32,7 +27,6 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
                 self.containerViewController = destination
                 destination.delegate = self
                 destination.itemDetails = itemDetails
-                destination.itemImageView = itemImageView
             }
         }
     }
@@ -81,16 +75,16 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
         }
         
         // Pass document ID in order to update the amount of items left.
-        let item = CartData(price: itemDetails.price, name: itemDetails.name ?? "", ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", itemImageView: itemImageView, itemName: itemDetails.imageName)
-
+        let item = CartData(price: itemDetails.price, name: itemDetails.name ?? "", ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", avatarImageUrl: itemDetails.avatarImageUrl)
+        
         // Check if there is already the same item in array
-        let isUniqueItem = cartViewController.items.contains(where: {$0.itemName == item.itemName && $0.size == item.size } )
+        let isUniqueItem = cartViewController.items.contains(where: {$0.avatarImageUrl == item.avatarImageUrl && $0.size == item.size } )
         
         // If item is already there, update count + 1 but if not then add new item in the array
         if isUniqueItem {
             cartViewController.items = cartViewController.items.map {
                 var mutableItem = $0
-                if $0.itemName == item.itemName && $0.size == item.size {
+                if $0.avatarImageUrl == item.avatarImageUrl && $0.size == item.size {
                     mutableItem.count += 1
                     
                 }

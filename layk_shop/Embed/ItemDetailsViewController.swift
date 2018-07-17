@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseUI
 import SDWebImage
 
 protocol ItemDetailsViewControllerDelegate: class {
@@ -31,7 +30,6 @@ class ItemDetailsViewController: UIViewController {
     var contentWidth: CGFloat = 0.0
     var count = -1
     var itemDetails: ItemListData!
-    var itemImageView: UIImage?
     
     weak var delegate: ItemDetailsViewControllerDelegate? = nil
     
@@ -49,11 +47,11 @@ class ItemDetailsViewController: UIViewController {
     
     func pageController() {
         for url in itemDetails.imageURLs {
-            let editedURL = url.slice(from: "pageControl-images/", to: ".jpg")
-            let ref = DataService.instance.REF_PAGECONTROL_IMAGES.child("\(editedURL ?? "").jpg")
             let placeholder = #imageLiteral(resourceName: "promotion_placeholder")
             let imageView = UIImageView()
-            imageView.sd_setImage(with: ref, placeholderImage: placeholder)
+            imageView.sd_setShowActivityIndicatorView(true)
+            imageView.sd_setIndicatorStyle(.gray)
+            imageView.sd_setImage(with: URL(string: url), placeholderImage: placeholder)
             count += 1
             contentWidth = pageScrollView.frame.midX + view.frame.size.width * CGFloat(count)
             pageScrollView.addSubview(imageView)
