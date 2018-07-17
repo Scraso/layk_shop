@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class PromotionItemDetailsViewController: UIViewController {
 
@@ -17,11 +18,12 @@ class PromotionItemDetailsViewController: UIViewController {
     @IBOutlet weak var closeVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var coverViewTop: NSLayoutConstraint!
     
-
     @IBOutlet var panToClose: InteractionPanToClose!
     @IBOutlet weak var tableView: UITableView!
     
+    var listener: ListenerRegistration!
     var historyData: HistorySectionData!
+    var historyDataDetails = [HistorySectionDataDetails]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +38,39 @@ class PromotionItemDetailsViewController: UIViewController {
         coverImageView.sd_setIndicatorStyle(.gray)
         coverImageView.sd_setImage(with: URL(string: historyData.avatarImageUrl))
         
+        fetchHistorySectionDataDetails()
+        
     }
     
     override var prefersStatusBarHidden: Bool { return true }
+    
+    
+    // MARK: API CALL
+    
+    func fetchHistorySectionDataDetails() {
+        
+        listener = DataService.instance.REF_PROMOTION_SECTION_MEDIA.whereField("documentId", isEqualTo: historyData.documentId).addSnapshotListener({ [weak self] (documentSnapshot, error) in
+            
+            guard let documents = documentSnapshot?.documents else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            
+            for document in documents {
+                if let data = HistorySectionDataDetails(dictionary: document.data()) {
+                    self?.historyDataDetails.append(data)
+                }
+                
+            }
+            
+            self?.attemptToReload()
+        })
+    }
+    
+    func attemptToReload() {
+        historyDataDetails.sort(by: {$0.timestamp < $1.timestamp})
+        tableView.reloadData()
+    }
 
 }
 
@@ -61,7 +93,7 @@ extension PromotionItemDetailsViewController: UITableViewDataSource, UITableView
         case 0:
             return 1
         case 1:
-            return 1
+            return historyDataDetails.count
         default:
             return 0
         }
@@ -74,12 +106,8 @@ extension PromotionItemDetailsViewController: UITableViewDataSource, UITableView
             return bodyCell
         }
         let mediaCell = tableView.dequeueReusableCell(withIdentifier: "Media", for: indexPath) as! PromotionItemDetailsMediaTableViewCell
-        mediaCell.titleLbl.text = historyData.title
-        mediaCell.bodyLbl.text = historyData.content
-        let placeholderImage = #imageLiteral(resourceName: "promotion_placeholder")
-        mediaCell.mediaImageView.sd_setShowActivityIndicatorView(true)
-        mediaCell.mediaImageView.sd_setIndicatorStyle(.gray)
-        mediaCell.mediaImageView.sd_setImage(with: URL(string: historyData.imageUrl), placeholderImage: placeholderImage)
+        let data = historyDataDetails[indexPath.row]
+        mediaCell.configureCell(data: data)
         return mediaCell
     }
     

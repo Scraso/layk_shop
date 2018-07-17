@@ -141,6 +141,7 @@
 				98F60D5620CA10E80074728C /* CartData.swift */,
 				9844219320DA21DE00B59E51 /* HistoryOrderData.swift */,
 				985FB76720F8449C0031DC21 /* HistoryPromotionData.swift */,
+				984058AA20B9F1AA00C7A168 /* View */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,7 +253,6 @@
 				988265C520AD1A310015C526 /* Info.plist */,
 				984058B520BC774200C7A168 /* GoogleService-Info.plist */,
 				9839BE6E20B1F513001C6297 /* Model */,
-				984058AA20B9F1AA00C7A168 /* View */,
 				984058AB20B9F1B500C7A168 /* Controller */,
 				984058AE20B9F21A00C7A168 /* CustomT TableView Cells */,
 				984621C520B1818800EB37C0 /* Embed */,

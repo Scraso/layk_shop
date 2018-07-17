@@ -46,48 +46,72 @@ class PromotionViewController: UIViewController {
         
         let ref = DataService.instance.REF_PROMOTION_SECTION
         
-        ref.whereField("isPublished", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("isPublished", isEqualTo: true).addSnapshotListener { [weak self ](documentSnapshot, error) in
+            
             guard let documents = documentSnapshot?.documents else {
                 print("Error fetching snapshots: \(error!)")
                 return
             }
             
             for document in documents {
-                let documentData = document.data()
-                let avatarImageUrl = documentData["avatarImageUrl"] as? String ?? ""
-                let bodyText = documentData["body_text"] as? String ?? ""
-                self?.fetchPromotionDataDetails(documentId: document.documentID, avatarImageUrl: avatarImageUrl, bodyText: bodyText)
+                if let data = HistorySectionData(dictionary: document.data(), documentId: document.documentID) {
+                    self?.historySectionData.append(data)
+                }
             }
+            self?.collectionView.reloadData()
+            
         }
         
     }
     
-    func fetchPromotionDataDetails(documentId: String, avatarImageUrl: String, bodyText: String) {
-        // check for document based on the document ID to make sure that fetched data belongs to the selected item
-        let ref = DataService.instance.REF_PROMOTION_SECTION.document(documentId).collection("history_details").whereField("id", isEqualTo: documentId)
-        
-        ref.addSnapshotListener { [weak self] (documentSnapshot, error) in
-            
-            guard let documents = documentSnapshot?.documents else {
-                print("Error fetching snapshots: \(error!)")
-                return
-            }
-            
-            for document in documents {
-                if let documentData = HistorySectionData(dictionary: document.data(), avatarImageUrl: avatarImageUrl, bodyText: bodyText, documentId: documentId) {
-
-                    // Check if same item is already in array
-                    if !(self?.historySectionData.contains(documentData))! {
-                        self?.historySectionData.append(documentData)
-                    }
-                    
-                }
-            }
-            
-            self?.collectionView.reloadData()
-                
-        }
-    }
+    
+    
+//    func fetchPromotionData() {
+//
+//        let ref = DataService.instance.REF_PROMOTION_SECTION
+//
+//        ref.whereField("isPublished", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
+//            guard let documents = documentSnapshot?.documents else {
+//                print("Error fetching snapshots: \(error!)")
+//                return
+//            }
+//
+//            for document in documents {
+//                let documentData = document.data()
+//                let avatarImageUrl = documentData["avatarImageUrl"] as? String ?? ""
+//                let bodyText = documentData["body_text"] as? String ?? ""
+//                self?.fetchPromotionDataDetails(documentId: document.documentID, avatarImageUrl: avatarImageUrl, bodyText: bodyText)
+//            }
+//        }
+//
+//    }
+//
+//    func fetchPromotionDataDetails(documentId: String, avatarImageUrl: String, bodyText: String) {
+//        // check for document based on the document ID to make sure that fetched data belongs to the selected item
+//        let ref = DataService.instance.REF_PROMOTION_SECTION.document(documentId).collection("history_details").whereField("id", isEqualTo: documentId)
+//
+//        ref.addSnapshotListener { [weak self] (documentSnapshot, error) in
+//
+//            guard let documents = documentSnapshot?.documents else {
+//                print("Error fetching snapshots: \(error!)")
+//                return
+//            }
+//
+//            for document in documents {
+//                if let documentData = HistorySectionData(dictionary: document.data(), avatarImageUrl: avatarImageUrl, bodyText: bodyText, documentId: documentId) {
+//
+//                    // Check if same item is already in array
+//                    if !(self?.historySectionData.contains(documentData))! {
+//                        self?.historySectionData.append(documentData)
+//                    }
+//
+//                }
+//            }
+//
+//            self?.collectionView.reloadData()
+//
+//        }
+//    }
 
     func animateCell(cellFrame: CGRect) -> CATransform3D {
         let angleFromX = Double((-cellFrame.origin.x) / 10)

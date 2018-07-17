@@ -14,5 +14,14 @@ class PromotionItemDetailsMediaTableViewCell: UITableViewCell {
     @IBOutlet weak var bodyLbl: UITextView!
     @IBOutlet weak var mediaImageView: UIImageView!
     
-
+    func configureCell(data: HistorySectionDataDetails) {
+        self.titleLbl.text = data.title
+        self.bodyLbl.text = data.content
+        let placeholderImage = #imageLiteral(resourceName: "promotion_placeholder")
+        mediaImageView.sd_setShowActivityIndicatorView(true)
+        mediaImageView.sd_setIndicatorStyle(.gray)
+        mediaImageView.sd_setImage(with: URL(string: data.imageUrl), placeholderImage: placeholderImage)
+        
+    }
+    
 }

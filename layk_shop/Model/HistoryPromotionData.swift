@@ -7,40 +7,48 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct HistorySectionData {
     
     var avatarImageUrl: String
     var bodyText: String
-    var content: String
-    var title: String
-    var imageUrl: String
     var documentId: String
     
-    var bodyDictionary: [String: Any] {
-        return [
-            "text": bodyText
-        ]
-    }
-    var mediaDictionary: [String: Any] {
-        return [
-            "content": content,
-            "title": title,
-            "imageUrl": imageUrl
-        ]
-    }
 }
 
 extension HistorySectionData {
     
-    init?(dictionary: [String: Any], avatarImageUrl: String, bodyText: String, documentId: String) {
-        let content = dictionary["content"] as? String
-        let imageUrl = dictionary["imageUrl"] as? String
-        let title = dictionary["title"] as? String
+    init?(dictionary: [String: Any], documentId: String) {
+        let avatarImageUrl = dictionary["avatarImageUrl"] as? String ?? ""
+        let bodyText = dictionary["body_text"] as? String ?? ""
         
-        self.init(avatarImageUrl: avatarImageUrl, bodyText: bodyText , content: content ?? "", title: title ?? "", imageUrl: imageUrl ?? "", documentId: documentId)
+        self.init(avatarImageUrl: avatarImageUrl, bodyText: bodyText, documentId: documentId)
     }
     
+}
+
+struct HistorySectionDataDetails {
+    
+    var title: String
+    var content: String
+    var imageUrl: String
+    var timestamp: Double
+    
+}
+
+extension HistorySectionDataDetails {
+    
+    init?(dictionary: [String: Any]) {
+        let title = dictionary["title"] as? String ?? ""
+        let content = dictionary["content"] as? String ?? ""
+        let imageUrl = dictionary["imageUrl"] as? String ?? ""
+        let timestamp = dictionary["timestamp"] as? Timestamp
+        let date = timestamp?.dateValue()
+        let timeInterval = date?.timeIntervalSince1970 ?? 0.0
+        self.init(title: title, content: content, imageUrl: imageUrl, timestamp: timeInterval)
+    }
+
 }
 
 extension HistorySectionData: Equatable {
