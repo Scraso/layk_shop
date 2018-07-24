@@ -26,6 +26,8 @@ class DataService {
     private var _REF_SHOP_CATEGORY = DB_BASE.collection("shop_category")
     private var _REF_ITEMS = DB_BASE.collection("items")
     private var _REF_ORDERS = DB_BASE.collection("orders")
+    private var _REF_FCM_TOKEN = DB_BASE.collection("fcmToken")
+    private var _REF_USER_BADGE_COUNT = DB_BASE.collection("userBadgeCount")
     
     
     // Storage reference
@@ -63,6 +65,14 @@ class DataService {
     
     var REF_ORDERS: CollectionReference {
         return _REF_ORDERS
+    }
+    
+    var REF_FCM_TOKEN: CollectionReference {
+        return _REF_FCM_TOKEN
+    }
+    
+    var REF_USER_BADGE_COUNT: CollectionReference {
+        return _REF_USER_BADGE_COUNT
     }
     
 }

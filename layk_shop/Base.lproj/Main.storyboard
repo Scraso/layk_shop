@@ -197,7 +197,7 @@
         <!--История-->
         <scene sceneID="rql-8Z-ILz">
             <objects>
-                <viewController id="1zn-Rr-0Ws" customClass="HistoryViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HistoryViewController" id="1zn-Rr-0Ws" customClass="HistoryViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YYR-52-LJj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -817,6 +817,6 @@
         <image name="twitter" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gxp-NK-Var"/>
+        <segue reference="gHj-0F-opa"/>
     </inferredMetricsTieBreakers>
 </document>

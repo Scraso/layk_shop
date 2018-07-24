@@ -96,6 +96,7 @@
 		988265C520AD1A310015C526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9888403820AF7929002CCF29 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
+		9897C5382104C690004AB826 /* layk_shop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = layk_shop.entitlements; sourceTree = "<group>"; };
 		98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
 		98A10A2120EBABF400AD8F4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + SafeIndex.swift"; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 		988265B820AD1A2E0015C526 /* layk_shop */ = {
 			isa = PBXGroup;
 			children = (
+				9897C5382104C690004AB826 /* layk_shop.entitlements */,
 				985FB75A20F2CAB90031DC21 /* PromotionViewController */,
 				988265C520AD1A310015C526 /* Info.plist */,
 				984058B520BC774200C7A168 /* GoogleService-Info.plist */,
@@ -336,6 +338,11 @@
 				TargetAttributes = {
 					988265B520AD1A2E0015C526 = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -624,6 +631,7 @@
 			baseConfigurationReference = 9A02DBF9EB5931BB5F47DECC /* Pods-layk_shop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = layk_shop/layk_shop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4UYWHYRPE;
 				INFOPLIST_FILE = layk_shop/Info.plist;
@@ -634,7 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tambarcumyan.layk-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -643,6 +651,7 @@
 			baseConfigurationReference = 3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = layk_shop/layk_shop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4UYWHYRPE;
 				INFOPLIST_FILE = layk_shop/Info.plist;
@@ -653,7 +662,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tambarcumyan.layk-shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -81,6 +81,8 @@ class HomeViewController: UIViewController {
         if loginBtn.title == "Logout" {
             let firebaseAuth = Auth.auth()
             do {
+                guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+                DataService.instance.REF_FCM_TOKEN.document(currentUserUid).delete()
                 try firebaseAuth.signOut()
                 loginBtn.title = "Login"
             } catch let signOutError as NSError {

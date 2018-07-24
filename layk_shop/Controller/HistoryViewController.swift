@@ -16,8 +16,6 @@ class HistoryViewController: UIViewController {
     @IBOutlet var emptyHistoryOrderView: UIView!
     @IBOutlet var loginNotificationView: UIView!
     
-    var listener: ListenerRegistration!
-    
     var onProcessing = [ItemData]()
     var onProcessOfSending = [ItemData]()
     var sentItem = [ItemData]()
@@ -33,6 +31,16 @@ class HistoryViewController: UIViewController {
         tableView.delegate = self
         
         authorizationStatusCheck()
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        DataService.instance.REF_USER_BADGE_COUNT.document(currentUserUid).setData(["count": 0])
         
     }
     

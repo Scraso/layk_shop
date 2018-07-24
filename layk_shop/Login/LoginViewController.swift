@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseMessaging
 
 class LoginViewController: UIViewController {
 
@@ -29,6 +31,8 @@ class LoginViewController: UIViewController {
         
     }
     
+    // MARK: - Helpers
+    
     
     // Animate view shake when client uses wrong credentials
     func shakeView() {
@@ -42,20 +46,30 @@ class LoginViewController: UIViewController {
         })
     }
     
+    // Post user token to Firestore
+    func postToken(token: [String: Any]) {
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        DataService.instance.REF_FCM_TOKEN.document(currentUserUid).setData(token)
+    }
+    
+    
     // MARK: - Actions
     
     @IBAction func loginBtnTapped(_ sender: UIButton) {
+        let token: [String: Any] = [Messaging.messaging().fcmToken ?? "": Messaging.messaging().fcmToken as Any]
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
                 Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
                     if error != nil {
                         self.shakeView()
                     } else {
+                        self.postToken(token: token)
                         print("User successfully created.")
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
             } else {
+                self.postToken(token: token)
                 self.dismiss(animated: true, completion: nil)
                 print("User logged in")
             }

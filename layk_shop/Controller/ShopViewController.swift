@@ -14,7 +14,6 @@ class ShopViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var categories = [ShopData]()
-    var listener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +38,10 @@ class ShopViewController: UIViewController {
         }
     }
     
-    deinit {
-        listener.remove()
-        print("ShopViewController has been deinitialized")
-    }
-    
     // MARK: - API CALL
     
     func fetchShopCategory() {
-        listener = DataService.instance.REF_SHOP_CATEGORY.whereField("isEnabled", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        DataService.instance.REF_SHOP_CATEGORY.whereField("isEnabled", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
             guard let snapshot = documentSnapshot else {
                 print("Error fetching snapshots: \(error!)")
                 return
