@@ -163,10 +163,8 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         do {
             let (contactDict) = try submitNewOrder(dict: contactDetails)
             
-            var details: [String: Any] = contactDict
-            details["comments"] = textViewDetails
-            
-            print(details)
+            var orderDeliveryDetails: [String: Any] = contactDict
+            orderDeliveryDetails["comments"] = textViewDetails
             
             let currentUserUid = Auth.auth().currentUser?.uid
             let timestamp = NSDate().timeIntervalSince1970
@@ -176,6 +174,10 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.avatarImageUrl ?? "", "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
                 let documentId = DataService.instance.REF_ORDERS.document()
                 documentId.setData(orderDetails)
+                
+                // Get order document ID and pass to the order details
+                orderDeliveryDetails["orderId"] = documentId.documentID
+                DataService.instance.REF_ORDER_DELIVERY_DETAILS.addDocument(data: orderDeliveryDetails)
                 
                 // Reference to the item document
                 let documentRef = DataService.instance.REF_ITEMS.document(item.documentId ?? "")

@@ -57,24 +57,29 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginBtnTapped(_ sender: UIButton) {
         let token: [String: Any] = [Messaging.messaging().fcmToken ?? "": Messaging.messaging().fcmToken as Any]
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if error != nil {
-                Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
-                    if error != nil {
-                        self.shakeView()
-                    } else {
-                        self.postToken(token: token)
-                        print("User successfully created.")
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-            } else {
-                self.postToken(token: token)
-                self.dismiss(animated: true, completion: nil)
-                print("User logged in")
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                if error != nil {
+                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                        if error != nil {
+                            self.shakeView()
+                        } else {
+                            self.postToken(token: token)
+                            // Add userBadge collection and set count to 0
+                            DataService.instance.REF_USER_BADGE_COUNT.addDocument(data: ["count": 0])
+                            // Create user collection and save email
+                            DataService.instance.REF_USERS.document(user?.user.uid ?? "").setData(["email": user?.user.email ?? ""])
+                            print("User successfully created.")
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                } else {
+                    self.postToken(token: token)
+                    self.dismiss(animated: true, completion: nil)
+                    print("User logged in")
+                }
             }
         }
-        
     }
 
     @IBAction func forgotBtnTapped(_ sender: UIButton) {
