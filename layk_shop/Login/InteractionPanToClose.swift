@@ -21,14 +21,19 @@ class InteractionPanToClose: UIPercentDrivenInteractiveTransition {
     
     
     // Put gesture on the ScrollView
-    func setGestureRecognizer () {
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handle))
-        scrollView.addGestureRecognizer(panGestureRecognizer)
-        panGestureRecognizer.delegate = self
-        
-        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(animateDialogDisappearAndDismiss))
-        scrollView.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.delegate = self
+    func setGestureRecognizer (isEnabled: Bool) {
+        if isEnabled == true {
+            panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handle))
+            scrollView.addGestureRecognizer(panGestureRecognizer)
+            panGestureRecognizer.delegate = self
+            
+            tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(animateDialogDisappearAndDismiss))
+            scrollView.addGestureRecognizer(tapGestureRecognizer)
+            tapGestureRecognizer.delegate = self
+        } else {
+            panGestureRecognizer.isEnabled = false
+            tapGestureRecognizer.isEnabled = false
+        }
     }
     
     func rotateDialogOut () {

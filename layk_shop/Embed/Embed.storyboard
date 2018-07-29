@@ -14,7 +14,6 @@
         <!--Promotion View Controller-->
         <scene sceneID="hXf-KC-blk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0yI-nN-xeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Promotion" automaticallyAdjustsScrollViewInsets="NO" id="P8O-Bk-m4y" customClass="PromotionViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TvY-Wd-LH4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="356"/>
@@ -122,8 +121,9 @@
                         <outlet property="collectionView" destination="wDd-9M-aQe" id="fLU-a8-Yuh"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0yI-nN-xeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="975"/>
+            <point key="canvasLocation" x="134" y="903"/>
         </scene>
         <!--Delivery View Controller-->
         <scene sceneID="Wuf-Pg-nuj">
