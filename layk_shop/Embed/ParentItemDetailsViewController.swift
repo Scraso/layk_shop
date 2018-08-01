@@ -15,7 +15,7 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
     @IBOutlet weak var popupView: UIView!
     
     var itemDetails: ItemListData!
-    var selectedBtnSize: String?
+    fileprivate var selectedBtnSize: String?
     
     weak var containerViewController: ItemDetailsViewController?
     
@@ -34,7 +34,7 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
     // MARK: - Helpers
     
     // Random character
-    func randomString(length: Int) -> String {
+    fileprivate func randomString(length: Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let len = UInt32(letters.length)

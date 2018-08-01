@@ -11,19 +11,17 @@ import FirebaseFirestore
 
 class PromotionItemDetailsViewController: UIViewController {
 
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var closeVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var coverViewTop: NSLayoutConstraint!
     
-    @IBOutlet var panToClose: InteractionPanToClose!
     @IBOutlet weak var tableView: UITableView!
     
-    var listener: ListenerRegistration!
+    fileprivate var listener: ListenerRegistration!
     var historyData: HistorySectionData!
-    var historyDataDetails = [HistorySectionDataDetails]()
+    fileprivate var historyDataDetails = [HistorySectionDataDetails]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +116,10 @@ extension PromotionItemDetailsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offsetY = scrollView.contentOffset.y
+        
+        if offsetY <= -30 {
+            dismiss(animated: true, completion: nil)
+        }
         
         coverViewTop.constant = offsetY < 0 ? 0 : max(-offsetY, -300)
     }

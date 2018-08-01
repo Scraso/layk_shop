@@ -113,7 +113,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9o-se-PBv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="500" image="promotion_item" translatesAutoresizingMaskIntoConstraints="NO" id="BH4-aJ-6C2">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="BH4-aJ-6C2">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             </imageView>
                                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-qA-Pb8">
@@ -187,19 +187,14 @@
                         <outlet property="coverImageView" destination="BH4-aJ-6C2" id="pay-h3-bra"/>
                         <outlet property="coverView" destination="t9o-se-PBv" id="A6f-5S-OOI"/>
                         <outlet property="coverViewTop" destination="pES-QC-ThO" id="Tkd-qP-hb9"/>
-                        <outlet property="panToClose" destination="ZS9-64-72k" id="F3K-Mo-xOk"/>
                         <outlet property="scrollView" destination="t7a-I8-S3J" id="hyK-AK-0Rf"/>
                         <outlet property="tableView" destination="DYq-pk-srB" id="LMc-nh-Q3D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJR-Bg-Tji" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fwZ-0w-X74" userLabel="Exit" sceneMemberID="exit"/>
-                <customObject id="ZS9-64-72k" customClass="InteractionPanToClose" customModule="layk_shop" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="942" y="193"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="promotion_item" width="5184" height="3456"/>
-    </resources>
 </document>

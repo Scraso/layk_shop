@@ -23,6 +23,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetEmailTextField: UITextField!
     @IBOutlet weak var resetPasswordTextView: UITextView!
     
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var resetPasswordActivityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +44,7 @@ class LoginViewController: UIViewController {
     
     
     // Animate view shake when client uses wrong details
-    func shakeLoginView() {
+    fileprivate func shakeLoginView() {
         UIView.animate(withDuration: 0.4, animations: {
             self.loginView.transform = CGAffineTransform(translationX: 50, y: 0)
         }, completion: { _ in
@@ -53,7 +56,7 @@ class LoginViewController: UIViewController {
     }
     
     // Animate view shake when client uses wrong credentials
-    func shakeResetPasswordView() {
+    fileprivate func shakeResetPasswordView() {
         UIView.animate(withDuration: 0.4, animations: {
             self.resetPasswordView.transform = CGAffineTransform(translationX: 50, y: 0)
         }, completion: { _ in
@@ -65,7 +68,7 @@ class LoginViewController: UIViewController {
     }
     
     // Post user token to Firestore
-    func postToken(token: [String: Any]) {
+    fileprivate func postToken(token: [String: Any]) {
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         DataService.instance.REF_FCM_TOKEN.document(currentUserUid).setData(token)
     }
@@ -76,10 +79,14 @@ class LoginViewController: UIViewController {
     @IBAction func loginBtnTapped(_ sender: UIButton) {
         let token: [String: Any] = [Messaging.messaging().fcmToken ?? "": Messaging.messaging().fcmToken as Any]
         if let email = emailTextField.text, let password = passwordTextField.text {
+            
+            loginActivityIndicator.startAnimating()
+            
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                 if error != nil {
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                         if error != nil {
+                            self.loginActivityIndicator.stopAnimating()
                             self.shakeLoginView()
                         } else {
                             self.postToken(token: token)
@@ -87,12 +94,14 @@ class LoginViewController: UIViewController {
                             DataService.instance.REF_USER_BADGE_COUNT.addDocument(data: ["count": 0])
                             // Create user collection and save email
                             DataService.instance.REF_USERS.document(user?.user.uid ?? "").setData(["email": user?.user.email ?? ""])
+                            self.loginActivityIndicator.stopAnimating()
                             print("User successfully created.")
                             self.dismiss(animated: true, completion: nil)
                         }
                     })
                 } else {
                     self.postToken(token: token)
+                    self.loginActivityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                     print("User logged in")
                 }
@@ -100,7 +109,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+    fileprivate let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
 
     @IBAction func forgotBtnTapped(_ sender: UIButton) {
         UIView.transition(with: loginView, duration: 0.6, options: transitionOptions, animations: {
@@ -129,13 +138,18 @@ class LoginViewController: UIViewController {
         // Change language when user follow the reset passowrd link
         Auth.auth().languageCode = "ru"
         if let email = resetEmailTextField.text {
+            
+            resetPasswordActivityIndicator.startAnimating()
+            
             Auth.auth().sendPasswordReset(withEmail: email) { (error) in
                 if let error = error {
                     print("Reset password failed: \(error)")
+                    self.resetPasswordActivityIndicator.stopAnimating()
                     self.handleError(error)
                     return
                 } else {
                     Auth.auth().useAppLanguage()
+                    self.resetPasswordActivityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -145,7 +159,7 @@ class LoginViewController: UIViewController {
 }
 
 extension AuthErrorCode {
-    var errorMessage: String {
+    fileprivate var errorMessage: String {
         switch self {
         case .userNotFound:
             return "Электронный адрес не найден"
@@ -160,7 +174,7 @@ extension AuthErrorCode {
 }
 
 extension LoginViewController {
-    func handleError(_ error: Error) {
+    fileprivate func handleError(_ error: Error) {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             resetPasswordTextView.text = errorCode.errorMessage
             resetPasswordTextView.textColor = UIColor.init(red: 255/255, green: 59/255, blue: 48/255, alpha: 100)

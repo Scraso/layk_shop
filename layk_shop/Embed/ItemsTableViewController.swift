@@ -14,8 +14,8 @@ class ItemsTableViewController: UITableViewController {
     
     var categoryTitle: String?
     
-    var itemList = [ItemListData]()
-    var listener: ListenerRegistration!
+    fileprivate var itemList = [ItemListData]()
+    fileprivate var listener: ListenerRegistration!
 
     override func viewDidLoad() {
         super.viewDidLoad()

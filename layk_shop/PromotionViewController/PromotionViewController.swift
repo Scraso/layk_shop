@@ -21,9 +21,9 @@ class PromotionViewController: UIViewController {
     
     weak var delegate: PromotionCollectionDelegate?
     
-    var listener: ListenerRegistration!
+    fileprivate var listener: ListenerRegistration!
     
-    var historySectionData = [HistorySectionData]()
+    fileprivate var historySectionData = [HistorySectionData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class PromotionViewController: UIViewController {
     
     // MARK: - API CALL
     
-    func fetchPromotionData() {
+    fileprivate func fetchPromotionData() {
         
         let ref = DataService.instance.REF_PROMOTION_SECTION
         
@@ -63,57 +63,8 @@ class PromotionViewController: UIViewController {
         }
         
     }
-    
-    
-    
-//    func fetchPromotionData() {
-//
-//        let ref = DataService.instance.REF_PROMOTION_SECTION
-//
-//        ref.whereField("isPublished", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
-//            guard let documents = documentSnapshot?.documents else {
-//                print("Error fetching snapshots: \(error!)")
-//                return
-//            }
-//
-//            for document in documents {
-//                let documentData = document.data()
-//                let avatarImageUrl = documentData["avatarImageUrl"] as? String ?? ""
-//                let bodyText = documentData["body_text"] as? String ?? ""
-//                self?.fetchPromotionDataDetails(documentId: document.documentID, avatarImageUrl: avatarImageUrl, bodyText: bodyText)
-//            }
-//        }
-//
-//    }
-//
-//    func fetchPromotionDataDetails(documentId: String, avatarImageUrl: String, bodyText: String) {
-//        // check for document based on the document ID to make sure that fetched data belongs to the selected item
-//        let ref = DataService.instance.REF_PROMOTION_SECTION.document(documentId).collection("history_details").whereField("id", isEqualTo: documentId)
-//
-//        ref.addSnapshotListener { [weak self] (documentSnapshot, error) in
-//
-//            guard let documents = documentSnapshot?.documents else {
-//                print("Error fetching snapshots: \(error!)")
-//                return
-//            }
-//
-//            for document in documents {
-//                if let documentData = HistorySectionData(dictionary: document.data(), avatarImageUrl: avatarImageUrl, bodyText: bodyText, documentId: documentId) {
-//
-//                    // Check if same item is already in array
-//                    if !(self?.historySectionData.contains(documentData))! {
-//                        self?.historySectionData.append(documentData)
-//                    }
-//
-//                }
-//            }
-//
-//            self?.collectionView.reloadData()
-//
-//        }
-//    }
 
-    func animateCell(cellFrame: CGRect) -> CATransform3D {
+    fileprivate func animateCell(cellFrame: CGRect) -> CATransform3D {
         let angleFromX = Double((-cellFrame.origin.x) / 10)
         let angle = CGFloat((angleFromX * Double.pi) / 180.0)
         var transform = CATransform3DIdentity

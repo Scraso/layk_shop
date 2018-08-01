@@ -23,9 +23,11 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     var orderItems = [CartData]()
     
+    // Declared to pass contact details when force and back from Contact View Controller
     var textViewDetails: String?
-    var placeholderLbl: UILabel!
-    var sizeCount: Int?
+    
+    fileprivate var placeholderLbl: UILabel!
+    fileprivate var sizeCount: Int?
     
     var contactDetails = [String: Any]()
     
@@ -61,7 +63,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     // MARK: - TextView Delegate
     
-    func addTextViewPlaceholder(textView: UITextView) {
+    fileprivate func addTextViewPlaceholder(textView: UITextView) {
         placeholderLbl = UILabel()
         placeholderLbl.text = "Комментарий к заказу"
         placeholderLbl.font = UIFont.italicSystemFont(ofSize: 17)
@@ -90,7 +92,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     // MARK: - Error handler
     
-    func submitNewOrder(dict: [String: Any]) throws -> [String: Any] {
+    fileprivate func submitNewOrder(dict: [String: Any]) throws -> [String: Any] {
         
         guard dict.keys.contains("name") == true else {
             throw NewOrderErrors.invalidName
@@ -110,7 +112,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     // MARK: - Alerts
     
-    func alert(title: String, errMsg: String) {
+    fileprivate func alert(title: String, errMsg: String) {
         let alert = UIAlertController(title: title, message: errMsg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)

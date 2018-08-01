@@ -49,7 +49,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="60"/>
                                                                 <subviews>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Инструкция с восстановлением пароля будет отправлена на почту" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="57T-T9-scW">
-                                                                        <rect key="frame" x="15" y="0.0" width="301" height="60"/>
+                                                                        <rect key="frame" x="20" y="0.0" width="304" height="60"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -58,8 +58,8 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="57T-T9-scW" firstAttribute="leading" secondItem="9r3-j7-XdM" secondAttribute="leading" constant="15" id="5g3-rn-KBs"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="57T-T9-scW" secondAttribute="trailing" constant="18" id="7uo-TV-8YK"/>
+                                                                    <constraint firstItem="57T-T9-scW" firstAttribute="leading" secondItem="9r3-j7-XdM" secondAttribute="leading" constant="20" id="5g3-rn-KBs"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="57T-T9-scW" secondAttribute="trailing" constant="10" id="7uo-TV-8YK"/>
                                                                     <constraint firstAttribute="height" constant="60" id="JmX-Rl-tfj"/>
                                                                     <constraint firstItem="57T-T9-scW" firstAttribute="top" secondItem="9r3-j7-XdM" secondAttribute="top" id="j0Z-Kl-Tzx"/>
                                                                     <constraint firstAttribute="bottom" secondItem="57T-T9-scW" secondAttribute="bottom" id="lKq-ig-ByU"/>
@@ -129,6 +129,10 @@
                                                             <action selector="sendPasswordBtnTapped:" destination="rqv-M2-xiG" eventType="touchUpInside" id="PbX-ac-JMm"/>
                                                         </connections>
                                                     </button>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mCF-jG-vve">
+                                                        <rect key="frame" x="157" y="160" width="20" height="20"/>
+                                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -138,9 +142,11 @@
                                                     <constraint firstItem="iLA-fF-rLX" firstAttribute="leading" secondItem="juD-Uf-4O1" secondAttribute="leading" id="F37-F6-YaI"/>
                                                     <constraint firstItem="DA5-mU-zHK" firstAttribute="leading" secondItem="M7h-Ka-z9O" secondAttribute="leading" id="HTA-11-EqR"/>
                                                     <constraint firstItem="vm4-BD-7b8" firstAttribute="leading" secondItem="M7h-Ka-z9O" secondAttribute="leading" constant="20" id="L3f-HO-hUt"/>
+                                                    <constraint firstItem="mCF-jG-vve" firstAttribute="centerX" secondItem="M7h-Ka-z9O" secondAttribute="centerX" id="MPG-oK-ABw"/>
                                                     <constraint firstItem="DA5-mU-zHK" firstAttribute="top" secondItem="OIn-8R-gzq" secondAttribute="bottom" constant="30" id="fbX-X5-Pff"/>
                                                     <constraint firstAttribute="bottom" secondItem="vm4-BD-7b8" secondAttribute="bottom" constant="20" id="lyJ-c7-CXh"/>
                                                     <constraint firstAttribute="trailing" secondItem="vm4-BD-7b8" secondAttribute="trailing" constant="20" id="pat-rf-siU"/>
+                                                    <constraint firstItem="mCF-jG-vve" firstAttribute="centerY" secondItem="M7h-Ka-z9O" secondAttribute="centerY" id="sxs-Kg-BY7"/>
                                                     <constraint firstItem="OIn-8R-gzq" firstAttribute="top" secondItem="M7h-Ka-z9O" secondAttribute="top" constant="30" id="xjb-Ou-ScX"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -278,6 +284,10 @@
                                                             <action selector="loginBtnTapped:" destination="rqv-M2-xiG" eventType="touchUpInside" id="0nz-wP-Z4e"/>
                                                         </connections>
                                                     </button>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bhQ-AU-dGB">
+                                                        <rect key="frame" x="157" y="160" width="20" height="20"/>
+                                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -288,9 +298,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="T0W-tR-dzf" secondAttribute="trailing" constant="20" id="DaW-aD-aXq"/>
                                                     <constraint firstItem="Lxc-Tv-fxw" firstAttribute="top" secondItem="E5A-4U-r4p" secondAttribute="bottom" constant="30" id="Pal-wV-eIn"/>
                                                     <constraint firstAttribute="trailing" secondItem="Lxc-Tv-fxw" secondAttribute="trailing" id="R0a-VV-45s"/>
+                                                    <constraint firstItem="bhQ-AU-dGB" firstAttribute="centerX" secondItem="0eK-q1-E6l" secondAttribute="centerX" id="b3H-rw-kys"/>
                                                     <constraint firstItem="E5A-4U-r4p" firstAttribute="centerX" secondItem="0eK-q1-E6l" secondAttribute="centerX" id="dCf-HO-3fB"/>
                                                     <constraint firstItem="9Gg-mD-toe" firstAttribute="top" secondItem="Lxc-Tv-fxw" secondAttribute="bottom" constant="8" id="l9r-cM-wVv"/>
                                                     <constraint firstItem="Lxc-Tv-fxw" firstAttribute="leading" secondItem="0eK-q1-E6l" secondAttribute="leading" id="rfe-q8-325"/>
+                                                    <constraint firstItem="bhQ-AU-dGB" firstAttribute="centerY" secondItem="0eK-q1-E6l" secondAttribute="centerY" id="uDc-lY-C2U"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
@@ -351,10 +363,12 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="42l-9u-zIH" id="sWa-Yh-RTD"/>
+                        <outlet property="loginActivityIndicator" destination="bhQ-AU-dGB" id="K91-7G-NBB"/>
                         <outlet property="loginView" destination="Xjz-Y1-UE1" id="BO2-cr-Kl1"/>
                         <outlet property="loginViewPanToClose" destination="gJn-AU-CwP" id="VQo-H6-dlW"/>
                         <outlet property="passwordTextField" destination="P5U-G3-40Z" id="8hi-2R-H70"/>
                         <outlet property="resetEmailTextField" destination="juD-Uf-4O1" id="1a7-oK-N2a"/>
+                        <outlet property="resetPasswordActivityIndicator" destination="mCF-jG-vve" id="Mcw-FW-wUZ"/>
                         <outlet property="resetPasswordTextView" destination="57T-T9-scW" id="SJh-sJ-MdG"/>
                         <outlet property="resetPasswordView" destination="fVE-DZ-jIL" id="IR8-gP-FGm"/>
                         <outlet property="resetPasswordViewPanToClose" destination="icw-nJ-uKz" id="3PM-zH-LJn"/>

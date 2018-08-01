@@ -27,8 +27,8 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var detailLables: [UILabel]!
     
-    var contentWidth: CGFloat = 0.0
-    var count = -1
+    fileprivate var contentWidth: CGFloat = 0.0
+    fileprivate var count = -1
     var itemDetails: ItemListData!
     
     weak var delegate: ItemDetailsViewControllerDelegate? = nil
@@ -45,7 +45,7 @@ class ItemDetailsViewController: UIViewController {
     
     // MARK: UI Setup
     
-    func pageController() {
+    fileprivate func pageController() {
         for url in itemDetails.imageURLs {
             let placeholder = #imageLiteral(resourceName: "promotion_placeholder")
             let imageView = UIImageView()
@@ -62,7 +62,7 @@ class ItemDetailsViewController: UIViewController {
         pageScrollView.contentSize = CGSize(width: contentWidth + pageScrollView.frame.midX, height: pageScrollView.frame.size.height)
     }
     
-    func setupUserInterface() {
+    fileprivate func setupUserInterface() {
         //Set UI
         nameLbl.text = itemDetails.name
         priceLbl.text = "\(itemDetails.price ?? 0) грн"
@@ -105,7 +105,7 @@ class ItemDetailsViewController: UIViewController {
     
     // MARK: - Helper
     
-    func buttonStatus(button: UIButton, isEnabled: Bool) {
+    fileprivate func buttonStatus(button: UIButton, isEnabled: Bool) {
         button.isEnabled = isEnabled
         let enableColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
         let disableColor = UIColor.init(red: 232/255, green: 232/255, blue: 232/255, alpha: 100)

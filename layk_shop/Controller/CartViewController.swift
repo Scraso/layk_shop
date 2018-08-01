@@ -17,8 +17,9 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
     
     @IBOutlet var noItemsView: UIView!
     var items = [CartData]()
-    var textFieldDetails: [String: Any]?
-    var textViewDetails: String?
+    
+    fileprivate var textFieldDetails: [String: Any]?
+    fileprivate var textViewDetails: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
     
     @IBAction func unwindFromProcessing(segue: UIStoryboardSegue) {
         self.items.removeAll()
+        
         tableView.reloadData()
         
         if let tabItems = self.tabBarController?.tabBar.items as NSArray?

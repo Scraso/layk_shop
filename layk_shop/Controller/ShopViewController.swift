@@ -13,7 +13,7 @@ class ShopViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-    var categories = [ShopData]()
+    private var categories = [ShopData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class ShopViewController: UIViewController {
     
     // MARK: - API CALL
     
-    func fetchShopCategory() {
+    fileprivate func fetchShopCategory() {
         DataService.instance.REF_SHOP_CATEGORY.whereField("isEnabled", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
             guard let snapshot = documentSnapshot else {
                 print("Error fetching snapshots: \(error!)")

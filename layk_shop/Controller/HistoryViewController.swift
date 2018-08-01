@@ -16,10 +16,10 @@ class HistoryViewController: UIViewController {
     @IBOutlet var emptyHistoryOrderView: UIView!
     @IBOutlet var loginNotificationView: UIView!
     
-    var onProcessing = [ItemData]()
-    var onProcessOfSending = [ItemData]()
-    var sentItem = [ItemData]()
-    var completed = [ItemData]()
+    fileprivate var onProcessing = [ItemData]()
+    fileprivate var onProcessOfSending = [ItemData]()
+    fileprivate var sentItem = [ItemData]()
+    fileprivate var completed = [ItemData]()
 
     var historyOrderArray = [HistoryOrderData]()
     
