@@ -12,7 +12,7 @@ import WebKit
 class WebViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
-    fileprivate var urlString: String!
+    var urlString: String!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
