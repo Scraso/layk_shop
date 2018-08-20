@@ -144,7 +144,6 @@
 				98F60D5620CA10E80074728C /* CartData.swift */,
 				9844219320DA21DE00B59E51 /* HistoryOrderData.swift */,
 				985FB76720F8449C0031DC21 /* HistoryPromotionData.swift */,
-				984058AA20B9F1AA00C7A168 /* View */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +257,7 @@
 				988265C520AD1A310015C526 /* Info.plist */,
 				984058B520BC774200C7A168 /* GoogleService-Info.plist */,
 				9839BE6E20B1F513001C6297 /* Model */,
+				984058AA20B9F1AA00C7A168 /* View */,
 				984058AB20B9F1B500C7A168 /* Controller */,
 				984058AE20B9F21A00C7A168 /* CustomT TableView Cells */,
 				984621C520B1818800EB37C0 /* Embed */,
@@ -319,6 +319,7 @@
 				988265B320AD1A2E0015C526 /* Frameworks */,
 				988265B420AD1A2E0015C526 /* Resources */,
 				2DEF4DCA31C112FC17F07852 /* [CP] Embed Pods Frameworks */,
+				983C584D212A88A1000A35D9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -425,6 +426,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		983C584D212A88A1000A35D9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 		E7F221A691A335CE1BF2921A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -550,7 +564,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

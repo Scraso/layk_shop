@@ -43,6 +43,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         } else {
             // Fallback on earlier versions
         }
+        
     }
     
     override func viewWillDisappear(_ animated : Bool) {
@@ -156,6 +157,8 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         }
         return true
     }
+    
+    
     
     
     // MARK: - Actions
