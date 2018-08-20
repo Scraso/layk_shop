@@ -69,86 +69,133 @@ class ItemDetailsViewController: UIViewController {
         pageScrollView.contentSize = CGSize(width: contentWidth + pageScrollView.frame.midX, height: pageScrollView.frame.size.height)
     }
     
+    
+    fileprivate var startingImageView: UIImageView?
     fileprivate var startingFrame: CGRect?
     fileprivate var backgroundView: UIView?
-    fileprivate var startingImageView: UIImageView?
     fileprivate var zoomingImageView: UIImageView?
-    
+    fileprivate var zoomScrollView: UIScrollView!
+
+    let zScrollView: ImageScrollView = ImageScrollView()
+
     @objc fileprivate func handleZoomIn(sender: UIGestureRecognizer) {
+
         startingImageView = sender.view as? UIImageView
         startingImageView?.isHidden = true
         startingFrame = startingImageView?.superview?.convert(startingImageView!.frame, to: nil)
-        
-        zoomingImageView = UIImageView(frame: startingFrame!)
-        zoomingImageView?.image = startingImageView?.image
-        zoomingImageView?.isUserInteractionEnabled = true
-        
-        // Add tap gesture to Zoom Out
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleZoomOut(sender:)))
-        tapRecognizer.numberOfTapsRequired = 1
-        zoomingImageView?.addGestureRecognizer(tapRecognizer)
-        
-        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchZoom(sender:)))
-        zoomingImageView?.addGestureRecognizer(pinchRecognizer)
 
-    
         if let keyWindow = UIApplication.shared.keyWindow {
-            keyWindow.addSubview(zoomingImageView!)
-            // Change background color
             backgroundView = UIView(frame: keyWindow.frame)
             backgroundView?.backgroundColor = UIColor.init(red: 31/255, green: 41/255, blue: 50/255, alpha: 100)
             backgroundView?.alpha = 0
             keyWindow.addSubview(backgroundView!)
-            keyWindow.addSubview(zoomingImageView!)
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                
-                self.backgroundView?.alpha = 1
-                
-                let height = self.startingFrame!.height / self.startingFrame!.width * keyWindow.frame.width
-                
-                self.zoomingImageView?.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
-                self.zoomingImageView?.center = keyWindow.center
-                
-            }, completion: nil)
 
-        }
-        
-    }
-    
-    // Zoom out
-    @objc fileprivate func handleZoomOut(sender: UIGestureRecognizer) {
-        if let zoomOutImageView = sender.view {
-            
+            zScrollView.frame = CGRect(x: keyWindow.frame.origin.x, y: keyWindow.frame.origin.y, width: keyWindow.frame.width, height: keyWindow.frame.height)
+            zScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            zScrollView.backgroundColor = UIColor.clear
+            backgroundView?.addSubview(zScrollView)
+
+            // Add Swipe gesture to close the ImageView
+            let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleZoomOut(sender:)))
+            swipeDownGesture.direction = .down
+            zScrollView.addGestureRecognizer(swipeDownGesture)
+
+
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                zoomOutImageView.frame = self.startingFrame!
+
+                self.backgroundView?.alpha = 1
+
+                self.zScrollView.displayImage((self.startingImageView?.image)!)
+
+            }, completion: nil)
+        }
+    }
+
+    @objc fileprivate func handleZoomOut(sender: UIGestureRecognizer) {
+
+        if let dScrollView = sender.view as? UIScrollView {
+
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.backgroundView?.alpha = 0
+                dScrollView.subviews[0].frame = self.startingFrame!
             }) { (comleted: Bool) in
                 // remove from SuperView
-                zoomOutImageView.removeFromSuperview()
+                dScrollView.removeFromSuperview()
                 self.startingImageView?.isHidden = false
             }
+
         }
     }
     
-    // Pinch Zoom
-    @objc fileprivate func pinchZoom(sender: UIPinchGestureRecognizer) {
-        if let imageView = sender.view {
-            imageView.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
-            sender.scale = 1.0
-            
-            switch sender.state {
-            case .ended:
-                if imageView.frame.maxX > (zoomingImageView?.frame.maxX)! {
-                    imageView.frame = (zoomingImageView?.frame)!
-                }
-            default:
-                break
-            }
-
-        }
-
-    }
+//    fileprivate var startingFrame: CGRect?
+//    fileprivate var backgroundView: UIView?
+//    fileprivate var startingImageView: UIImageView?
+//    fileprivate var zoomingImageView: UIImageView?
+//
+//    @objc fileprivate func handleZoomIn(sender: UIGestureRecognizer) {
+//        startingImageView = sender.view as? UIImageView
+//        startingImageView?.isHidden = true
+//        startingFrame = startingImageView?.superview?.convert(startingImageView!.frame, to: nil)
+//
+//        zoomingImageView = UIImageView(frame: startingFrame!)
+//        zoomingImageView?.image = startingImageView?.image
+//        zoomingImageView?.isUserInteractionEnabled = true
+//
+//        // Add tap gesture to Zoom Out
+//        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleZoomOut(sender:)))
+//        tapRecognizer.numberOfTapsRequired = 1
+//        zoomingImageView?.addGestureRecognizer(tapRecognizer)
+//
+//        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchZoom(sender:)))
+//        zoomingImageView?.addGestureRecognizer(pinchRecognizer)
+//
+//
+//        if let keyWindow = UIApplication.shared.keyWindow {
+//            keyWindow.addSubview(zoomingImageView!)
+//            // Change background color
+//            backgroundView = UIView(frame: keyWindow.frame)
+//            backgroundView?.backgroundColor = UIColor.init(red: 31/255, green: 41/255, blue: 50/255, alpha: 100)
+//            backgroundView?.alpha = 0
+//            keyWindow.addSubview(backgroundView!)
+//            keyWindow.addSubview(zoomingImageView!)
+//
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//
+//                self.backgroundView?.alpha = 1
+//
+//                let height = self.startingFrame!.height / self.startingFrame!.width * keyWindow.frame.width
+//
+//                self.zoomingImageView?.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
+//                self.zoomingImageView?.center = keyWindow.center
+//
+//            }, completion: nil)
+//
+//        }
+//
+//    }
+//
+//    // Zoom out
+//    @objc fileprivate func handleZoomOut(sender: UIGestureRecognizer) {
+//        if let zoomOutImageView = sender.view {
+//
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//                zoomOutImageView.frame = self.startingFrame!
+//                self.backgroundView?.alpha = 0
+//            }) { (comleted: Bool) in
+//                // remove from SuperView
+//                zoomOutImageView.removeFromSuperview()
+//                self.startingImageView?.isHidden = false
+//            }
+//        }
+//    }
+//
+//    // Pinch Zoom
+//    @objc fileprivate func pinchZoom(sender: UIPinchGestureRecognizer) {
+//        if let imageView = sender.view as? UIImageView {
+//            imageView.transform = CGAffineTransform(scaleX: sender.scale, y: sender.scale)
+//        }
+//
+//    }
     
     fileprivate func setupUserInterface() {
         //Set UI
@@ -230,4 +277,5 @@ extension ItemDetailsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(view.frame.width))
     }
+    
 }
