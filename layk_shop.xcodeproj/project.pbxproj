@@ -29,7 +29,6 @@
 		984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984621C820B187AB00EB37C0 /* TestimonitalViewController.swift */; };
 		984621CF20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984621CE20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift */; };
 		984C880A210F78D8000DA241 /* TestimonialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C8809210F78D8000DA241 /* TestimonialData.swift */; };
-		984C880C21176653000DA241 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C880B21176653000DA241 /* ImageScrollView.swift */; };
 		985FB75920F2CA300031DC21 /* PresentSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FB75820F2CA300031DC21 /* PresentSectionViewController.swift */; };
 		985FB75E20F2E1B90031DC21 /* PromotionItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FB75D20F2E1B90031DC21 /* PromotionItemDetailsViewController.swift */; };
 		985FB76020F2E1D30031DC21 /* PromotionItemStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985FB75F20F2E1D30031DC21 /* PromotionItemStoryboard.storyboard */; };
@@ -82,7 +81,6 @@
 		984621C820B187AB00EB37C0 /* TestimonitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonitalViewController.swift; sourceTree = "<group>"; };
 		984621CE20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCollectionViewCell.swift; sourceTree = "<group>"; };
 		984C8809210F78D8000DA241 /* TestimonialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialData.swift; sourceTree = "<group>"; };
-		984C880B21176653000DA241 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		985FB75820F2CA300031DC21 /* PresentSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentSectionViewController.swift; sourceTree = "<group>"; };
 		985FB75D20F2E1B90031DC21 /* PromotionItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionItemDetailsViewController.swift; sourceTree = "<group>"; };
 		985FB75F20F2E1D30031DC21 /* PromotionItemStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromotionItemStoryboard.storyboard; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 				9844219920E1DAE300B59E51 /* ParentItemDetailsViewController.swift */,
 				9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */,
 				98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */,
-				984C880B21176653000DA241 /* ImageScrollView.swift */,
 			);
 			path = Embed;
 			sourceTree = "<group>";
@@ -398,6 +395,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -413,6 +411,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -502,7 +501,6 @@
 				984621C920B187AB00EB37C0 /* TestimonitalViewController.swift in Sources */,
 				98E05E9520D2C5A7009AED1A /* UITableView+indexPathForView.swift in Sources */,
 				985FB75E20F2E1B90031DC21 /* PromotionItemDetailsViewController.swift in Sources */,
-				984C880C21176653000DA241 /* ImageScrollView.swift in Sources */,
 				985FB76420F453D60031DC21 /* PromotionItemDetailsBodyTableViewCell.swift in Sources */,
 				9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */,
 			);
