@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9834F4E7212FD6050071928C /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4E6212FD6050071928C /* InformationViewController.swift */; };
+		9834F4EB212FF0B10071928C /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9834F4EA212FF0B10071928C /* Information.storyboard */; };
+		9834F4F721308E750071928C /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4F621308E750071928C /* AboutTableViewController.swift */; };
+		9834F4F921308E820071928C /* ShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4F821308E820071928C /* ShippingTableViewController.swift */; };
+		9834F4FB21308E900071928C /* RefundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4FA21308E900071928C /* RefundTableViewController.swift */; };
+		9834F4FD21308EA40071928C /* PartnershipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4FC21308EA40071928C /* PartnershipTableViewController.swift */; };
 		9839BE7620B1F6AC001C6297 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7520B1F6AC001C6297 /* ItemsTableViewController.swift */; };
 		9839BE7820B1F8BE001C6297 /* ItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7720B1F8BE001C6297 /* ItemsTableViewCell.swift */; };
 		9839BE7B20B31375001C6297 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9839BE7A20B31375001C6297 /* Login.storyboard */; };
@@ -59,6 +65,12 @@
 
 /* Begin PBXFileReference section */
 		3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.release.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.release.xcconfig"; sourceTree = "<group>"; };
+		9834F4E6212FD6050071928C /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		9834F4EA212FF0B10071928C /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
+		9834F4F621308E750071928C /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		9834F4F821308E820071928C /* ShippingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingTableViewController.swift; sourceTree = "<group>"; };
+		9834F4FA21308E900071928C /* RefundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundTableViewController.swift; sourceTree = "<group>"; };
+		9834F4FC21308EA40071928C /* PartnershipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnershipTableViewController.swift; sourceTree = "<group>"; };
 		9839BE7520B1F6AC001C6297 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		9839BE7720B1F8BE001C6297 /* ItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewCell.swift; sourceTree = "<group>"; };
 		9839BE7A20B31375001C6297 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -133,6 +145,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9834F4E9212FF0880071928C /* InformationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9834F4EA212FF0B10071928C /* Information.storyboard */,
+				9834F4F621308E750071928C /* AboutTableViewController.swift */,
+				9834F4F821308E820071928C /* ShippingTableViewController.swift */,
+				9834F4FA21308E900071928C /* RefundTableViewController.swift */,
+				9834F4FC21308EA40071928C /* PartnershipTableViewController.swift */,
+			);
+			path = InformationViewController;
+			sourceTree = "<group>";
+		};
 		9839BE6E20B1F513001C6297 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +209,7 @@
 				984058A620B8772500C7A168 /* CartViewController.swift */,
 				984058A820B89A7F00C7A168 /* DeliveryViewController.swift */,
 				98E05E9A20D8336F009AED1A /* HistoryViewController.swift */,
+				9834F4E6212FD6050071928C /* InformationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -249,6 +274,7 @@
 		988265B820AD1A2E0015C526 /* layk_shop */ = {
 			isa = PBXGroup;
 			children = (
+				9834F4E9212FF0880071928C /* InformationViewController */,
 				9897C5382104C690004AB826 /* layk_shop.entitlements */,
 				985FB75A20F2CAB90031DC21 /* PromotionViewController */,
 				988265C520AD1A310015C526 /* Info.plist */,
@@ -370,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9834F4EB212FF0B10071928C /* Information.storyboard in Resources */,
 				985FB76020F2E1D30031DC21 /* PromotionItemStoryboard.storyboard in Resources */,
 				984621C720B181A900EB37C0 /* Embed.storyboard in Resources */,
 				988265C420AD1A310015C526 /* LaunchScreen.storyboard in Resources */,
@@ -470,6 +497,7 @@
 				9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */,
 				9839BE8520B5C3DC001C6297 /* UIButton+Designable.swift in Sources */,
 				984058B420BBE41800C7A168 /* InteractionPanToClose.swift in Sources */,
+				9834F4FD21308EA40071928C /* PartnershipTableViewController.swift in Sources */,
 				98E05E9720D6A9DB009AED1A /* ErrorHandler.swift in Sources */,
 				98F0FBF020BE792500F9A1F8 /* DataService.swift in Sources */,
 				98E05E9D20D8C830009AED1A /* HistoryTableViewCell.swift in Sources */,
@@ -479,6 +507,7 @@
 				984058A520B6C24000C7A168 /* OneLinePixel.swift in Sources */,
 				984058B220BAAB0400C7A168 /* CartTableViewCell.swift in Sources */,
 				9888403920AF7929002CCF29 /* PromotionViewController.swift in Sources */,
+				9834F4FB21308E900071928C /* RefundTableViewController.swift in Sources */,
 				984621CF20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift in Sources */,
 				98609E5E20B1DF9200643203 /* ShopViewController.swift in Sources */,
 				984058A920B89A7F00C7A168 /* DeliveryViewController.swift in Sources */,
@@ -489,12 +518,14 @@
 				985FB76620F453EB0031DC21 /* PromotionItemDetailsMediaTableViewCell.swift in Sources */,
 				9844219420DA21DE00B59E51 /* HistoryOrderData.swift in Sources */,
 				98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */,
+				9834F4F721308E750071928C /* AboutTableViewController.swift in Sources */,
 				98E05E9B20D8336F009AED1A /* HistoryViewController.swift in Sources */,
 				9844219620DED73500B59E51 /* FormattedTimestamp.swift in Sources */,
 				9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */,
 				98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */,
 				984058A720B8772500C7A168 /* CartViewController.swift in Sources */,
 				983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */,
+				9834F4F921308E820071928C /* ShippingTableViewController.swift in Sources */,
 				98A10A2220EBABF400AD8F4D /* WebViewController.swift in Sources */,
 				98F60D5720CA10E80074728C /* CartData.swift in Sources */,
 				985FB76820F8449C0031DC21 /* HistoryPromotionData.swift in Sources */,
@@ -503,6 +534,7 @@
 				985FB75E20F2E1B90031DC21 /* PromotionItemDetailsViewController.swift in Sources */,
 				985FB76420F453D60031DC21 /* PromotionItemDetailsBodyTableViewCell.swift in Sources */,
 				9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */,
+				9834F4E7212FD6050071928C /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
