@@ -9,8 +9,6 @@
 import UIKit
 
 class RefundTableViewController: UITableViewController {
-    
-    var text: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,24 +21,6 @@ class RefundTableViewController: UITableViewController {
             // Fallback on earlier versions
         }
         
-        fetchRefundInformation()
-        
-    }
-    
-    // MARK: - API CALL
-    fileprivate func fetchRefundInformation() {
-        DataService.instance.REF_REFUND.addSnapshotListener { (documentSnapshot, error) in
-            
-            guard let document = documentSnapshot?.data() else {
-                print("Error fetching snapshots: \(error!)")
-                return
-            }
-            
-            if let text = document["text"] as? String {
-                self.text = text
-            }
-            self.tableView.reloadData()
-        }
     }
 
     // MARK: - Table view data source
@@ -57,8 +37,6 @@ class RefundTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RefundCell", for: indexPath)
-        cell.textLabel?.text = text ?? ""
-        cell.textLabel?.numberOfLines = 0
         return cell
     }
     

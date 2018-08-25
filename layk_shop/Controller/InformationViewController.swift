@@ -52,6 +52,20 @@ extension InformationViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath)
         let item = items[indexPath.row]
         cell.textLabel?.text = item
+        
+        switch indexPath.row {
+        case 0:
+            cell.imageView?.image = #imageLiteral(resourceName: "about")
+        case 1:
+            cell.imageView?.image = #imageLiteral(resourceName: "box")
+        case 2:
+            cell.imageView?.image = #imageLiteral(resourceName: "refund")
+        case 3:
+            cell.imageView?.image = #imageLiteral(resourceName: "partnership")
+        default:
+            break;
+        }
+        
         return cell
     }
 }

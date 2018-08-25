@@ -7,13 +7,8 @@
 //
 
 import UIKit
-import Firebase
 
 class AboutTableViewController: UITableViewController {
-    
-    fileprivate var listener: ListenerRegistration!
-    
-    var text: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +21,8 @@ class AboutTableViewController: UITableViewController {
             // Fallback on earlier versions
         }
         
-        fetchCompanyInformation()
-        
     }
-    
-    // MARK: - API CALL
-    fileprivate func fetchCompanyInformation() {
-        DataService.instance.REF_ABOUT.addSnapshotListener { (documentSnapshot, error) in
-            
-            guard let document = documentSnapshot?.data() else {
-                print("Error fetching snapshots: \(error!)")
-                return
-            }
-            
-            if let text = document["text"] as? String {
-                self.text = text
-            }
-            self.tableView.reloadData()
-        }
-    }
-    
+
 
     // MARK: - Table view data source
 
@@ -58,18 +35,16 @@ class AboutTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
-        cell.textLabel?.text = text ?? ""
-        cell.textLabel?.numberOfLines = 0
         return cell
     }
-    
+
     // Mark: - Table view delegate
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.Magnitude.leastNonzeroMagnitude
     }
-
+    
 }

@@ -31,10 +31,6 @@ class DataService {
     private var _REF_USERS = DB_BASE.collection("users")
     private var _REF_ORDER_DELIVERY_DETAILS = DB_BASE.collection("order_delivery_details")
     private var _REF_TESTIMONIALS = DB_BASE.collection("testimonials")
-    private var _REF_ABOUT = DB_BASE.collection("information").document("about")
-    private var _REF_SHIPPING = DB_BASE.collection("information").document("shipping")
-    private var _REF_REFUND = DB_BASE.collection("information").document("refund")
-    private var _REF_PARTNERSHIP = DB_BASE.collection("information").document("partnership")
     
     // Storage reference
     private var _REF_PROMOTION_IMAGES = DB_STORAGE.child("history-images")
@@ -97,22 +93,6 @@ class DataService {
     
     var REF_TESTIMONIALS: CollectionReference {
         return _REF_TESTIMONIALS
-    }
-    
-    var REF_ABOUT: DocumentReference {
-        return _REF_ABOUT
-    }
-    
-    var REF_SHIPPING: DocumentReference {
-        return _REF_SHIPPING
-    }
-    
-    var REF_REFUND: DocumentReference {
-        return _REF_REFUND
-    }
-    
-    var REF_PARTNERSHIP: DocumentReference {
-        return _REF_PARTNERSHIP
     }
     
     

@@ -36,7 +36,7 @@ class WebViewController: UIViewController {
             if webView.estimatedProgress == 1.0 {
                 navigationItem.title = webView.title
             } else {
-                navigationItem.title = "Loading..."
+                navigationItem.title = "Загрузка..."
             }
         }
     }

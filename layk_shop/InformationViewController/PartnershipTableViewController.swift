@@ -9,8 +9,6 @@
 import UIKit
 
 class PartnershipTableViewController: UITableViewController {
-
-    var text: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,28 +21,7 @@ class PartnershipTableViewController: UITableViewController {
             // Fallback on earlier versions
         }
         
-        fetchPartnershipInformation()
-        
     }
-    
-    // MARK: - API CALL
-    
-    fileprivate func fetchPartnershipInformation() {
-        DataService.instance.REF_PARTNERSHIP.addSnapshotListener { (documentSnapshot, error) in
-            
-            guard let document = documentSnapshot?.data() else {
-                print("Error fetching snapshots: \(error!)")
-                return
-            }
-            
-            if let text = document["text"] as? String {
-                self.text = text
-            }
-            self.tableView.reloadData()
-        }
-    }
-    
-    
 
     // MARK: - Table view data source
 
@@ -60,8 +37,6 @@ class PartnershipTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PartnershipCell", for: indexPath)
-        cell.textLabel?.text = text ?? ""
-        cell.textLabel?.numberOfLines = 0
         return cell
     }
     
@@ -70,5 +45,19 @@ class PartnershipTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.Magnitude.leastNonzeroMagnitude
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func telNumberBtnTapped(_ sender: UIButton) {
+        let url = URL(string: "tel://\(sender.titleLabel?.text ?? "")")!
+        UIApplication.shared.open(url as URL)
+    }
+    
+    @IBAction func emailBtnTapped(_ sender: UIButton) {
+        let url = URL(string: "mailto:\(sender.titleLabel?.text ?? "")")!
+        UIApplication.shared.open(url as URL)
+    }
+    
+    
 
 }

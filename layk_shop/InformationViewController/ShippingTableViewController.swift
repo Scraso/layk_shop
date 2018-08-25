@@ -9,9 +9,6 @@
 import UIKit
 
 class ShippingTableViewController: UITableViewController {
-    
-    var text: String?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,24 +18,6 @@ class ShippingTableViewController: UITableViewController {
             navigationItem.largeTitleDisplayMode = .never
         } else {
             // Fallback on earlier versions
-        }
-        
-        fetchShippingInformation()
-    }
-    
-    // MARK: - API CALL
-    fileprivate func fetchShippingInformation() {
-        DataService.instance.REF_SHIPPING.addSnapshotListener { (documentSnapshot, error) in
-            
-            guard let document = documentSnapshot?.data() else {
-                print("Error fetching snapshots: \(error!)")
-                return
-            }
-            
-            if let text = document["text"] as? String {
-                self.text = text
-            }
-            self.tableView.reloadData()
         }
     }
 
@@ -56,8 +35,6 @@ class ShippingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShippingCell", for: indexPath)
-        cell.textLabel?.text = text ?? ""
-        cell.textLabel?.numberOfLines = 0
         return cell
     }
     
@@ -66,6 +43,26 @@ class ShippingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.Magnitude.leastNonzeroMagnitude
     }
-
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWebVC" {
+            let toNav = segue.destination as! UINavigationController
+            let toVC = toNav.viewControllers.first as! WebViewController
+            toVC.urlString = sender as! String
+        }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func instagramBtnTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toWebVC", sender: "https://www.instagram.com/laykwear/")
+    }
+    
+    @IBAction func facebookBtnTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toWebVC", sender: "https://www.facebook.com/laykwear/")
+    }
+    
 
 }
