@@ -18,9 +18,9 @@
 		9839BE7B20B31375001C6297 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9839BE7A20B31375001C6297 /* Login.storyboard */; };
 		9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7C20B3139D001C6297 /* LoginViewController.swift */; };
 		9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */; };
-		9839BE8520B5C3DC001C6297 /* UIButton+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE8420B5C3DC001C6297 /* UIButton+Designable.swift */; };
-		9839BE8720B5CCC9001C6297 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE8620B5CCC9001C6297 /* UIView+Designable.swift */; };
+		983B573D21360097007C4E14 /* NetworkStatusTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */; };
 		983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983F9F8C20AE645D008B8C5A /* HomeViewController.swift */; };
+		98404E1F213356C80046096A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98404E1E213356C80046096A /* ReachabilityManager.swift */; };
 		984058A520B6C24000C7A168 /* OneLinePixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984058A420B6C24000C7A168 /* OneLinePixel.swift */; };
 		984058A720B8772500C7A168 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984058A620B8772500C7A168 /* CartViewController.swift */; };
 		984058A920B89A7F00C7A168 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984058A820B89A7F00C7A168 /* DeliveryViewController.swift */; };
@@ -76,9 +76,9 @@
 		9839BE7A20B31375001C6297 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9839BE7C20B3139D001C6297 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
-		9839BE8420B5C3DC001C6297 /* UIButton+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Designable.swift"; sourceTree = "<group>"; };
-		9839BE8620B5CCC9001C6297 /* UIView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
+		983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusTitleView.swift; sourceTree = "<group>"; };
 		983F9F8C20AE645D008B8C5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		98404E1E213356C80046096A /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		984058A420B6C24000C7A168 /* OneLinePixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneLinePixel.swift; sourceTree = "<group>"; };
 		984058A620B8772500C7A168 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		984058A820B89A7F00C7A168 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
@@ -183,14 +183,21 @@
 		9839BE8120B5C33D001C6297 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9839BE8420B5C3DC001C6297 /* UIButton+Designable.swift */,
-				9839BE8620B5CCC9001C6297 /* UIView+Designable.swift */,
 				98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */,
 				98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */,
 				9844219520DED73500B59E51 /* FormattedTimestamp.swift */,
 				98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		98404E1D2133568E0046096A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				98404E1E213356C80046096A /* ReachabilityManager.swift */,
+				983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		984058AA20B9F1AA00C7A168 /* View */ = {
@@ -274,6 +281,7 @@
 		988265B820AD1A2E0015C526 /* layk_shop */ = {
 			isa = PBXGroup;
 			children = (
+				98404E1D2133568E0046096A /* Networking */,
 				9834F4E9212FF0880071928C /* InformationViewController */,
 				9897C5382104C690004AB826 /* layk_shop.entitlements */,
 				985FB75A20F2CAB90031DC21 /* PromotionViewController */,
@@ -423,7 +431,9 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -439,7 +449,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -495,7 +507,7 @@
 				985FB75920F2CA300031DC21 /* PresentSectionViewController.swift in Sources */,
 				9839BE7820B1F8BE001C6297 /* ItemsTableViewCell.swift in Sources */,
 				9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */,
-				9839BE8520B5C3DC001C6297 /* UIButton+Designable.swift in Sources */,
+				98404E1F213356C80046096A /* ReachabilityManager.swift in Sources */,
 				984058B420BBE41800C7A168 /* InteractionPanToClose.swift in Sources */,
 				9834F4FD21308EA40071928C /* PartnershipTableViewController.swift in Sources */,
 				98E05E9720D6A9DB009AED1A /* ErrorHandler.swift in Sources */,
@@ -511,13 +523,13 @@
 				984621CF20B188BC00EB37C0 /* TestimonialCollectionViewCell.swift in Sources */,
 				98609E5E20B1DF9200643203 /* ShopViewController.swift in Sources */,
 				984058A920B89A7F00C7A168 /* DeliveryViewController.swift in Sources */,
-				9839BE8720B5CCC9001C6297 /* UIView+Designable.swift in Sources */,
 				9839BE7620B1F6AC001C6297 /* ItemsTableViewController.swift in Sources */,
 				98A10A2420EBDA4800AD8F4D /* Array + SafeIndex.swift in Sources */,
 				98F0FBF220C1526E00F9A1F8 /* ShopData.swift in Sources */,
 				985FB76620F453EB0031DC21 /* PromotionItemDetailsMediaTableViewCell.swift in Sources */,
 				9844219420DA21DE00B59E51 /* HistoryOrderData.swift in Sources */,
 				98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */,
+				983B573D21360097007C4E14 /* NetworkStatusTitleView.swift in Sources */,
 				9834F4F721308E750071928C /* AboutTableViewController.swift in Sources */,
 				98E05E9B20D8336F009AED1A /* HistoryViewController.swift in Sources */,
 				9844219620DED73500B59E51 /* FormattedTimestamp.swift in Sources */,

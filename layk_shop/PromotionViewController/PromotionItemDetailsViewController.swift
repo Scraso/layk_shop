@@ -47,7 +47,7 @@ class PromotionItemDetailsViewController: UIViewController {
     
     func fetchHistorySectionDataDetails() {
         
-        listener = DataService.instance.REF_PROMOTION_SECTION_MEDIA.whereField("documentId", isEqualTo: historyData.documentId).addSnapshotListener({ [weak self] (documentSnapshot, error) in
+        listener = DataService.instance.REF_NEWS_SECTION_PARAGRAPHS.whereField("documentId", isEqualTo: historyData.documentId).addSnapshotListener({ [weak self] (documentSnapshot, error) in
             
             guard let documents = documentSnapshot?.documents else {
                 print("Error fetching snapshots: \(error!)")

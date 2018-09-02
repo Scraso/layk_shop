@@ -21,8 +21,10 @@ class DataService {
     }
     
     // Firestore reference
-    private var _REF_PROMOTION_SECTION = DB_BASE.collection("history_section")
-    private var _REF_PROMOTION_SECTION_MEDIA = DB_BASE.collection("history_section_media")
+    private var _REF_NEWS_SECTION_HEADER = DB_BASE.collection("news_section_header")
+    private var _REF_NEWS_SECTION_PARAGRAPHS = DB_BASE.collection("news_section_paragraphs")
+    
+    
     private var _REF_SHOP_CATEGORY = DB_BASE.collection("shop_category")
     private var _REF_ITEMS = DB_BASE.collection("items")
     private var _REF_ORDERS = DB_BASE.collection("orders")
@@ -33,13 +35,15 @@ class DataService {
     private var _REF_TESTIMONIALS = DB_BASE.collection("testimonials")
     
     // Storage reference
-    private var _REF_PROMOTION_IMAGES = DB_STORAGE.child("history-images")
+    
+    private var _REF_NEWS_IMAGES = DB_STORAGE.child("news-images")
     private var _REF_ITEMLIST_IMAGES = DB_STORAGE.child("itemList-images")
     private var _REF_PAGECONTROL_IMAGES = DB_STORAGE.child("pageControl-images")
     private var _REF_TESTIMONIAL_IMAGES = DB_STORAGE.child("testimonial-images")
     
-    var REF_PROMOTION_IMAGES: StorageReference {
-        return _REF_PROMOTION_IMAGES
+
+    var REF_NEWS_IMAGES: StorageReference {
+        return _REF_NEWS_IMAGES
     }
     
     var REF_ITEMLIST_IMAGES: StorageReference {
@@ -54,14 +58,14 @@ class DataService {
         return _REF_TESTIMONIAL_IMAGES
     }
     
-    var REF_PROMOTION_SECTION: CollectionReference {
-        return _REF_PROMOTION_SECTION
+    var REF_NEWS_SECTION_HEADER: CollectionReference {
+        return _REF_NEWS_SECTION_HEADER
     }
     
-    var REF_PROMOTION_SECTION_MEDIA: CollectionReference {
-        return _REF_PROMOTION_SECTION_MEDIA
+    var REF_NEWS_SECTION_PARAGRAPHS: CollectionReference {
+        return _REF_NEWS_SECTION_PARAGRAPHS
     }
-    
+
     var REF_SHOP_CATEGORY: CollectionReference {
         return _REF_SHOP_CATEGORY
     }

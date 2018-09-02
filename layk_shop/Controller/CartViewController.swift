@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Reachability
+import NVActivityIndicatorView
 
 class CartViewController: UIViewController, DeliveryViewControllerDelegate {
 
@@ -17,6 +19,7 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
     
     @IBOutlet var noItemsView: UIView!
     var items = [CartData]()
+    let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), type: .ballClipRotateMultiple, color: UIColor.gray)
     
     fileprivate var textFieldDetails: [String: Any]?
     fileprivate var textViewDetails: String?
@@ -30,6 +33,26 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check and set status network initially once Tab Bar Controller is shown since App Delegate will not trigger again
+        // untill Network will be updated again
+        networkStatusDidChange(status: ReachabilityManager.shared.reachabilityStatus)
+        
+        // Add Network status listener
+        ReachabilityManager.shared.addListener(listener: self)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Remove Network status listener
+        ReachabilityManager.shared.removeListener(listener: self)
+    }
+    
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +63,11 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
             destination?.contactDetails = textFieldDetails ?? [:]
             destination?.textViewDetails = textViewDetails
             
+            // Hardcoded back button title to prevent issue when due to Network connection
+            // the title is changed to 'Ожидание сети" therefore back button title is wrong
+            let backItem = UIBarButtonItem()
+            backItem.title = "Корзина"
+            navigationItem.backBarButtonItem = backItem
         }
     }
     
@@ -50,6 +78,13 @@ class CartViewController: UIViewController, DeliveryViewControllerDelegate {
     }
     func textView(details: String) {
         self.textViewDetails = details
+    }
+    
+    // MARK: - Helpers
+    
+    fileprivate func updateNetworkTitleStatus() {
+        navigationItem.title = "Корзина"
+        navigationItem.titleView = nil
     }
     
     // MARK: Actions
@@ -205,7 +240,24 @@ extension CartViewController: UITableViewDelegate {
             }
         }
     }
+}
+
+extension CartViewController: NetworkStatusListener {
     
-    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        switch status {
+        case .wifi:
+            updateNetworkTitleStatus()
+            print("Reachable via WiFi")
+        case .cellular:
+            updateNetworkTitleStatus()
+            print("Reachable via Cellular")
+        case .none:
+            navigationItem.title = "Ожидание сети"
+            navigationItem.titleView = activityIndicator
+            activityIndicator.startAnimating()
+            print("Network not reachable")
+        }
+    }
 }
 

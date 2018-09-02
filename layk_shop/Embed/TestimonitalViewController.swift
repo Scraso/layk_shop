@@ -23,11 +23,13 @@ class TestimonitalViewController: UIViewController {
         fetchTestimonialData()
 
     }
-    
+
     // MARK: API CALL
-    fileprivate func fetchTestimonialData() {
+    func fetchTestimonialData() {
         
         DataService.instance.REF_TESTIMONIALS.whereField("isPublished", isEqualTo: true).addSnapshotListener { [weak self] (documentSnapshot, error) in
+            
+            self?.testimonials = []
             
             guard let documents = documentSnapshot?.documents else {
                 print("Error fetching snapshots: \(error!)")

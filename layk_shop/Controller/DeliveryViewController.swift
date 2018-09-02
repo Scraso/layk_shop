@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import Reachability
+import NVActivityIndicatorView
 
 protocol DeliveryViewControllerDelegate: class {
     func textField(details: [String: Any])
@@ -44,6 +46,24 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
             // Fallback on earlier versions
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check and set status network initially once Tab Bar Controller is shown since App Delegate will not trigger again
+        // untill Network will be updated again
+        networkStatusDidChange(status: ReachabilityManager.shared.reachabilityStatus)
+        
+        // Add Network status listener
+        ReachabilityManager.shared.addListener(listener: self)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        ReachabilityManager.shared.removeListener(listener: self)
     }
     
     override func viewWillDisappear(_ animated : Bool) {
@@ -158,7 +178,13 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
         return true
     }
     
+    // MARK: - Helpers
     
+    fileprivate func showActivityIndicator() {
+        let titleView = TitleView(frame: CGRect.zero, titleLblText: "Ожидание сети", titleLblTextColor: .black, indicatorColor: .gray)
+        navigationItem.titleView = titleView
+        
+    }
     
     
     // MARK: - Actions
@@ -280,4 +306,22 @@ extension DeliveryViewController: UITableViewDataSource {
         
     }
     
+}
+
+extension DeliveryViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        
+        switch status {
+        case .wifi:
+            navigationItem.titleView = nil
+            print("Reachable via WiFi")
+        case .cellular:
+            navigationItem.titleView = nil
+            print("Reachable via Cellular")
+        case .none:
+            showActivityIndicator()
+            print("Network not reachable")
+        }
+    }
 }

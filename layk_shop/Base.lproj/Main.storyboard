@@ -45,7 +45,7 @@
                                             <constraint firstAttribute="height" constant="328" id="VCh-cH-P6V"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="N0m-jl-tb9" kind="embed" identifier="Testimonials" id="XVw-Az-XqX"/>
+                                            <segue destination="N0m-jl-tb9" kind="embed" identifier="TestimonialEmbed" id="XVw-Az-XqX"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-85-xVr" userLabel="HeaderView">

@@ -69,9 +69,9 @@ class ItemDetailsViewController: UIViewController {
             tapRecognizer.numberOfTapsRequired = 1
             imageView.addGestureRecognizer(tapRecognizer)
             
-            
             imageView.sd_setShowActivityIndicatorView(true)
             imageView.sd_setIndicatorStyle(.gray)
+            
             
             // First load image and only then get the image to ImageViewer
             
@@ -134,7 +134,7 @@ class ItemDetailsViewController: UIViewController {
                 if button.isEnabled == true && (maxValue?.value)! > 0 {
                     button.backgroundColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
                     button.setTitleColor(UIColor.white, for: .normal)
-                    button.borderColor = UIColor.clear
+                    button.layer.borderColor = UIColor.clear.cgColor
                 } else {
                     if delegate != nil {
                         delegate?.cartButton(status: false)
@@ -165,9 +165,9 @@ class ItemDetailsViewController: UIViewController {
         let disableColor = UIColor.init(red: 232/255, green: 232/255, blue: 232/255, alpha: 100)
         let buttonColor = button.isEnabled ? enableColor : disableColor
         button.titleLabel?.textColor = buttonColor
-        button.cornerRadius = 22
-        button.borderWidth = 1
-        button.borderColor = buttonColor
+        button.layer.cornerRadius = 22
+        button.layer.borderWidth = 1
+        button.layer.borderColor = buttonColor.cgColor
     }
     
     
@@ -178,12 +178,12 @@ class ItemDetailsViewController: UIViewController {
             if element.tag == sender.tag {
                 sender.backgroundColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
                 sender.setTitleColor(UIColor.white, for: .normal)
-                sender.borderColor = UIColor.clear
+                sender.layer.borderColor = UIColor.clear.cgColor
             } else {
                 if element.isEnabled == true {
                     element.backgroundColor = UIColor.white
                     element.setTitleColor(UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 100), for: .normal)
-                    element.borderColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100)
+                    element.layer.borderColor = UIColor.init(red: 74/255, green: 144/255, blue: 226/255, alpha: 100).cgColor
                 }
             }
         }

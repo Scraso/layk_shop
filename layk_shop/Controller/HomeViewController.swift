@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import Reachability
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
 
@@ -19,6 +21,10 @@ class HomeViewController: UIViewController {
     
     let presentSectionViewController = PresentSectionViewController()
     
+    // Possible useless?
+    fileprivate var embeddedTestimonialViewController: TestimonitalViewController!
+    fileprivate var embeddedPromotionalViewController: PromotionViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,18 +33,44 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 1) {
            self.logoImageView.alpha = 1
         }
-
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         scrollView.delegate = self
         
         checkIfUserIsSignedIn()
+                
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add Network status listener
+        ReachabilityManager.shared.addListener(listener: self)
+        
+        // Check and set status network initially once Tab Bar Controller is shown since App Delegate will not trigger again
+        // untill Network will be updated again
+        networkStatusDidChange(status: ReachabilityManager.shared.reachabilityStatus)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Remove Network status listener
+        ReachabilityManager.shared.removeListener(listener: self)
+    }
+    
+    // MARK: - Helpers
+    
+    fileprivate func showActivityIndicator() {
+        let titleView = TitleView(frame: CGRect.zero, titleLblText: "Ожидание сети", titleLblTextColor: .white, indicatorColor: .white)
+        navigationItem.titleView = titleView
+    }
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
     
     // Check if user is logged in and if yes then change loggin button to logout
     
@@ -71,6 +103,14 @@ class HomeViewController: UIViewController {
         if segue.identifier == "PromotionEmbed" {
             if let destination = segue.destination as? PromotionViewController {
                 destination.delegate = self
+                self.embeddedPromotionalViewController = destination
+                
+            }
+        }
+        
+        if segue.identifier == "TestimonialEmbed" {
+            if let destination = segue.destination as? TestimonitalViewController {
+                self.embeddedTestimonialViewController = destination
             }
         }
     }
@@ -143,6 +183,27 @@ extension HomeViewController: UIScrollViewDelegate {
         }
         
         let navigationIsHidden = offsetY <= 0
-        navigationController?.setNavigationBarHidden(navigationIsHidden, animated: true)
+        self.navigationController?.setNavigationBarHidden(navigationIsHidden, animated: true)
+    
     }
 }
+
+extension HomeViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        switch status {
+        case .wifi:
+            navigationItem.titleView = nil
+            print("Reachable via WiFi")
+        case .cellular:
+            navigationItem.titleView = nil
+            print("Reachable via Cellular")
+        case .none:
+            showActivityIndicator()
+            print("Network not reachable")
+        }
+    }
+    
+    
+}
+

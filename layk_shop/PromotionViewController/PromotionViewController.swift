@@ -40,13 +40,17 @@ class PromotionViewController: UIViewController {
         print("PromotionViewController has been deinitialized")
     }
     
+    
+    
     // MARK: - API CALL
     
-    fileprivate func fetchPromotionData() {
+    func fetchPromotionData() {
         
-        let ref = DataService.instance.REF_PROMOTION_SECTION
+        let ref = DataService.instance.REF_NEWS_SECTION_HEADER
         
         ref.whereField("isPublished", isEqualTo: true).addSnapshotListener { [weak self ](documentSnapshot, error) in
+            
+            self?.historySectionData = []
             
             guard let documents = documentSnapshot?.documents else {
                 print("Error fetching snapshots: \(error!)")
@@ -58,13 +62,63 @@ class PromotionViewController: UIViewController {
                     self?.historySectionData.append(data)
                 }
             }
-            self?.collectionView.reloadData()
+            self?.attemptToReload()
             
         }
         
     }
+    
+    func attemptToReload() {
+        historySectionData.sort(by: {$0.timestamp > $1.timestamp})
+        collectionView.reloadData()
+    }
 
-    fileprivate func animateCell(cellFrame: CGRect) -> CATransform3D {
+
+
+}
+
+extension PromotionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return historySectionData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCell", for: indexPath) as! PromotionCollectionViewCell
+        let sectionData = historySectionData[indexPath.row]
+        cell.layer.transform = animateCell(cellFrame: cell.frame)
+        cell.configureCell(data: sectionData)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! PromotionCollectionViewCell
+        let sectionData = historySectionData[indexPath.row]
+        let transform = animateCell(cellFrame: cell.frame)        
+        delegate?.didTap(cell: cell, on: collectionView, with: transform, for: sectionData)
+        
+    }
+}
+
+extension PromotionViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if let collectionView = scrollView as? UICollectionView {
+            for cell in collectionView.visibleCells as! [PromotionCollectionViewCell] {
+                let indexPath = collectionView.indexPath(for: cell)!
+                let attributes = collectionView.layoutAttributesForItem(at: indexPath)!
+                let cellFrame = collectionView.convert(attributes.frame, to: view)
+                
+                let translationX = cellFrame.origin.x / 5
+                cell.backgroundImageView.transform = CGAffineTransform(translationX: translationX, y: 0)
+                
+                cell.layer.transform = animateCell(cellFrame: cellFrame)
+                
+            }
+        }
+    }
+    
+    func animateCell(cellFrame: CGRect) -> CATransform3D {
         let angleFromX = Double((-cellFrame.origin.x) / 10)
         let angle = CGFloat((angleFromX * Double.pi) / 180.0)
         var transform = CATransform3DIdentity
@@ -84,28 +138,5 @@ class PromotionViewController: UIViewController {
         
         return CATransform3DConcat(rotation, scale)
     }
-
 }
 
-extension PromotionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return historySectionData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromotionCell", for: indexPath) as! PromotionCollectionViewCell
-        let sectionData = historySectionData[indexPath.row]
-        cell.configureCell(data: sectionData)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! PromotionCollectionViewCell
-        let sectionData = historySectionData[indexPath.row]
-        let transform = animateCell(cellFrame: cell.frame)
-        delegate?.didTap(cell: cell, on: collectionView, with: transform, for: sectionData)
-        
-    }
-    
-}

@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseFirestore
+import Reachability
+import NVActivityIndicatorView
 
 
 class ItemsTableViewController: UITableViewController {
@@ -29,11 +31,30 @@ class ItemsTableViewController: UITableViewController {
         }
         
         fetchItemList()
+    
     }
     
     deinit {
         listener.remove()
         print("ItemTableViewController has been deinitialized")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check and set status network initially once Tab Bar Controller is shown since App Delegate will not trigger again
+        // untill Network will be updated again
+        networkStatusDidChange(status: ReachabilityManager.shared.reachabilityStatus)
+        
+        // Add Network status listener
+        ReachabilityManager.shared.addListener(listener: self)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        ReachabilityManager.shared.removeListener(listener: self)
     }
     
     // MARK: - API CALL
@@ -66,9 +87,21 @@ class ItemsTableViewController: UITableViewController {
                 if let itemData = sender as? ItemListData {
                     destination.itemDetails = itemData
                 }
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = "Назад"
+                navigationItem.backBarButtonItem = backItem
 
             }
         }
+    }
+    
+    // MARK: - Helpers
+    
+    fileprivate func showActivityIndicator() {
+        let titleView = TitleView(frame: CGRect.zero, titleLblText: "Ожидание сети", titleLblTextColor: .black, indicatorColor: .gray)
+        navigationItem.titleView = titleView
+        
     }
     
 
@@ -99,4 +132,22 @@ class ItemsTableViewController: UITableViewController {
         return CGFloat.Magnitude.leastNonzeroMagnitude
     }
 
+}
+
+extension ItemsTableViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        
+        switch status {
+        case .wifi:
+            navigationItem.titleView = nil
+            print("Reachable via WiFi")
+        case .cellular:
+            navigationItem.titleView = nil
+            print("Reachable via Cellular")
+        case .none:
+            showActivityIndicator()
+            print("Network not reachable")
+        }
+    }
 }

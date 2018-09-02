@@ -14,6 +14,8 @@ struct HistorySectionData {
     var avatarImageUrl: String
     var bodyText: String
     var documentId: String
+    var timestamp: Double
+    var title: String
     
 }
 
@@ -22,8 +24,13 @@ extension HistorySectionData {
     init?(dictionary: [String: Any], documentId: String) {
         let avatarImageUrl = dictionary["avatarImageUrl"] as? String ?? ""
         let bodyText = dictionary["body_text"] as? String ?? ""
+        let title = dictionary["title"] as? String ?? ""
+        let timestamp = dictionary["timestamp"] as? Timestamp
+        let date = timestamp?.dateValue()
+        let timeInterval = date?.timeIntervalSince1970 ?? 0.0
         
-        self.init(avatarImageUrl: avatarImageUrl, bodyText: bodyText, documentId: documentId)
+        
+        self.init(avatarImageUrl: avatarImageUrl, bodyText: bodyText, documentId: documentId, timestamp: timeInterval, title: title)
     }
     
 }

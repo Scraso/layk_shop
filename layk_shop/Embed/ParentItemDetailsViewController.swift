@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Reachability
+import NVActivityIndicatorView
 
 class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControllerDelegate {
  
-    
     @IBOutlet weak var addToCartBtn: UIButton!
     @IBOutlet weak var popupView: UIView!
     
@@ -31,6 +32,31 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = itemDetails.name
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check and set status network initially once Tab Bar Controller is shown since App Delegate will not trigger again
+        // untill Network will be updated again
+        networkStatusDidChange(status: ReachabilityManager.shared.reachabilityStatus)
+        
+        // Add Network status listener
+        ReachabilityManager.shared.addListener(listener: self)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        ReachabilityManager.shared.removeListener(listener: self)
+    }
+    
+    
     // MARK: - Helpers
     
     // Random character
@@ -48,6 +74,13 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
         }
         
         return randomString
+    }
+    
+    
+    fileprivate func showActivityIndicator() {
+        
+        let titleView = TitleView(frame: CGRect.zero, titleLblText: "Ожидание сети", titleLblTextColor: .black, indicatorColor: .gray)
+        navigationItem.titleView = titleView
     }
     
     // MARK: - Delegate
@@ -126,6 +159,24 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
             }
             
             tabItem.badgeValue = String(count)
+        }
+    }
+}
+
+extension ParentItemDetailsViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        
+        switch status {
+        case .wifi:
+            navigationItem.titleView = nil
+            print("Reachable via WiFi")
+        case .cellular:
+            navigationItem.titleView = nil
+            print("Reachable via Cellular")
+        case .none:
+            showActivityIndicator()
+            print("Network not reachable")
         }
     }
 }

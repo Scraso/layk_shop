@@ -97,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bu6-H7-SpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559.20000000000005" y="-856.82158920539734"/>
+            <point key="canvasLocation" x="380" y="-856.82158920539734"/>
         </scene>
         <!--WebVC-->
         <scene sceneID="n8V-qk-2a1">
@@ -283,7 +283,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Xl-lk-zZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157.59999999999999" y="-857.72113943028489"/>
+            <point key="canvasLocation" x="1096.8" y="-857.72113943028489"/>
         </scene>
         <!--Refund Table View Controller-->
         <scene sceneID="ANs-d0-6ox">
@@ -309,7 +309,7 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPO-5f-1i0">
                                             <rect key="frame" x="16" y="160" width="343" height="203"/>
-                                            <mutableString key="text">Если товар Вам не подошел по каким-либо причинам, Вы можете его вернуть или заменить в течении 14 дней с момента покупки, при условии, что товары не носили и не стирали, либо они имеют производственные дефекты и/или дефекты материала. Возврат денежных средств осуществляется в течении 3 рабочих дней с момента поступления посылки от клиента.</mutableString>
+                                            <string key="text">Если товар Вам не подошел по каким-либо причинам, Вы можете его вернуть или заменить в течении 14 дней с момента покупки, при условии, что товары не носили и не стирали, либо они имеют производственные дефекты и/или дефекты материала. Возврат денежных средств осуществляется в течении 3 рабочих дней с момента поступления посылки от клиента.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -335,7 +335,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vt-AI-ge7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="-858.62068965517244"/>
+            <point key="canvasLocation" x="1807.2" y="-858.62068965517244"/>
         </scene>
         <!--Partnership Table View Controller-->
         <scene sceneID="M7d-Jh-xSm">
@@ -448,7 +448,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMD-c7-5CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="-857.72113943028489"/>
+            <point key="canvasLocation" x="2591.1999999999998" y="-857.72113943028489"/>
         </scene>
     </scenes>
     <resources>

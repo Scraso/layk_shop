@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import Reachability
+import NVActivityIndicatorView
 
 class HistoryViewController: UIViewController {
 
@@ -22,7 +24,7 @@ class HistoryViewController: UIViewController {
     fileprivate var completed = [ItemData]()
 
     var historyOrderArray = [HistoryOrderData]()
-    
+    let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), type: .ballClipRotateMultiple, color: UIColor.gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +40,24 @@ class HistoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Check and set status network initially once Tab Bar Controller is shown since App Delegate will not trigger again
+        // untill Network will be updated again
+        networkStatusDidChange(status: ReachabilityManager.shared.reachabilityStatus)
+        
+        // Add Network status listener
+        ReachabilityManager.shared.addListener(listener: self)
+        
         UIApplication.shared.applicationIconBadgeNumber = 0
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         DataService.instance.REF_USER_BADGE_COUNT.document(currentUserUid).setData(["count": 0])
+             
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
+        // Remove Network status listener
+        ReachabilityManager.shared.removeListener(listener: self)
     }
     
     // MARK: API CALL
@@ -70,9 +86,6 @@ class HistoryViewController: UIViewController {
                 self.sentItem.removeAll()
                 self.completed.removeAll()
                 self.tableView.reloadData()
-                
-                
-                
             }
         }
     }
@@ -155,11 +168,13 @@ class HistoryViewController: UIViewController {
         
     }
     
-    // MARK: - Actions
+    // MARK: - Helpers
     
-    @objc func loginButtonTapped() {
-        print("Hello")
+    fileprivate func updateNetworkTitleStatus() {
+        navigationItem.title = "История"
+        navigationItem.titleView = nil
     }
+    
 }
 
 extension HistoryViewController: UITableViewDataSource {
@@ -256,6 +271,25 @@ extension HistoryViewController: UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
 
+}
+
+extension HistoryViewController: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        switch status {
+        case .wifi:
+            updateNetworkTitleStatus()
+            print("Reachable via WiFi")
+        case .cellular:
+            updateNetworkTitleStatus()
+            print("Reachable via Cellular")
+        case .none:
+            navigationItem.title = "Ожидание сети"
+            navigationItem.titleView = activityIndicator
+            activityIndicator.startAnimating()
+            print("Network not reachable")
+        }
+    }
 }
 
 
