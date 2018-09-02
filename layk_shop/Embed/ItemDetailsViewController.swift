@@ -17,7 +17,6 @@ protocol ItemDetailsViewControllerDelegate: class {
 extension UIImageView: DisplaceableView {}
 
 struct DataItem {
-    
     let imageView: UIImageView
     let galleryItem: GalleryItem
 }
