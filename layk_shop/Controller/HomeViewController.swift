@@ -78,9 +78,9 @@ class HomeViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                self.loginBtn.title = "Logout"
+                self.loginBtn.title = "Выход"
             } else {
-                self.loginBtn.title = "Login"
+                self.loginBtn.title = "Вход"
             }
         }
     }
@@ -118,13 +118,13 @@ class HomeViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func loginBtnTapped(_ sender: UIBarButtonItem) {
-        if loginBtn.title == "Logout" {
+        if loginBtn.title == "Выход" {
             let firebaseAuth = Auth.auth()
             do {
                 guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
                 DataService.instance.REF_FCM_TOKEN.document(currentUserUid).delete()
                 try firebaseAuth.signOut()
-                loginBtn.title = "Login"
+                loginBtn.title = "Входы"
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }

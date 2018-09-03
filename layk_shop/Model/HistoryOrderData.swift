@@ -56,6 +56,7 @@ struct ItemData {
         if let timestamp = itemData["timestamp"] as? Double {
             self.timestamp = timestamp
         }
+
     }
     
 }

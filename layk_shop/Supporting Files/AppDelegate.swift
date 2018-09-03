@@ -19,13 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         FirebaseApp.configure()
+        
+        // Enabled Fabric SDK
         Fabric.sharedSDK().debug = true
         
         let settings = DB_BASE.settings
         settings.areTimestampsInSnapshotsEnabled = true
         DB_BASE.settings = settings
         
+        // Enable Keyboard Manager
         IQKeyboardManager.shared.enable = true
         
         if #available(iOS 10.0, *) {
