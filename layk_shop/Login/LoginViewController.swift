@@ -132,6 +132,7 @@ class LoginViewController: UIViewController {
             self.resetPasswordViewPanToClose.setGestureRecognizer(isEnabled: false)
         })
     }
+    
     @IBAction func sendPasswordBtnTapped(_ sender: UIButton) {
         // Change language when user follow the reset passowrd link
         Auth.auth().languageCode = "ru"
