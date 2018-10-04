@@ -28,8 +28,15 @@ class DataService {
     private var _REF_SHOP_CATEGORY = DB_BASE.collection("shop_category")
     private var _REF_ITEMS = DB_BASE.collection("items")
     private var _REF_ORDERS = DB_BASE.collection("orders")
-    private var _REF_FCM_TOKEN = DB_BASE.collection("fcmToken")
-    private var _REF_USER_BADGE_COUNT = DB_BASE.collection("userBadgeCount")
+    
+    // TOKENS
+    private var _REF_FCM_TOKEN_REGISTERED_USERS = DB_BASE.collection("fcmToken_registered_users")
+    private var _REF_FCM_TOKEN_ALL = DB_BASE.collection("fcmToken_all")
+    private var _REF_BADGES_COUNT_DETAILS = DB_BASE.collection("badge_count_details")
+    private var _REF_BADGE_COUNT_TOTAL = DB_BASE.collection("badge_count_total")
+    
+    private var _REF_ORDER_STATUS = DB_BASE.collection("order_status")
+    
     private var _REF_USERS = DB_BASE.collection("users")
     private var _REF_ORDER_DELIVERY_DETAILS = DB_BASE.collection("order_delivery_details")
     private var _REF_TESTIMONIALS = DB_BASE.collection("testimonials")
@@ -74,17 +81,24 @@ class DataService {
         return _REF_ITEMS
     }
     
-
     var REF_ORDERS: CollectionReference {
         return _REF_ORDERS
     }
     
-    var REF_FCM_TOKEN: CollectionReference {
-        return _REF_FCM_TOKEN
+    var REF_FCM_TOKEN_REGISTERED_USERS: CollectionReference {
+        return _REF_FCM_TOKEN_REGISTERED_USERS
     }
     
-    var REF_USER_BADGE_COUNT: CollectionReference {
-        return _REF_USER_BADGE_COUNT
+    var REF_FCM_TOKEN_ALL: CollectionReference {
+        return _REF_FCM_TOKEN_ALL
+    }
+    
+    var REF_BADGE_COUNT_TOTAL: CollectionReference {
+        return _REF_BADGE_COUNT_TOTAL
+    }
+    
+    var REF_BADGE_COUNT_DETAILS: CollectionReference {
+        return _REF_BADGES_COUNT_DETAILS
     }
     
     var REF_USERS: CollectionReference {
@@ -97,6 +111,10 @@ class DataService {
     
     var REF_TESTIMONIALS: CollectionReference {
         return _REF_TESTIMONIALS
+    }
+    
+    var REF_ORDER_STATUS: CollectionReference {
+        return _REF_ORDER_STATUS
     }
     
     

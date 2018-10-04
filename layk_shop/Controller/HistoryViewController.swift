@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import Reachability
 import NVActivityIndicatorView
+import FirebaseMessaging
 
 class HistoryViewController: UIViewController {
 
@@ -22,6 +23,7 @@ class HistoryViewController: UIViewController {
     fileprivate var onProcessOfSending = [ItemData]()
     fileprivate var sentItem = [ItemData]()
     fileprivate var completed = [ItemData]()
+    fileprivate var orderStatus = [OrderStatusData]()
 
     var historyOrderArray = [HistoryOrderData]()
     let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), type: .ballClipRotateMultiple, color: UIColor.gray)
@@ -34,7 +36,6 @@ class HistoryViewController: UIViewController {
         
         authorizationStatusCheck()
         
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +48,7 @@ class HistoryViewController: UIViewController {
         // Add Network status listener
         ReachabilityManager.shared.addListener(listener: self)
         
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-        DataService.instance.REF_USER_BADGE_COUNT.document(currentUserUid).setData(["count": 0])
+        updateBadgeCount()
              
     }
     
@@ -61,8 +60,7 @@ class HistoryViewController: UIViewController {
     }
     
     // MARK: API CALL
-    
-    
+
     func authorizationStatusCheck() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
@@ -93,11 +91,9 @@ class HistoryViewController: UIViewController {
     func fetchOrders(onCompleted: @escaping () -> ()) {
         
         let ref = DataService.instance.REF_ORDERS
-        guard let currentUserUid = Auth.auth().currentUser?.uid else {
-            return
-        }
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         
-        ref.whereField("isProcessed", isEqualTo: false).whereField("isSent", isEqualTo: false).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("status", isEqualTo: "none").whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.onProcessing = []
             
@@ -115,7 +111,7 @@ class HistoryViewController: UIViewController {
             
         }
         
-        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: false).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("status", isEqualTo: "processed").whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.onProcessOfSending = []
             
@@ -132,7 +128,7 @@ class HistoryViewController: UIViewController {
             onCompleted()
         }
         
-        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: true).whereField("isDelivered", isEqualTo: false).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("status", isEqualTo: "sent").whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.sentItem = []
             
@@ -149,7 +145,7 @@ class HistoryViewController: UIViewController {
             onCompleted()
         }
         
-        ref.whereField("isProcessed", isEqualTo: true).whereField("isSent", isEqualTo: true).whereField("isDelivered", isEqualTo: true).whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
+        ref.whereField("status", isEqualTo: "delivered").whereField("userId", isEqualTo: currentUserUid).addSnapshotListener { [weak self] (documentSnapshot, error) in
             
             self?.completed = []
             
@@ -167,12 +163,73 @@ class HistoryViewController: UIViewController {
         }
         
     }
-    
+
+
     // MARK: - Helpers
     
     fileprivate func updateNetworkTitleStatus() {
         navigationItem.title = "История"
         navigationItem.titleView = nil
+    }
+    
+    fileprivate func updateBadgeCount() {
+        
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        // Transaction operation to update badge count
+        let badgeCountDetailsRef = DataService.instance.REF_BADGE_COUNT_DETAILS.document("history_badges_count").collection("badgeCount").document(currentUserUid)
+        let badgeCountTotalRef = DataService.instance.REF_BADGE_COUNT_TOTAL.document(Messaging.messaging().fcmToken ?? "none")
+        
+        Firestore.firestore().runTransaction({ (transaction, errorPointer) -> Any? in
+            let badgeDetailsDocument: DocumentSnapshot
+            let badgeTotalDocument: DocumentSnapshot
+            do {
+                try badgeDetailsDocument = transaction.getDocument(badgeCountDetailsRef)
+                try badgeTotalDocument = transaction.getDocument(badgeCountTotalRef)
+                
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            
+            // Get count of detailed badge count
+            guard let oldDetailedCount = badgeDetailsDocument.data()?["count"] as? Int else {
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(badgeDetailsDocument)"
+                    ]
+                )
+                errorPointer?.pointee = error
+                return nil
+            }
+            
+            // get count of total badge count
+            guard let oldTotalCount = badgeTotalDocument.data()?["count"] as? Int else {
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(badgeDetailsDocument)"
+                    ]
+                )
+                errorPointer?.pointee = error
+                return nil
+            }
+            
+            transaction.updateData(["count": 0], forDocument: badgeCountDetailsRef)
+            transaction.updateData(["count": oldTotalCount - oldDetailedCount], forDocument: badgeCountTotalRef)
+            
+            return nil
+            
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
+        }
     }
     
 }
@@ -204,7 +261,6 @@ extension HistoryViewController: UITableViewDataSource {
         let item = items[indexPath.row]
         
         cell.configureCell(data: item, sectionName: sectionName)
-        
 
         return cell
     }
@@ -273,6 +329,7 @@ extension HistoryViewController: UITableViewDelegate {
     }
 
 }
+
 
 extension HistoryViewController: NetworkStatusListener {
     

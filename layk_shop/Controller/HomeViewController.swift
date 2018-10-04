@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 import Reachability
 import NVActivityIndicatorView
+import FirebaseMessaging
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
 
@@ -20,10 +22,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIBarButtonItem!
     
     let presentSectionViewController = PresentSectionViewController()
-    
-    // Possible useless?
-    fileprivate var embeddedTestimonialViewController: TestimonitalViewController!
-    fileprivate var embeddedPromotionalViewController: PromotionViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +37,7 @@ class HomeViewController: UIViewController {
         scrollView.delegate = self
         
         checkIfUserIsSignedIn()
-                
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +57,7 @@ class HomeViewController: UIViewController {
         
         // Remove Network status listener
         ReachabilityManager.shared.removeListener(listener: self)
+        
     }
     
     // MARK: - Helpers
@@ -91,7 +90,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == "toWebVC" {
             let toNav = segue.destination as! UINavigationController
             let toVC = toNav.viewControllers.first as! WebViewController
-            toVC.urlString = sender as! String
+            toVC.urlString = sender as? String
         }
         if segue.identifier  == "toPromotionItem" {
             let destination = segue.destination as! PromotionItemDetailsViewController
@@ -103,14 +102,6 @@ class HomeViewController: UIViewController {
         if segue.identifier == "PromotionEmbed" {
             if let destination = segue.destination as? PromotionViewController {
                 destination.delegate = self
-                self.embeddedPromotionalViewController = destination
-                
-            }
-        }
-        
-        if segue.identifier == "TestimonialEmbed" {
-            if let destination = segue.destination as? TestimonitalViewController {
-                self.embeddedTestimonialViewController = destination
             }
         }
     }
@@ -122,7 +113,7 @@ class HomeViewController: UIViewController {
             let firebaseAuth = Auth.auth()
             do {
                 guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-                DataService.instance.REF_FCM_TOKEN.document(currentUserUid).delete()
+                DataService.instance.REF_FCM_TOKEN_REGISTERED_USERS.document(currentUserUid).delete()
                 try firebaseAuth.signOut()
                 loginBtn.title = "Входы"
             } catch let signOutError as NSError {

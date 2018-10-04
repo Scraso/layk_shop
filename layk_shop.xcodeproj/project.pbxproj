@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		983018B521653AE100750660 /* DataCountListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983018B421653AE100750660 /* DataCountListenerService.swift */; };
 		9834F4E7212FD6050071928C /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4E6212FD6050071928C /* InformationViewController.swift */; };
 		9834F4EB212FF0B10071928C /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9834F4EA212FF0B10071928C /* Information.storyboard */; };
 		9834F4F721308E750071928C /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4F621308E750071928C /* AboutTableViewController.swift */; };
@@ -18,6 +19,7 @@
 		9839BE7B20B31375001C6297 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9839BE7A20B31375001C6297 /* Login.storyboard */; };
 		9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7C20B3139D001C6297 /* LoginViewController.swift */; };
 		9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */; };
+		9839F3672158FC8E0059297D /* OrderStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839F3662158FC8E0059297D /* OrderStatusData.swift */; };
 		983B573D21360097007C4E14 /* NetworkStatusTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */; };
 		983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983F9F8C20AE645D008B8C5A /* HomeViewController.swift */; };
 		98404E1F213356C80046096A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98404E1E213356C80046096A /* ReachabilityManager.swift */; };
@@ -42,6 +44,7 @@
 		985FB76620F453EB0031DC21 /* PromotionItemDetailsMediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FB76520F453EB0031DC21 /* PromotionItemDetailsMediaTableViewCell.swift */; };
 		985FB76820F8449C0031DC21 /* HistoryPromotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985FB76720F8449C0031DC21 /* HistoryPromotionData.swift */; };
 		98609E5E20B1DF9200643203 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98609E5D20B1DF9200643203 /* ShopViewController.swift */; };
+		98631B4C2145602200891607 /* FCMTokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631B4B2145602200891607 /* FCMTokenData.swift */; };
 		988265BA20AD1A2E0015C526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988265B920AD1A2E0015C526 /* AppDelegate.swift */; };
 		988265BF20AD1A2E0015C526 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988265BD20AD1A2E0015C526 /* Main.storyboard */; };
 		988265C120AD1A310015C526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988265C020AD1A310015C526 /* Assets.xcassets */; };
@@ -65,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.release.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.release.xcconfig"; sourceTree = "<group>"; };
+		983018B421653AE100750660 /* DataCountListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCountListenerService.swift; sourceTree = "<group>"; };
 		9834F4E6212FD6050071928C /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		9834F4EA212FF0B10071928C /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
 		9834F4F621308E750071928C /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		9839BE7A20B31375001C6297 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9839BE7C20B3139D001C6297 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
+		9839F3662158FC8E0059297D /* OrderStatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusData.swift; sourceTree = "<group>"; };
 		983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusTitleView.swift; sourceTree = "<group>"; };
 		983F9F8C20AE645D008B8C5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		98404E1E213356C80046096A /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 		985FB76520F453EB0031DC21 /* PromotionItemDetailsMediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionItemDetailsMediaTableViewCell.swift; sourceTree = "<group>"; };
 		985FB76720F8449C0031DC21 /* HistoryPromotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPromotionData.swift; sourceTree = "<group>"; };
 		98609E5D20B1DF9200643203 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		98631B4B2145602200891607 /* FCMTokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMTokenData.swift; sourceTree = "<group>"; };
 		988265B620AD1A2E0015C526 /* layk_shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = layk_shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		988265B920AD1A2E0015C526 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		988265BE20AD1A2E0015C526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				98F60D5620CA10E80074728C /* CartData.swift */,
 				9844219320DA21DE00B59E51 /* HistoryOrderData.swift */,
 				985FB76720F8449C0031DC21 /* HistoryPromotionData.swift */,
+				98631B4B2145602200891607 /* FCMTokenData.swift */,
+				9839F3662158FC8E0059297D /* OrderStatusData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				98F0FBEF20BE792500F9A1F8 /* DataService.swift */,
+				983018B421653AE100750660 /* DataCountListenerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -515,6 +524,8 @@
 				98E05E9D20D8C830009AED1A /* HistoryTableViewCell.swift in Sources */,
 				988265BA20AD1A2E0015C526 /* AppDelegate.swift in Sources */,
 				984C880A210F78D8000DA241 /* TestimonialData.swift in Sources */,
+				98631B4C2145602200891607 /* FCMTokenData.swift in Sources */,
+				983018B521653AE100750660 /* DataCountListenerService.swift in Sources */,
 				984058AD20B9F20600C7A168 /* DeliveryTableViewCell.swift in Sources */,
 				984058A520B6C24000C7A168 /* OneLinePixel.swift in Sources */,
 				984058B220BAAB0400C7A168 /* CartTableViewCell.swift in Sources */,
@@ -530,6 +541,7 @@
 				9844219420DA21DE00B59E51 /* HistoryOrderData.swift in Sources */,
 				98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */,
 				983B573D21360097007C4E14 /* NetworkStatusTitleView.swift in Sources */,
+				9839F3672158FC8E0059297D /* OrderStatusData.swift in Sources */,
 				9834F4F721308E750071928C /* AboutTableViewController.swift in Sources */,
 				98E05E9B20D8336F009AED1A /* HistoryViewController.swift in Sources */,
 				9844219620DED73500B59E51 /* FormattedTimestamp.swift in Sources */,

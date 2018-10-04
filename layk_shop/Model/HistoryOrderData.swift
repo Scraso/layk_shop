@@ -12,14 +12,15 @@ struct ItemData {
     
     var avatarImageUrl: String?
     var count: Int?
-    var isProcessed: Bool?
-    var isDelivered: Bool?
-    var isSent: Bool?
+    var status: String?
     var name: String?
     var price: Int?
     var ref: String?
     var size: String?
     var timestamp: Double?
+    
+    var orderId: String?
+    var isChecked: Bool?
     
     // Possible variables
 //    var userId: String?
@@ -28,15 +29,6 @@ struct ItemData {
     init(itemData: Dictionary<String, Any>) {
         if let count = itemData["count"] as? Int {
             self.count = count
-        }
-        if let isProcessed = itemData["isProcessed"] as? Bool {
-            self.isProcessed = isProcessed
-        }
-        if let isDelivered = itemData["isDelivered"] as? Bool {
-            self.isDelivered = isDelivered
-        }
-        if let isSent = itemData["isSent"] as? Bool {
-            self.isSent = isSent
         }
         if let avatarImageUrl = itemData["avatarImageUrl"] as? String {
             self.avatarImageUrl = avatarImageUrl
@@ -55,6 +47,15 @@ struct ItemData {
         }
         if let timestamp = itemData["timestamp"] as? Double {
             self.timestamp = timestamp
+        }
+        if let orderId = itemData["orderId"] as? String {
+            self.orderId = orderId
+        }
+        if let isChecked = itemData["isChecked"] as? Bool {
+            self.isChecked = isChecked
+        }
+        if let status = itemData["status"] as? String {
+            self.status = status
         }
 
     }

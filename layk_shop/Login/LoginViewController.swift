@@ -70,14 +70,14 @@ class LoginViewController: UIViewController {
     // Post user token to Firestore
     fileprivate func postToken(token: [String: Any]) {
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-        DataService.instance.REF_FCM_TOKEN.document(currentUserUid).setData(token)
+        DataService.instance.REF_FCM_TOKEN_REGISTERED_USERS.document(currentUserUid).setData(token)
     }
     
     
     // MARK: - Actions
     
     @IBAction func loginBtnTapped(_ sender: UIButton) {
-        let token: [String: Any] = [Messaging.messaging().fcmToken ?? "": Messaging.messaging().fcmToken as Any]
+        let token: [String: Any] = ["token": Messaging.messaging().fcmToken as Any]
         if let email = emailTextField.text, let password = passwordTextField.text {
             
             loginActivityIndicator.startAnimating()
@@ -90,8 +90,6 @@ class LoginViewController: UIViewController {
                             self.shakeLoginView()
                         } else {
                             self.postToken(token: token)
-                            // Add userBadge collection and set count to 0
-                            DataService.instance.REF_USER_BADGE_COUNT.addDocument(data: ["count": 0])
                             // Create user collection and save email
                             DataService.instance.REF_USERS.document(user?.user.uid ?? "").setData(["email": user?.user.email ?? ""])
                             self.loginActivityIndicator.stopAnimating()

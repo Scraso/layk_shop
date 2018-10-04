@@ -150,7 +150,7 @@
                                                     <constraint firstItem="OIn-8R-gzq" firstAttribute="top" secondItem="M7h-Ka-z9O" secondAttribute="top" constant="30" id="xjb-Ou-ScX"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -166,7 +166,7 @@
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="yx0-e6-cHW"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <real key="value" value="14"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -305,7 +305,7 @@
                                                     <constraint firstItem="bhQ-AU-dGB" firstAttribute="centerY" secondItem="0eK-q1-E6l" secondAttribute="centerY" id="uDc-lY-C2U"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -320,7 +320,7 @@
                                             <constraint firstAttribute="bottom" secondItem="0eK-q1-E6l" secondAttribute="bottom" id="rJy-Rb-lYF"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <real key="value" value="14"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">

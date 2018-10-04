@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import Reachability
 import NVActivityIndicatorView
+import FirebaseMessaging
 
 protocol DeliveryViewControllerDelegate: class {
     func textField(details: [String: Any])
@@ -188,6 +189,8 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     
     // MARK: - Actions
+    
+    var oldHistoryCount: Int!
  
     @IBAction func sendBtnTapped(_ sender: UIButton) {
         
@@ -199,11 +202,15 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
             
             let currentUserUid = Auth.auth().currentUser?.uid
             let timestamp = NSDate().timeIntervalSince1970
+            let itemsCount = orderItems.count
+            var uploadCount = 0
             
-            // get image name so then fetch it using FirebaseStorageUI
             for item in orderItems {
-                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.avatarImageUrl ?? "", "isProcessed": false, "isDelivered": false, "isSent": false, "timestamp": timestamp]
                 let documentId = DataService.instance.REF_ORDERS.document()
+                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.avatarImageUrl ?? "", "timestamp": timestamp, "orderId": documentId.documentID, "isChecked": false, "status": "none"]
+                
+                let orderStatus: [String: Any] = ["isProcessed": false, "isDelivered": false, "isSent": false, "orderId": documentId.documentID, "userId": currentUserUid ?? ""]
+                
                 documentId.setData(orderDetails)
                 
                 // Get order document ID and pass to the order details
@@ -211,51 +218,147 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 DataService.instance.REF_ORDER_DELIVERY_DETAILS.addDocument(data: orderDeliveryDetails)
                 
                 // Reference to the item document
-                let documentRef = DataService.instance.REF_ITEMS.document(item.documentId ?? "")
+                let itemDocumentRef = DataService.instance.REF_ITEMS.document(item.documentId ?? "")
+                let historyCountRef = DataService.instance.REF_BADGE_COUNT_DETAILS.document("history_badges_count").collection("badgeCount").document(currentUserUid ?? "none")
+                let totalCountRef = DataService.instance.REF_BADGE_COUNT_TOTAL.document(Messaging.messaging().fcmToken ?? "")
                 
-                // Run transcation
-                Firestore.firestore().runTransaction({ [weak self] (transaction, errorPointer) -> Any?  in
-                    let document: DocumentSnapshot
-                    do {
-                        try document = transaction.getDocument(documentRef)
-                    } catch let fetchError as NSError {
-                        errorPointer?.pointee = fetchError
-                        return nil
-                    }
-
-                    // Fetch amount of size of the purchased item
-                    if let nestedDictionary = document.data()?["size"] as? [String: Any] {
-                        if let sizeCount = nestedDictionary[item.size ?? ""] as? Int {
-                            self?.sizeCount = sizeCount
+                if Auth.auth().currentUser != nil {
+                    
+                    // Create a new document with the order ID and set isChecked to false
+                    DataService.instance.REF_ORDER_STATUS.document().setData(orderStatus)
+                    
+                    // Run transcation
+                    Firestore.firestore().runTransaction({ [weak self] (transaction, errorPointer) -> Any?  in
+                        let itemDocument: DocumentSnapshot
+                        let historyDocument: DocumentSnapshot
+                        let totalCountDocument: DocumentSnapshot
+                        do {
+                            try itemDocument = transaction.getDocument(itemDocumentRef)
+                            try historyDocument = transaction.getDocument(historyCountRef)
+                            try totalCountDocument = transaction.getDocument(totalCountRef)
+                        } catch let fetchError as NSError {
+                            errorPointer?.pointee = fetchError
+                            return nil
+                        }
+                        
+                        // Fetch amount of size of the purchased item
+                        if let nestedDictionary = itemDocument.data()?["size"] as? [String: Any] {
+                            if let sizeCount = nestedDictionary[item.size ?? ""] as? Int {
+                                self?.sizeCount = sizeCount
+                            }
+                        }
+                        
+                        
+                        guard let oldSizeCount = self?.sizeCount else {
+                            let error = NSError(
+                                domain: "AppErrorDomain",
+                                code: -1,
+                                userInfo: [
+                                    NSLocalizedDescriptionKey: "Unable to retrieve size from snapshot \(itemDocument)"
+                                ]
+                            )
+                            errorPointer?.pointee = error
+                            return nil
+                        }
+                        
+                        
+                        // Get count of history badge count
+                        guard let oldHistoryCount = historyDocument.data()?["count"] as? Int else {
+                            let error = NSError(
+                                domain: "AppErrorDomain",
+                                code: -1,
+                                userInfo: [
+                                    NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(historyDocument)"
+                                ]
+                            )
+                            errorPointer?.pointee = error
+                            return nil
+                        }
+                        
+                        let newHistoryCount = oldHistoryCount + item.count
+                        
+                        // Get count of total badge count
+                        guard let oldTotalCount = totalCountDocument.data()?["count"] as? Int else {
+                            let error = NSError(
+                                domain: "AppErrorDomain",
+                                code: -1,
+                                userInfo: [
+                                    NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(totalCountDocument)"
+                                ]
+                            )
+                            errorPointer?.pointee = error
+                            return nil
+                        }
+                        
+                        // Deduct from the current items count the amount of the bought items
+                        transaction.updateData(["size.\(item.size ?? "")": oldSizeCount - item.count], forDocument: itemDocumentRef)
+                        transaction.updateData(["count": oldTotalCount + item.count], forDocument: totalCountRef)
+                        transaction.updateData(["count": newHistoryCount], forDocument: historyCountRef)
+                        return newHistoryCount
+                        
+                    }) { (object, error) in
+                        if let error = error {
+                            print("Transaction failed: \(error)")
+                        } else {
+                            
+                            print("Transcation successfully committed!")
+                            
+                            uploadCount += 1
+                            if uploadCount == itemsCount {
+                                self.performSegue(withIdentifier: "toCompletedVC", sender: nil)
+                            }
                         }
                     }
+                } else {
                     
-                    guard let oldSizeCount = self?.sizeCount else {
-                        let error = NSError(
-                            domain: "AppErrorDomain",
-                            code: -1,
-                            userInfo: [
-                                NSLocalizedDescriptionKey: "Unable to retrieve size from snapshot \(document)"
-                            ]
-                        )
-                        errorPointer?.pointee = error
+                    // Run transcation
+                    Firestore.firestore().runTransaction({ [weak self] (transaction, errorPointer) -> Any?  in
+                        let itemDocument: DocumentSnapshot
+                        do {
+                            try itemDocument = transaction.getDocument(itemDocumentRef)
+                        } catch let fetchError as NSError {
+                            errorPointer?.pointee = fetchError
+                            return nil
+                        }
+                        
+                        // Fetch amount of size of the purchased item
+                        if let nestedDictionary = itemDocument.data()?["size"] as? [String: Any] {
+                            if let sizeCount = nestedDictionary[item.size ?? ""] as? Int {
+                                self?.sizeCount = sizeCount
+                            }
+                        }
+                        
+                        
+                        guard let oldSizeCount = self?.sizeCount else {
+                            let error = NSError(
+                                domain: "AppErrorDomain",
+                                code: -1,
+                                userInfo: [
+                                    NSLocalizedDescriptionKey: "Unable to retrieve size from snapshot \(itemDocument)"
+                                ]
+                            )
+                            errorPointer?.pointee = error
+                            return nil
+                        }
+                        
+                        // Deduct from the current items count the amount of the bought items
+                        transaction.updateData(["size.\(item.size ?? "")": oldSizeCount - item.count], forDocument: itemDocumentRef)
+                        
                         return nil
-                    }
-                    
-                    // Deduct from the current items count the amount of the bought items
-                    transaction.updateData(["size.\(item.size ?? "")": oldSizeCount - item.count], forDocument: documentRef)
-                    return nil
-                }) { (object, error) in
-                    if let error = error {
-                        print("Transaction failed: \(error)")
-                    } else {
-                        print("Transaction successfully committed!")
+                        
+                    }) { (object, error) in
+                        if let error = error {
+                            print("Transaction failed: \(error)")
+                        } else {
+                            print("Transaction successfully committed!")
+                            uploadCount += 1
+                            if uploadCount == itemsCount {
+                                self.performSegue(withIdentifier: "toCompletedVC", sender: nil)
+                            }
+                        }
                     }
                 }
-                
             }
-            
-            performSegue(withIdentifier: "toCompletedVC", sender: nil)
             
         } catch {
             let error = error.localizedDescription

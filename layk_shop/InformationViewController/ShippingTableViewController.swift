@@ -50,7 +50,7 @@ class ShippingTableViewController: UITableViewController {
         if segue.identifier == "toWebVC" {
             let toNav = segue.destination as! UINavigationController
             let toVC = toNav.viewControllers.first as! WebViewController
-            toVC.urlString = sender as! String
+            toVC.urlString = sender as? String
         }
     }
     
