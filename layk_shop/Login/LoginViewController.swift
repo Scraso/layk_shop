@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetPasswordView: UIView!
     @IBOutlet weak var resetEmailTextField: UITextField!
     @IBOutlet weak var resetPasswordTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var resetPasswordActivityIndicator: UIActivityIndicatorView!
@@ -111,26 +112,33 @@ class LoginViewController: UIViewController {
 
     @IBAction func forgotBtnTapped(_ sender: UIButton) {
         UIView.transition(with: loginView, duration: 0.6, options: transitionOptions, animations: {
+            
+        }) { (finish) in
             self.loginView.isHidden = true
+            self.scrollView.insertSubview(self.resetPasswordView, belowSubview: self.loginView)
             self.loginViewPanToClose.setGestureRecognizer(isEnabled: false)
-        })
-        
+        }
         UIView.transition(with: resetPasswordView, duration: 0.6, options: transitionOptions, animations: {
             self.resetPasswordView.isHidden = false
             self.resetPasswordViewPanToClose.setGestureRecognizer(isEnabled: true)
-        })
+        }, completion: nil)
+
     }
     
     @IBAction func backToLoginBtnTapped(_ sender: UIButton) {
+        
+        UIView.transition(with: resetPasswordView, duration: 0.6, options: transitionOptions, animations: {
+            
+        }) { (finish) in
+            self.resetPasswordView.isHidden = true
+            self.scrollView.insertSubview(self.loginView, belowSubview: self.resetPasswordView)
+            self.resetPasswordViewPanToClose.setGestureRecognizer(isEnabled: false)
+        }
         UIView.transition(with: loginView, duration: 0.6, options: transitionOptions, animations: {
             self.loginView.isHidden = false
             self.loginViewPanToClose.setGestureRecognizer(isEnabled: true)
-        })
-        
-        UIView.transition(with: resetPasswordView, duration: 0.6, options: transitionOptions, animations: {
-            self.resetPasswordView.isHidden = true
-            self.resetPasswordViewPanToClose.setGestureRecognizer(isEnabled: false)
-        })
+        }, completion: nil)
+    
     }
     
     @IBAction func sendPasswordBtnTapped(_ sender: UIButton) {
