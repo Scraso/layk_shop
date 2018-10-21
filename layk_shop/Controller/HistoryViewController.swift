@@ -298,9 +298,9 @@ extension HistoryViewController: UITableViewDelegate {
                 return CGFloat.leastNonzeroMagnitude
             }
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
     
@@ -323,9 +323,9 @@ extension HistoryViewController: UITableViewDelegate {
                 return CGFloat.leastNonzeroMagnitude
             }
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 
 }

@@ -34,10 +34,17 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     var contactDetails = [String: Any]()
     
+    // Set activity Indicator when item is loading to DB
+    let activityIndicator = UIActivityIndicatorView(style: .gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.backgroundView = activityIndicator
+        activityIndicator.color = UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 100)
+        activityIndicator.isHidden = true
+        activityIndicator.hidesWhenStopped = true
         
         navigationItem.title = "Доставка"
         
@@ -70,7 +77,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewWillDisappear(_ animated : Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParentViewController {
+        if self.isMovingFromParent {
             if delegate != nil {
                 delegate?.textField(details: contactDetails)
                 delegate?.textView(details: textViewDetails ?? "")
@@ -227,6 +234,9 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
                     // Create a new document with the order ID and set isChecked to false
                     DataService.instance.REF_ORDER_STATUS.document().setData(orderStatus)
                     
+                    // Start Activity Indicator
+                    activityIndicator.startAnimating()
+                    
                     // Run transcation
                     Firestore.firestore().runTransaction({ [weak self] (transaction, errorPointer) -> Any?  in
                         let itemDocument: DocumentSnapshot
@@ -298,19 +308,20 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
                         
                     }) { (object, error) in
                         if let error = error {
+                            self.activityIndicator.stopAnimating()
                             print("Transaction failed: \(error)")
                         } else {
-                            
                             print("Transcation successfully committed!")
-                            
                             uploadCount += 1
                             if uploadCount == itemsCount {
+                                self.activityIndicator.stopAnimating()
                                 self.performSegue(withIdentifier: "toCompletedVC", sender: nil)
                             }
                         }
                     }
                 } else {
                     
+                    activityIndicator.startAnimating()
                     // Run transcation
                     Firestore.firestore().runTransaction({ [weak self] (transaction, errorPointer) -> Any?  in
                         let itemDocument: DocumentSnapshot
@@ -348,11 +359,14 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
                         
                     }) { (object, error) in
                         if let error = error {
+                            self.activityIndicator.stopAnimating()
                             print("Transaction failed: \(error)")
                         } else {
+                            self.activityIndicator.startAnimating()
                             print("Transaction successfully committed!")
                             uploadCount += 1
                             if uploadCount == itemsCount {
+                                self.activityIndicator.stopAnimating()
                                 self.performSegue(withIdentifier: "toCompletedVC", sender: nil)
                             }
                         }

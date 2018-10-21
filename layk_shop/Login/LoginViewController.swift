@@ -108,7 +108,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    fileprivate let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+    fileprivate let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
 
     @IBAction func forgotBtnTapped(_ sender: UIButton) {
         UIView.transition(with: loginView, duration: 0.6, options: transitionOptions, animations: {
