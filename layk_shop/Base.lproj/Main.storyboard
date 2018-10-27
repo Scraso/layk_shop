@@ -203,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WUk-kR-WKc">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="98" id="6Dn-mg-vpN" customClass="HistoryTableViewCell" customModule="layk_shop" customModuleProvider="target">
@@ -306,7 +306,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bFA-If-mwe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="История" id="Vpr-oX-8w0"/>
+                    <navigationItem key="navigationItem" title="История" largeTitleDisplayMode="never" id="Vpr-oX-8w0"/>
                     <connections>
                         <outlet property="emptyHistoryOrderView" destination="cuW-D2-AVT" id="ONp-fq-ikm"/>
                         <outlet property="loginNotificationView" destination="Sx8-dL-TfJ" id="YGn-MN-Duq"/>
@@ -376,7 +376,7 @@
                     <viewLayoutGuide key="safeArea" id="Rqx-KB-ief"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1254" y="708"/>
+            <point key="canvasLocation" x="2356" y="1370"/>
         </scene>
         <!--Корзина-->
         <scene sceneID="Ium-9F-O3l">
@@ -610,7 +610,7 @@
                     <viewLayoutGuide key="safeArea" id="db1-Gr-kmd"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2358" y="546"/>
+            <point key="canvasLocation" x="1260" y="501"/>
         </scene>
         <!--DeliveryDetails-->
         <scene sceneID="PWF-5x-V9H">
@@ -618,7 +618,7 @@
                 <viewControllerPlaceholder storyboardName="Embed" referencedIdentifier="DeliveryDetails" id="rAS-6E-cNS" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kR-Ga-YqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2906" y="383"/>
+            <point key="canvasLocation" x="1808" y="337"/>
         </scene>
         <!--Login-->
         <scene sceneID="UNb-qE-blf">
@@ -682,14 +682,58 @@
                     <connections>
                         <segue destination="MoH-zH-uJL" kind="relationship" relationship="viewControllers" id="hQR-Ol-Nhf"/>
                         <segue destination="1mg-I0-Gkb" kind="relationship" relationship="viewControllers" id="JPy-Kd-FYm"/>
-                        <segue destination="3XE-eQ-mlX" kind="relationship" relationship="viewControllers" id="Fhv-9f-qdU"/>
                         <segue destination="COO-gO-BYh" kind="relationship" relationship="viewControllers" id="DPq-HO-fJh"/>
-                        <segue destination="DHe-wx-fpZ" kind="relationship" relationship="viewControllers" id="dlq-rP-c7M"/>
+                        <segue destination="N05-1P-0Mm" kind="relationship" relationship="viewControllers" id="kFJ-jR-e0c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRv-v5-nAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="212" y="-1249"/>
+        </scene>
+        <!--Кабинет-->
+        <scene sceneID="vcX-Gl-uaj">
+            <objects>
+                <viewController title="Кабинет" id="ijE-mo-6tD" customClass="PCViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ugy-Oq-fQk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1uu-iH-Cdl">
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PCCell" id="XJ2-l0-d7V">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XJ2-l0-d7V" id="QEc-sI-9sE">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZFh-FV-PZx" firstAttribute="bottom" secondItem="1uu-iH-Cdl" secondAttribute="bottom" id="Byh-1k-FWO"/>
+                            <constraint firstItem="1uu-iH-Cdl" firstAttribute="top" secondItem="ZFh-FV-PZx" secondAttribute="top" id="OLp-qj-WN1"/>
+                            <constraint firstItem="ZFh-FV-PZx" firstAttribute="trailing" secondItem="1uu-iH-Cdl" secondAttribute="trailing" id="faZ-HN-39K"/>
+                            <constraint firstItem="1uu-iH-Cdl" firstAttribute="leading" secondItem="ZFh-FV-PZx" secondAttribute="leading" id="wR2-Si-vtI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZFh-FV-PZx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Кабинет" id="F1v-Tz-O4e"/>
+                    <connections>
+                        <outlet property="tableView" destination="1uu-iH-Cdl" id="sCR-q9-7cY"/>
+                        <segue destination="7mE-1f-Uhd" kind="show" identifier="toAboutVC" id="wPG-yM-pj3"/>
+                        <segue destination="0ZZ-VJ-I3G" kind="show" identifier="toShippingVC" id="aPb-Ib-SJW"/>
+                        <segue destination="uk0-5i-Rbc" kind="show" identifier="toRefundVC" id="KQy-w5-OHd"/>
+                        <segue destination="1zn-Rr-0Ws" kind="show" identifier="toHistoryVC" id="FdJ-ck-9c7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hbe-9o-UT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2356" y="501"/>
         </scene>
         <!--Меню-->
         <scene sceneID="ZBu-Ey-9yC">
@@ -729,25 +773,6 @@
             </objects>
             <point key="canvasLocation" x="212" y="-393"/>
         </scene>
-        <!--История-->
-        <scene sceneID="Mf7-cm-zT7">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3XE-eQ-mlX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="История" image="Tab Bar/history" selectedImage="Tab Bar/history-active" id="Ror-EJ-d3M"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Xy0-z6-366">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1zn-Rr-0Ws" kind="relationship" relationship="rootViewController" id="LiR-b9-9mp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UpE-mT-uNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1255" y="-347"/>
-        </scene>
         <!--Корзина-->
         <scene sceneID="OmN-Ts-7cX">
             <objects>
@@ -765,52 +790,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSc-GZ-LcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-348"/>
-        </scene>
-        <!--Информация-->
-        <scene sceneID="pNB-Uk-cXY">
-            <objects>
-                <viewController id="tYr-QE-EEo" customClass="InformationViewController" customModule="layk_shop" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="66q-Ug-geJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6Hv-p0-HNg">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InformationCell" id="gmu-h4-dk0">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gmu-h4-dk0" id="UYl-yl-gKa">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="OC5-Hv-cVI" firstAttribute="bottom" secondItem="6Hv-p0-HNg" secondAttribute="bottom" id="4De-x2-9JG"/>
-                            <constraint firstItem="OC5-Hv-cVI" firstAttribute="trailing" secondItem="6Hv-p0-HNg" secondAttribute="trailing" id="BKi-EU-uJF"/>
-                            <constraint firstItem="6Hv-p0-HNg" firstAttribute="leading" secondItem="OC5-Hv-cVI" secondAttribute="leading" id="g5Y-0b-JKw"/>
-                            <constraint firstItem="6Hv-p0-HNg" firstAttribute="top" secondItem="OC5-Hv-cVI" secondAttribute="top" id="viM-AT-pJg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="OC5-Hv-cVI"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Информация" id="FqS-27-gOg"/>
-                    <connections>
-                        <outlet property="tableView" destination="6Hv-p0-HNg" id="Zwq-mL-ZaY"/>
-                        <segue destination="7mE-1f-Uhd" kind="show" identifier="toAboutVC" id="O2c-LJ-k2O"/>
-                        <segue destination="0ZZ-VJ-I3G" kind="show" identifier="toShippingVC" id="LjF-tc-Nwd"/>
-                        <segue destination="uk0-5i-Rbc" kind="show" identifier="toRefundVC" id="GOl-37-CG6"/>
-                        <segue destination="MSa-yS-W1u" kind="show" identifier="toPartnershipVC" id="h7t-V8-rdS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o01-y7-o7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3436" y="435"/>
+            <point key="canvasLocation" x="1260" y="-394"/>
         </scene>
         <!--AboutVC-->
         <scene sceneID="XgL-Vg-Mvb">
@@ -818,7 +798,7 @@
                 <viewControllerPlaceholder storyboardName="Information" referencedIdentifier="AboutVC" id="7mE-1f-Uhd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKb-9X-pEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4065" y="182"/>
+            <point key="canvasLocation" x="3056" y="375"/>
         </scene>
         <!--ShippingVC-->
         <scene sceneID="rPY-D9-Jb9">
@@ -826,7 +806,7 @@
                 <viewControllerPlaceholder storyboardName="Information" referencedIdentifier="ShippingVC" id="0ZZ-VJ-I3G" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmk-xz-sUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4065" y="258"/>
+            <point key="canvasLocation" x="3052" y="551"/>
         </scene>
         <!--RefundVC-->
         <scene sceneID="KRL-9C-h51">
@@ -834,15 +814,7 @@
                 <viewControllerPlaceholder storyboardName="Information" referencedIdentifier="RefundVC" id="uk0-5i-Rbc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6T-Xc-fcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4065" y="333"/>
-        </scene>
-        <!--PartnershipVC-->
-        <scene sceneID="tkD-ul-Pbm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Information" referencedIdentifier="PartnershipVC" id="MSa-yS-W1u" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H2X-1V-IVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4065" y="420"/>
+            <point key="canvasLocation" x="3060" y="662"/>
         </scene>
         <!--Promotion-->
         <scene sceneID="YzE-Sa-n9A">
@@ -876,37 +848,35 @@
             </objects>
             <point key="canvasLocation" x="-149" y="1196"/>
         </scene>
-        <!--Информация-->
-        <scene sceneID="y0O-bb-xeE">
+        <!--Кабинет-->
+        <scene sceneID="PoI-dd-tvX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DHe-wx-fpZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Информация" image="Tab Bar/information" selectedImage="Tab Bar/information-active" id="jGs-4C-rEL"/>
+                <navigationController title="Кабинет" automaticallyAdjustsScrollViewInsets="NO" id="N05-1P-0Mm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Кабинет" image="Tab Bar/cabinet" selectedImage="Tab Bar/cabinet-active" id="tY3-eQ-NFR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iSN-I9-lCH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="NtR-CL-yKI">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="tYr-QE-EEo" kind="relationship" relationship="rootViewController" id="uu3-0L-2PG"/>
+                        <segue destination="ijE-mo-6tD" kind="relationship" relationship="rootViewController" id="8Tg-FS-62E"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xVJ-wg-PRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8D-Xa-yz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3436" y="-305.39730134932535"/>
+            <point key="canvasLocation" x="2311" y="-393"/>
         </scene>
     </scenes>
     <resources>
         <image name="Layk_logo" width="402.72000122070312" height="402.72000122070312"/>
         <image name="More/delete_button" width="44" height="44"/>
+        <image name="Tab Bar/cabinet" width="25" height="25"/>
+        <image name="Tab Bar/cabinet-active" width="25" height="25"/>
         <image name="Tab Bar/cart" width="25" height="25"/>
         <image name="Tab Bar/cart-active" width="25" height="25"/>
-        <image name="Tab Bar/history" width="28" height="25"/>
-        <image name="Tab Bar/history-active" width="28" height="25"/>
         <image name="Tab Bar/home" width="27" height="25"/>
         <image name="Tab Bar/home-active" width="27" height="25"/>
-        <image name="Tab Bar/information" width="25" height="25"/>
-        <image name="Tab Bar/information-active" width="25" height="25"/>
         <image name="Tab Bar/shop" width="25" height="25"/>
         <image name="Tab Bar/shop-active" width="25" height="25"/>
         <image name="facebook" width="35" height="35"/>

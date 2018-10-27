@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		983018B521653AE100750660 /* DataCountListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983018B421653AE100750660 /* DataCountListenerService.swift */; };
-		9834F4E7212FD6050071928C /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4E6212FD6050071928C /* InformationViewController.swift */; };
+		9832CD3C21806EC40010B605 /* PCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9832CD3B21806EC40010B605 /* PCViewController.swift */; };
 		9834F4EB212FF0B10071928C /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9834F4EA212FF0B10071928C /* Information.storyboard */; };
 		9834F4F721308E750071928C /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4F621308E750071928C /* AboutTableViewController.swift */; };
 		9834F4F921308E820071928C /* ShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9834F4F821308E820071928C /* ShippingTableViewController.swift */; };
@@ -54,6 +54,7 @@
 		98A10A2020EBA6C700AD8F4D /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */; };
 		98A10A2220EBABF400AD8F4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2120EBABF400AD8F4D /* WebViewController.swift */; };
 		98A10A2420EBDA4800AD8F4D /* Array + SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */; };
+		98B618B72183247D00EA73D2 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B618B62183247D00EA73D2 /* History.storyboard */; };
 		98E05E9520D2C5A7009AED1A /* UITableView+indexPathForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */; };
 		98E05E9720D6A9DB009AED1A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */; };
 		98E05E9920D77C2C009AED1A /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */; };
@@ -69,7 +70,7 @@
 /* Begin PBXFileReference section */
 		3E880A324FE2FF4FD6EBEA8C /* Pods-layk_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-layk_shop.release.xcconfig"; path = "Pods/Target Support Files/Pods-layk_shop/Pods-layk_shop.release.xcconfig"; sourceTree = "<group>"; };
 		983018B421653AE100750660 /* DataCountListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCountListenerService.swift; sourceTree = "<group>"; };
-		9834F4E6212FD6050071928C /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		9832CD3B21806EC40010B605 /* PCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCViewController.swift; sourceTree = "<group>"; };
 		9834F4EA212FF0B10071928C /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
 		9834F4F621308E750071928C /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		9834F4F821308E820071928C /* ShippingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingTableViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
 		98A10A2120EBABF400AD8F4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + SafeIndex.swift"; sourceTree = "<group>"; };
+		98B618B62183247D00EA73D2 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		98E05E9420D2C5A7009AED1A /* UITableView+indexPathForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+indexPathForView.swift"; sourceTree = "<group>"; };
 		98E05E9620D6A9DB009AED1A /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		98E05E9820D77C2C009AED1A /* ProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
@@ -151,16 +153,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9834F4E9212FF0880071928C /* InformationViewController */ = {
+		9832CD3A21806EA30010B605 /* Private Cabinet */ = {
 			isa = PBXGroup;
 			children = (
-				9834F4EA212FF0B10071928C /* Information.storyboard */,
-				9834F4F621308E750071928C /* AboutTableViewController.swift */,
-				9834F4F821308E820071928C /* ShippingTableViewController.swift */,
-				9834F4FA21308E900071928C /* RefundTableViewController.swift */,
-				9834F4FC21308EA40071928C /* PartnershipTableViewController.swift */,
+				98B618B82183249400EA73D2 /* InformationViewController */,
+				98B618B52183244500EA73D2 /* HistoryViewController */,
 			);
-			path = InformationViewController;
+			path = "Private Cabinet";
 			sourceTree = "<group>";
 		};
 		9839BE6E20B1F513001C6297 /* Model */ = {
@@ -224,7 +223,7 @@
 				984058A620B8772500C7A168 /* CartViewController.swift */,
 				984058A820B89A7F00C7A168 /* DeliveryViewController.swift */,
 				98E05E9A20D8336F009AED1A /* HistoryViewController.swift */,
-				9834F4E6212FD6050071928C /* InformationViewController.swift */,
+				9832CD3B21806EC40010B605 /* PCViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -289,8 +288,8 @@
 		988265B820AD1A2E0015C526 /* layk_shop */ = {
 			isa = PBXGroup;
 			children = (
+				9832CD3A21806EA30010B605 /* Private Cabinet */,
 				98404E1D2133568E0046096A /* Networking */,
-				9834F4E9212FF0880071928C /* InformationViewController */,
 				9897C5382104C690004AB826 /* layk_shop.entitlements */,
 				985FB75A20F2CAB90031DC21 /* PromotionViewController */,
 				988265C520AD1A310015C526 /* Info.plist */,
@@ -327,6 +326,26 @@
 				98A10A2120EBABF400AD8F4D /* WebViewController.swift */,
 			);
 			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		98B618B52183244500EA73D2 /* HistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98B618B62183247D00EA73D2 /* History.storyboard */,
+			);
+			path = HistoryViewController;
+			sourceTree = "<group>";
+		};
+		98B618B82183249400EA73D2 /* InformationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9834F4EA212FF0B10071928C /* Information.storyboard */,
+				9834F4F621308E750071928C /* AboutTableViewController.swift */,
+				9834F4F821308E820071928C /* ShippingTableViewController.swift */,
+				9834F4FA21308E900071928C /* RefundTableViewController.swift */,
+				9834F4FC21308EA40071928C /* PartnershipTableViewController.swift */,
+			);
+			path = InformationViewController;
 			sourceTree = "<group>";
 		};
 		98F0FBEE20BE77BA00F9A1F8 /* Services */ = {
@@ -417,6 +436,7 @@
 				9834F4EB212FF0B10071928C /* Information.storyboard in Resources */,
 				985FB76020F2E1D30031DC21 /* PromotionItemStoryboard.storyboard in Resources */,
 				984621C720B181A900EB37C0 /* Embed.storyboard in Resources */,
+				98B618B72183247D00EA73D2 /* History.storyboard in Resources */,
 				988265C420AD1A310015C526 /* LaunchScreen.storyboard in Resources */,
 				988265C120AD1A310015C526 /* Assets.xcassets in Resources */,
 				9839BE7B20B31375001C6297 /* Login.storyboard in Resources */,
@@ -550,6 +570,7 @@
 				9844219620DED73500B59E51 /* FormattedTimestamp.swift in Sources */,
 				9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */,
 				98F0FBF420C4487500F9A1F8 /* ItemListData.swift in Sources */,
+				9832CD3C21806EC40010B605 /* PCViewController.swift in Sources */,
 				984058A720B8772500C7A168 /* CartViewController.swift in Sources */,
 				983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */,
 				9834F4F921308E820071928C /* ShippingTableViewController.swift in Sources */,
@@ -561,7 +582,6 @@
 				985FB75E20F2E1B90031DC21 /* PromotionItemDetailsViewController.swift in Sources */,
 				985FB76420F453D60031DC21 /* PromotionItemDetailsBodyTableViewCell.swift in Sources */,
 				9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */,
-				9834F4E7212FD6050071928C /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
