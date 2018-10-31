@@ -51,6 +51,8 @@
 		988265C420AD1A310015C526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988265C220AD1A310015C526 /* LaunchScreen.storyboard */; };
 		9888403920AF7929002CCF29 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403820AF7929002CCF29 /* PromotionViewController.swift */; };
 		9888403B20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */; };
+		989AAA6F2186B1F500DD078B /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989AAA6E2186B1F500DD078B /* OrderHistoryTableViewCell.swift */; };
+		989AAA712186B2AC00DD078B /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989AAA702186B2AC00DD078B /* OrderHistoryViewController.swift */; };
 		98A10A2020EBA6C700AD8F4D /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */; };
 		98A10A2220EBABF400AD8F4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2120EBABF400AD8F4D /* WebViewController.swift */; };
 		98A10A2420EBDA4800AD8F4D /* Array + SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */; };
@@ -116,6 +118,8 @@
 		9888403820AF7929002CCF29 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		9888403A20AF7A3E002CCF29 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9897C5382104C690004AB826 /* layk_shop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = layk_shop.entitlements; sourceTree = "<group>"; };
+		989AAA6E2186B1F500DD078B /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		989AAA702186B2AC00DD078B /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		98A10A1F20EBA6C700AD8F4D /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
 		98A10A2120EBABF400AD8F4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		98A10A2320EBDA4800AD8F4D /* Array + SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + SafeIndex.swift"; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				98B618B62183247D00EA73D2 /* History.storyboard */,
+				989AAA6E2186B1F500DD078B /* OrderHistoryTableViewCell.swift */,
+				989AAA702186B2AC00DD078B /* OrderHistoryViewController.swift */,
 			);
 			path = HistoryViewController;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 			files = (
 				9844219A20E1DAE300B59E51 /* ParentItemDetailsViewController.swift in Sources */,
 				985FB75920F2CA300031DC21 /* PresentSectionViewController.swift in Sources */,
+				989AAA712186B2AC00DD078B /* OrderHistoryViewController.swift in Sources */,
 				9839BE7820B1F8BE001C6297 /* ItemsTableViewCell.swift in Sources */,
 				9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */,
 				98404E1F213356C80046096A /* ReachabilityManager.swift in Sources */,
@@ -546,6 +553,7 @@
 				98F0FBF020BE792500F9A1F8 /* DataService.swift in Sources */,
 				98E05E9D20D8C830009AED1A /* HistoryTableViewCell.swift in Sources */,
 				988265BA20AD1A2E0015C526 /* AppDelegate.swift in Sources */,
+				989AAA6F2186B1F500DD078B /* OrderHistoryTableViewCell.swift in Sources */,
 				984C880A210F78D8000DA241 /* TestimonialData.swift in Sources */,
 				98631B4C2145602200891607 /* FCMTokenData.swift in Sources */,
 				983018B521653AE100750660 /* DataCountListenerService.swift in Sources */,
