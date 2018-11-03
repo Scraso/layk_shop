@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xbc-WM-gQL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xbc-WM-gQL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,24 +51,65 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-85-xVr" userLabel="HeaderView">
                                         <rect key="frame" x="0.0" y="-64" width="375" height="334"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_cover" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-X1-j7c">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layk_top_cover" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-X1-j7c">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="334"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Layk_logo" translatesAutoresizingMaskIntoConstraints="NO" id="oFW-90-mVO">
-                                                <rect key="frame" x="97.5" y="127" width="180" height="180"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="3jS-R9-LY6"/>
-                                                    <constraint firstAttribute="height" constant="180" id="r23-VQ-Ab7"/>
-                                                </constraints>
-                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-JC-odZ">
+                                                <rect key="frame" x="20" y="127" width="295" height="180"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layk_top_logo" translatesAutoresizingMaskIntoConstraints="NO" id="oFW-90-mVO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="180" id="3jS-R9-LY6"/>
+                                                            <constraint firstAttribute="height" constant="180" id="r23-VQ-Ab7"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJc-eK-sil">
+                                                        <rect key="frame" x="245" y="65" width="50" height="50"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="D6n-eO-9n8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATZ-I6-oIu">
+                                                                    <rect key="frame" x="3" y="0.0" width="50" height="50"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="50" id="BG6-Tn-dZt"/>
+                                                                        <constraint firstAttribute="height" constant="50" id="ZK1-Fs-ZJg"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="play-button"/>
+                                                                    <connections>
+                                                                        <action selector="playBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSx-tK-ZUb"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="ATZ-I6-oIu" firstAttribute="top" secondItem="D6n-eO-9n8" secondAttribute="top" id="5oJ-kL-v2e"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ATZ-I6-oIu" secondAttribute="trailing" id="Lfb-iD-Jfd"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ATZ-I6-oIu" secondAttribute="bottom" id="c4G-jo-h4v"/>
+                                                                <constraint firstItem="ATZ-I6-oIu" firstAttribute="leading" secondItem="D6n-eO-9n8" secondAttribute="leading" constant="3" id="wdk-lG-9PW"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="Z2N-Qu-Owu"/>
+                                                            <constraint firstAttribute="width" constant="50" id="krs-SN-KgV"/>
+                                                        </constraints>
+                                                        <blurEffect style="dark"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="25"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </visualEffectView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="eVe-X1-j7c" secondAttribute="trailing" id="1Gm-is-vHq"/>
                                             <constraint firstItem="eVe-X1-j7c" firstAttribute="top" secondItem="aEM-85-xVr" secondAttribute="top" id="6T3-xR-RpF"/>
-                                            <constraint firstItem="oFW-90-mVO" firstAttribute="centerY" secondItem="aEM-85-xVr" secondAttribute="centerY" constant="50" id="GtW-25-gz0"/>
+                                            <constraint firstItem="NmS-JC-odZ" firstAttribute="centerX" secondItem="aEM-85-xVr" secondAttribute="centerX" constant="-20" id="9gC-jQ-cfP"/>
+                                            <constraint firstItem="NmS-JC-odZ" firstAttribute="centerY" secondItem="aEM-85-xVr" secondAttribute="centerY" constant="50" id="EDT-qf-krw"/>
                                             <constraint firstAttribute="height" constant="334" id="K3a-es-0O8"/>
-                                            <constraint firstItem="oFW-90-mVO" firstAttribute="centerX" secondItem="aEM-85-xVr" secondAttribute="centerX" id="fp1-wg-b3W"/>
                                             <constraint firstItem="eVe-X1-j7c" firstAttribute="leading" secondItem="aEM-85-xVr" secondAttribute="leading" id="lHH-Ax-wtq"/>
                                             <constraint firstAttribute="bottom" secondItem="eVe-X1-j7c" secondAttribute="bottom" id="xaW-Ss-6dc"/>
                                         </constraints>
@@ -897,7 +938,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Layk_logo" width="402.72000122070312" height="402.72000122070312"/>
         <image name="More/delete_button" width="44" height="44"/>
         <image name="Tab Bar/cart" width="25" height="25"/>
         <image name="Tab Bar/cart-active" width="25" height="25"/>
@@ -910,12 +950,14 @@
         <image name="Tab Bar/shop" width="25" height="25"/>
         <image name="Tab Bar/shop-active" width="25" height="25"/>
         <image name="facebook" width="35" height="35"/>
-        <image name="header_cover" width="2100" height="1286"/>
         <image name="instragram" width="35" height="35"/>
+        <image name="layk_top_cover" width="851" height="743"/>
+        <image name="layk_top_logo" width="800" height="800"/>
         <image name="leggins_1" width="178" height="178"/>
+        <image name="play-button" width="25" height="28"/>
         <image name="twitter" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gHj-0F-opa"/>
+        <segue reference="Gxp-NK-Var"/>
     </inferredMetricsTieBreakers>
 </document>

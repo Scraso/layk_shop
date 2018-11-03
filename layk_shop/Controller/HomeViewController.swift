@@ -12,6 +12,7 @@ import Reachability
 import NVActivityIndicatorView
 import FirebaseMessaging
 import FirebaseFirestore
+import AVKit
 
 class HomeViewController: UIViewController {
 
@@ -67,10 +68,6 @@ class HomeViewController: UIViewController {
         navigationItem.titleView = titleView
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     // Check if user is logged in and if yes then change loggin button to logout
     
     private func checkIfUserIsSignedIn() {
@@ -123,6 +120,19 @@ class HomeViewController: UIViewController {
             performSegue(withIdentifier: "toLogin", sender: nil)
         }
     }
+    
+    @IBAction func playBtnTapped(_ sender: UIButton) {
+        let urlString = "https://res.cloudinary.com/layk-com-ua/video/upload/v1541034087/layk_promo/layk_promo_low.mp4"
+        let url = URL(string: urlString)
+        let player = AVPlayer(url: url!)
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        present(playerController, animated: true) {
+            player.play()
+        }
+    }
+    
+    
     
     @IBAction func instagramBtnTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "toWebVC", sender: "https://www.instagram.com/laykwear/")
