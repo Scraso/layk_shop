@@ -20,6 +20,7 @@
 		9839BE7D20B3139D001C6297 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7C20B3139D001C6297 /* LoginViewController.swift */; };
 		9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */; };
 		9839F3672158FC8E0059297D /* OrderStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839F3662158FC8E0059297D /* OrderStatusData.swift */; };
+		983ACACF218DF803003E8FA7 /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983ACACE218DF803003E8FA7 /* OrderHistoryVC.swift */; };
 		983B573D21360097007C4E14 /* NetworkStatusTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */; };
 		983F9F8D20AE645D008B8C5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983F9F8C20AE645D008B8C5A /* HomeViewController.swift */; };
 		98404E1F213356C80046096A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98404E1E213356C80046096A /* ReachabilityManager.swift */; };
@@ -84,6 +85,7 @@
 		9839BE7C20B3139D001C6297 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9839BE7E20B3297C001C6297 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		9839F3662158FC8E0059297D /* OrderStatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusData.swift; sourceTree = "<group>"; };
+		983ACACE218DF803003E8FA7 /* OrderHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryVC.swift; sourceTree = "<group>"; };
 		983B573C21360097007C4E14 /* NetworkStatusTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusTitleView.swift; sourceTree = "<group>"; };
 		983F9F8C20AE645D008B8C5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		98404E1E213356C80046096A /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				98B618B62183247D00EA73D2 /* History.storyboard */,
 				989AAA6E2186B1F500DD078B /* OrderHistoryTableViewCell.swift */,
 				989AAA702186B2AC00DD078B /* OrderHistoryViewController.swift */,
+				983ACACE218DF803003E8FA7 /* OrderHistoryVC.swift */,
 			);
 			path = HistoryViewController;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				9844219A20E1DAE300B59E51 /* ParentItemDetailsViewController.swift in Sources */,
 				985FB75920F2CA300031DC21 /* PresentSectionViewController.swift in Sources */,
 				989AAA712186B2AC00DD078B /* OrderHistoryViewController.swift in Sources */,
+				983ACACF218DF803003E8FA7 /* OrderHistoryVC.swift in Sources */,
 				9839BE7820B1F8BE001C6297 /* ItemsTableViewCell.swift in Sources */,
 				9839BE7F20B3297C001C6297 /* ItemDetailsViewController.swift in Sources */,
 				98404E1F213356C80046096A /* ReachabilityManager.swift in Sources */,
