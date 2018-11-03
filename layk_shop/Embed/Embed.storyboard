@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -566,23 +566,23 @@
                                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </pageControl>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-4t-8Gr">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-4t-8Gr">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="340" id="zDE-kc-DZI"/>
                                                 </constraints>
                                             </scrollView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jn7-SW-fgV" userLabel="Name &amp; Price Stack View">
-                                                <rect key="frame" x="117" y="400" width="141" height="53"/>
+                                                <rect key="frame" x="116.5" y="400" width="142" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLASSIC BLACK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODV-cU-2Ta">
-                                                        <rect key="frame" x="0.0" y="0.0" width="141" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="21"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1240 грн" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMl-Rn-pGJ">
-                                                        <rect key="frame" x="33" y="31" width="75" height="22"/>
+                                                        <rect key="frame" x="33" y="31" width="76" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="g6g-v8-EOo"/>
                                                         </constraints>
@@ -590,9 +590,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="yMl-Rn-pGJ" firstAttribute="leading" secondItem="Jn7-SW-fgV" secondAttribute="leading" constant="33" id="Jhe-ND-QVi"/>
-                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHQ-lQ-ahw" userLabel="Separator" customClass="OneLinePixel" customModule="layk_shop" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="473" width="295" height="1"/>
@@ -784,7 +781,6 @@
                                             <constraint firstItem="EMK-4b-R4O" firstAttribute="top" secondItem="cHQ-lQ-ahw" secondAttribute="bottom" constant="20" id="iC2-bW-R1h"/>
                                             <constraint firstItem="jjV-3d-VbB" firstAttribute="top" secondItem="gdp-lb-uSX" secondAttribute="bottom" constant="30" id="igb-rz-zNv"/>
                                             <constraint firstItem="pi2-4t-8Gr" firstAttribute="top" secondItem="lM2-1Z-VQV" secondAttribute="top" id="iog-mL-l9l"/>
-                                            <constraint firstItem="Jn7-SW-fgV" firstAttribute="leading" secondItem="lM2-1Z-VQV" secondAttribute="leading" constant="117" id="mnK-dT-pmh"/>
                                             <constraint firstItem="pi2-4t-8Gr" firstAttribute="leading" secondItem="lM2-1Z-VQV" secondAttribute="leading" id="ow7-3j-VYj"/>
                                             <constraint firstItem="cHQ-lQ-ahw" firstAttribute="leading" secondItem="lM2-1Z-VQV" secondAttribute="leading" constant="40" id="qz0-cV-EAz"/>
                                             <constraint firstItem="d0G-ly-d5T" firstAttribute="top" secondItem="pi2-4t-8Gr" secondAttribute="bottom" id="u28-cc-pqM"/>
