@@ -71,12 +71,18 @@ class ItemsTableViewController: UITableViewController {
             }
             
             for document in documents {
-                let data = ItemListData(data: document.data(), documentId: document.documentID)
-                self?.itemList.append(data)
+                if let data = ItemListData(data: document.data(), documentId: document.documentID) {
+                    self?.itemList.append(data)
+                }
             }
     
-            self?.tableView.reloadData()
+            self?.attemptToReload()
         })
+    }
+    
+    func attemptToReload() {
+        itemList.sort(by: {$0.timestamp > $1.timestamp})
+        tableView.reloadData()
     }
     
     // MARK: - Navigation

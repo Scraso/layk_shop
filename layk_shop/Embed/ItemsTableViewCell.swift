@@ -17,12 +17,14 @@ class ItemsTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionSecondLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var availabilityLbl: UILabel!
+    @IBOutlet weak var codeLbl: UILabel!
     
     
     // Items will be loaded based on the category selected (see DB category key)
     func configureCell(data: ItemListData) {
         itemNameLbl.text = data.name
-        priceLbl.text = "\(data.price ?? 0) грн"
+        priceLbl.text = "\(data.price ) грн"
+        codeLbl.text = "Код товара: \(data.code )"
         
         
         // Check the total Items size count
@@ -41,7 +43,7 @@ class ItemsTableViewCell: UITableViewCell {
         let placeHolderImage = #imageLiteral(resourceName: "promotion_placeholder")
         itemImageView.sd_setShowActivityIndicatorView(true)
         itemImageView.sd_setIndicatorStyle(.gray)
-        itemImageView.sd_setImage(with: URL(string: data.avatarImageUrl ?? ""), placeholderImage: placeHolderImage)
+        itemImageView.sd_setImage(with: URL(string: data.avatarImageUrl), placeholderImage: placeHolderImage)
         
         descriptionFirstLbl.text = data.itemDetails[exist: 0]
         descriptionSecondLbl.text = data.itemDetails[exist: 1]

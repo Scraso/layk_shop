@@ -61,6 +61,7 @@ class ItemDetailsViewController: UIViewController {
         for url in itemDetails.imageURLs {
             let placeholder = #imageLiteral(resourceName: "promotion_placeholder")
             let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFill
             imageView.isUserInteractionEnabled = true
             
             // Add tap gesture
@@ -118,7 +119,7 @@ class ItemDetailsViewController: UIViewController {
     fileprivate func setupUserInterface() {
         //Set UI
         nameLbl.text = itemDetails.name
-        priceLbl.text = "\(itemDetails.price ?? 0) грн"
+        priceLbl.text = "\(itemDetails.price) грн"
         
         firstDetailLbl.text = itemDetails.itemDetails[exist: 0]
         secondDetailLbl.text = itemDetails.itemDetails[exist: 1]

@@ -11,12 +11,12 @@ import UIKit
 class PromotionItemDetailsMediaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var bodyLbl: UITextView!
     @IBOutlet weak var mediaImageView: UIImageView!
+    @IBOutlet weak var bodyTextView: UITextView!
     
     func configureCell(data: HistorySectionDataDetails) {
         self.titleLbl.text = data.title
-        self.bodyLbl.text = data.content
+        self.bodyTextView.text = data.content
         let placeholderImage = #imageLiteral(resourceName: "promotion_placeholder")
         mediaImageView.sd_setShowActivityIndicatorView(true)
         mediaImageView.sd_setIndicatorStyle(.gray)

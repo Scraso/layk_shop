@@ -66,16 +66,17 @@
                                                     </imageView>
                                                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJc-eK-sil">
                                                         <rect key="frame" x="245" y="65" width="50" height="50"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="D6n-eO-9n8">
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D6n-eO-9n8">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATZ-I6-oIu">
-                                                                    <rect key="frame" x="3" y="0.0" width="50" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="50" id="BG6-Tn-dZt"/>
                                                                         <constraint firstAttribute="height" constant="50" id="ZK1-Fs-ZJg"/>
                                                                     </constraints>
+                                                                    <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     <state key="normal" image="play-button"/>
                                                                     <connections>
                                                                         <action selector="playBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSx-tK-ZUb"/>
@@ -86,12 +87,12 @@
                                                                 <constraint firstItem="ATZ-I6-oIu" firstAttribute="top" secondItem="D6n-eO-9n8" secondAttribute="top" id="5oJ-kL-v2e"/>
                                                                 <constraint firstAttribute="trailing" secondItem="ATZ-I6-oIu" secondAttribute="trailing" id="Lfb-iD-Jfd"/>
                                                                 <constraint firstAttribute="bottom" secondItem="ATZ-I6-oIu" secondAttribute="bottom" id="c4G-jo-h4v"/>
-                                                                <constraint firstItem="ATZ-I6-oIu" firstAttribute="leading" secondItem="D6n-eO-9n8" secondAttribute="leading" constant="3" id="wdk-lG-9PW"/>
+                                                                <constraint firstItem="ATZ-I6-oIu" firstAttribute="leading" secondItem="D6n-eO-9n8" secondAttribute="leading" id="wdk-lG-9PW"/>
                                                             </constraints>
                                                         </view>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Z2N-Qu-Owu"/>
                                                             <constraint firstAttribute="width" constant="50" id="krs-SN-KgV"/>
+                                                            <constraint firstAttribute="height" constant="50" id="yEK-Fj-4s3"/>
                                                         </constraints>
                                                         <blurEffect style="dark"/>
                                                         <userDefinedRuntimeAttributes>

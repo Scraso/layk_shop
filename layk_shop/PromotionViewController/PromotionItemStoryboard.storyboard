@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,12 +65,6 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="354"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Loading…" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OQQ-ND-7fi">
-                                                            <rect key="frame" x="15" y="67.333333333333329" width="345" height="39"/>
-                                                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AAN-M4-a3s">
                                                             <rect key="frame" x="20" y="118.33333333333333" width="335" height="215.66666666666669"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,23 +82,30 @@
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Loading…" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z51-As-yDC">
+                                                            <rect key="frame" x="15" y="67.333333333333329" width="345" height="39"/>
+                                                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                        </textView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="xou-tS-eRY" firstAttribute="bottom" secondItem="AAN-M4-a3s" secondAttribute="bottom" constant="20" id="8HQ-vZ-CCi"/>
                                                         <constraint firstItem="7wj-0U-bDA" firstAttribute="top" secondItem="xou-tS-eRY" secondAttribute="top" constant="20" id="8O0-IX-WyM"/>
                                                         <constraint firstItem="7wj-0U-bDA" firstAttribute="leading" secondItem="xou-tS-eRY" secondAttribute="leading" constant="20" id="APw-CM-FPC"/>
-                                                        <constraint firstItem="xou-tS-eRY" firstAttribute="trailing" secondItem="OQQ-ND-7fi" secondAttribute="trailing" constant="15" id="UTT-zP-MCa"/>
-                                                        <constraint firstItem="OQQ-ND-7fi" firstAttribute="top" secondItem="7wj-0U-bDA" secondAttribute="bottom" constant="16" id="V6m-sg-kDa"/>
+                                                        <constraint firstItem="z51-As-yDC" firstAttribute="leading" secondItem="xou-tS-eRY" secondAttribute="leading" constant="15" id="RRK-3z-eSm"/>
                                                         <constraint firstItem="xou-tS-eRY" firstAttribute="trailing" secondItem="AAN-M4-a3s" secondAttribute="trailing" constant="20" id="dS1-fu-A64"/>
                                                         <constraint firstItem="xou-tS-eRY" firstAttribute="trailing" secondItem="7wj-0U-bDA" secondAttribute="trailing" constant="20" id="fUd-f8-pG8"/>
-                                                        <constraint firstItem="OQQ-ND-7fi" firstAttribute="leading" secondItem="xou-tS-eRY" secondAttribute="leading" constant="15" id="fz7-tF-TOK"/>
-                                                        <constraint firstItem="AAN-M4-a3s" firstAttribute="top" secondItem="OQQ-ND-7fi" secondAttribute="bottom" constant="12" id="vQw-WR-YI1"/>
+                                                        <constraint firstItem="xou-tS-eRY" firstAttribute="trailing" secondItem="z51-As-yDC" secondAttribute="trailing" constant="15" id="iL1-KP-XVv"/>
+                                                        <constraint firstItem="AAN-M4-a3s" firstAttribute="top" secondItem="z51-As-yDC" secondAttribute="bottom" constant="12" id="jNW-3p-uVv"/>
+                                                        <constraint firstItem="z51-As-yDC" firstAttribute="top" secondItem="7wj-0U-bDA" secondAttribute="bottom" constant="16" id="rPd-R9-4rc"/>
                                                         <constraint firstItem="AAN-M4-a3s" firstAttribute="leading" secondItem="xou-tS-eRY" secondAttribute="leading" constant="20" id="w31-tb-tKu"/>
                                                     </constraints>
                                                     <viewLayoutGuide key="safeArea" id="xou-tS-eRY"/>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="bodyLbl" destination="OQQ-ND-7fi" id="MGm-0p-bnF"/>
+                                                    <outlet property="bodyTextView" destination="z51-As-yDC" id="Y9y-lI-hbf"/>
                                                     <outlet property="mediaImageView" destination="AAN-M4-a3s" id="PUd-ML-p9q"/>
                                                     <outlet property="titleLbl" destination="7wj-0U-bDA" id="ZMR-Vq-8Kp"/>
                                                 </connections>
@@ -195,7 +196,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJR-Bg-Tji" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fwZ-0w-X74" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="942" y="193"/>
+            <point key="canvasLocation" x="941.60000000000002" y="192.85714285714286"/>
         </scene>
     </scenes>
 </document>

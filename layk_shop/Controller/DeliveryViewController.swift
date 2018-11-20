@@ -214,7 +214,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate, UITextViewD
             
             for item in orderItems {
                 let documentId = DataService.instance.REF_ORDERS.document()
-                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.avatarImageUrl ?? "", "timestamp": timestamp, "orderId": documentId.documentID, "isChecked": false, "status": "none"]
+                let orderDetails: [String : Any] = ["name": item.name ?? "", "size": item.size ?? "", "price": item.price ?? 0, "itemDocumentId": item.documentId ?? "", "ref": item.ref, "count": item.count, "userId": currentUserUid ?? "", "avatarImageUrl": item.avatarImageUrl ?? "", "timestamp": timestamp, "orderId": documentId.documentID, "status": "none"]
                 
                 let orderStatus: [String: Any] = ["isProcessed": false, "isDelivered": false, "isSent": false, "orderId": documentId.documentID, "userId": currentUserUid ?? ""]
                 

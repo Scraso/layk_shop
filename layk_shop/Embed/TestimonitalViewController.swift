@@ -52,6 +52,13 @@ class TestimonitalViewController: UIViewController {
 extension TestimonitalViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        if testimonials.count == 0 {
+            collectionView.setEmptyMessage("Нету отзывов")
+        } else {
+            collectionView.restore()
+        }
+        
         return testimonials.count
     }
     
@@ -62,4 +69,24 @@ extension TestimonitalViewController: UICollectionViewDataSource {
         return cell
     }
     
+}
+
+extension UICollectionView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .white
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.text = "Отзывы отсуствуют"
+        messageLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+    }
 }

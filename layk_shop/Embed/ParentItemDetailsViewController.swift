@@ -108,7 +108,7 @@ class ParentItemDetailsViewController: UIViewController, ItemDetailsViewControll
         }
         
         // Pass document ID in order to update the amount of items left.
-        let item = CartData(price: itemDetails.price, name: itemDetails.name ?? "", ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId ?? "", avatarImageUrl: itemDetails.avatarImageUrl)
+        let item = CartData(price: itemDetails.price, name: itemDetails.name, ref: "\(randomString(length: 3))\(Int(arc4random_uniform(999)))", size: selectedBtnSize, count: 1, documentId: itemDetails.documentId, avatarImageUrl: itemDetails.avatarImageUrl)
         
         // Check if there is already the same item in array
         let isUniqueItem = cartViewController.items.contains(where: {$0.avatarImageUrl == item.avatarImageUrl && $0.size == item.size } )
