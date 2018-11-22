@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "История покупок пустая"; ObjectID = "8yp-7n-qKY"; */
+"8yp-7n-qKY.text" = "История покупок пустая";
+
+/* Class = "UILabel"; text = "ref.1854943"; ObjectID = "9Cs-ie-WZ6"; */
+"9Cs-ie-WZ6.text" = "ref.1854943";
+
+/* Class = "UINavigationItem"; title = "Магазин"; ObjectID = "9fA-RR-vK9"; */
+"9fA-RR-vK9.title" = "Магазин";
+
+/* Class = "UILabel"; text = "Что бы получать последние"; ObjectID = "Dno-oA-aBY"; */
+"Dno-oA-aBY.text" = "Что бы получать последние";
+
+/* Class = "UINavigationItem"; title = "Информация"; ObjectID = "FqS-27-gOg"; */
+"FqS-27-gOg.title" = "Информация";
+
+/* Class = "UILabel"; text = "Сумма:"; ObjectID = "Gt6-fc-dyD"; */
+"Gt6-fc-dyD.text" = "Сумма:";
+
+/* Class = "UILabel"; text = "Night Fury"; ObjectID = "M8c-iP-WgQ"; */
+"M8c-iP-WgQ.text" = "Night Fury";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "NMf-1v-rjQ"; */
+"NMf-1v-rjQ.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "ref.234234"; ObjectID = "OSL-MM-a8a"; */
+"OSL-MM-a8a.text" = "ref.234234";
+
+/* Class = "UITabBarItem"; title = "Магазин"; ObjectID = "PFj-f3-Fb0"; */
+"PFj-f3-Fb0.title" = "Магазин";
+
+/* Class = "UILabel"; text = "зарегистрированным пользователем."; ObjectID = "PSY-Tk-gTc"; */
+"PSY-Tk-gTc.text" = "зарегистрированным пользователем.";
+
+/* Class = "UILabel"; text = "Количество: 1"; ObjectID = "QXt-bI-yND"; */
+"QXt-bI-yND.text" = "Количество: 1";
+
+/* Class = "UITabBarItem"; title = "История"; ObjectID = "Ror-EJ-d3M"; */
+"Ror-EJ-d3M.title" = "История";
+
+/* Class = "UINavigationItem"; title = "История"; ObjectID = "Vpr-oX-8w0"; */
+"Vpr-oX-8w0.title" = "История";
+
+/* Class = "UILabel"; text = "подписывайтесь на нас в"; ObjectID = "X2r-GT-rCF"; */
+"X2r-GT-rCF.text" = "подписывайтесь на нас в";
+
+/* Class = "UILabel"; text = "заказа, Вам нужно быть"; ObjectID = "Y3E-Py-1bz"; */
+"Y3E-Py-1bz.text" = "заказа, Вам нужно быть";
+
+/* Class = "UITabBarItem"; title = "Меню"; ObjectID = "ZrG-or-OgO"; */
+"ZrG-or-OgO.title" = "Меню";
+
+/* Class = "UIButton"; normalTitle = "ПРОДОЛЖИТЬ"; ObjectID = "aez-fj-Clv"; */
+"aez-fj-Clv.normalTitle" = "ПРОДОЛЖИТЬ";
+
+/* Class = "UILabel"; text = "Instagram, Twitter и Facebook!"; ObjectID = "dKa-2q-Soi"; */
+"dKa-2q-Soi.text" = "Instagram, Twitter и Facebook!";
+
+/* Class = "UILabel"; text = "1240 грн"; ObjectID = "fD7-7s-dCY"; */
+"fD7-7s-dCY.text" = "1240 грн";
+
+/* Class = "UILabel"; text = "Yesterday"; ObjectID = "fQa-qE-IrB"; */
+"fQa-qE-IrB.text" = "Yesterday";
+
+/* Class = "UILabel"; text = "1245 грн"; ObjectID = "fs5-vt-Kik"; */
+"fs5-vt-Kik.text" = "1245 грн";
+
+/* Class = "UITabBarItem"; title = "Корзина"; ObjectID = "gnB-lN-leK"; */
+"gnB-lN-leK.title" = "Корзина";
+
+/* Class = "UINavigationItem"; title = "Корзина"; ObjectID = "hkj-mS-D0T"; */
+"hkj-mS-D0T.title" = "Корзина";
+
+/* Class = "UIButton"; normalTitle = "Вход"; ObjectID = "hqW-n7-rtW"; */
+"hqW-n7-rtW.normalTitle" = "Вход";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "hv4-qJ-DaK"; */
+"hv4-qJ-DaK.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "4500 грн"; ObjectID = "jDC-JW-wkk"; */
+"jDC-JW-wkk.text" = "4500 грн";
+
+/* Class = "UITabBarItem"; title = "Информация"; ObjectID = "jGs-4C-rEL"; */
+"jGs-4C-rEL.title" = "Информация";
+
+/* Class = "UILabel"; text = "новости и быть всегда в курсе,"; ObjectID = "knd-Fc-cZ8"; */
+"knd-Fc-cZ8.text" = "новости и быть всегда в курсе,";
+
+/* Class = "UILabel"; text = "Для просмотра истории/статуса"; ObjectID = "mY4-5e-gTM"; */
+"mY4-5e-gTM.text" = "Для просмотра истории/статуса";
+
+/* Class = "UILabel"; text = "Корзина пустая"; ObjectID = "pTC-H3-MWC"; */
+"pTC-H3-MWC.text" = "Корзина пустая";
+
+/* Class = "UILabel"; text = "CLASSIC BLACK"; ObjectID = "rXl-eF-Vjy"; */
+"rXl-eF-Vjy.text" = "CLASSIC BLACK";
+
+/* Class = "UIBarButtonItem"; title = "Login"; ObjectID = "sYb-Cc-QWc"; */
+"sYb-Cc-QWc.title" = "Login";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "tgc-dB-ZjV"; */
+"tgc-dB-ZjV.text" = "1";
