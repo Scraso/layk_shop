@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Fabric.sharedSDK().debug = true
         
         let settings = DB_BASE.settings
-        settings.areTimestampsInSnapshotsEnabled = true
         DB_BASE.settings = settings
         
         // Enable Keyboard Manager

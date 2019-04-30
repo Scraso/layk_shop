@@ -97,7 +97,7 @@ class ItemDetailsViewController: UIViewController {
     
     @objc fileprivate func handleZoomIn(sender: UIGestureRecognizer) {
         guard let displacedView = sender.view as? UIImageView else { return }
-        guard let displacedViewIndex = items.index(where: { $0.imageView == displacedView }) else { return }
+        guard let displacedViewIndex = items.firstIndex(where: { $0.imageView == displacedView }) else { return }
         let galleryViewController = GalleryViewController(startIndex: displacedViewIndex, itemsDataSource: self, itemsDelegate: self, displacedViewsDataSource: self, configuration: galleryConfiguration())
         self.presentImageGallery(galleryViewController)
     }
